@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Krishna Rameshwar Mishra — B.Tech Computer Science (Software Engineering) Student | Aspiring Software Engineer | AI & Product Development Enthusiast" />
+  <title>Krishna Mishra — Portfolio</title>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Preconnect for Google Fonts (loaded in CSS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- =============================================
+       BACKGROUND LAYERS
+       ============================================= -->
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-grid"  aria-hidden="true"></div>
+  <div class="noise"    aria-hidden="true"></div>
+
+  <!-- =============================================
+       NAVIGATION
+       ============================================= -->
+  <header>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <!-- Logo -->
+      <a href="#home" class="nav-logo" aria-label="Krishna Mishra — Home">
+        KM<span>.</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" aria-label="Open mobile menu" id="navToggle" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+      <a href="#home"           class="mob-link">Home</a>
+      <a href="#about"          class="mob-link">About</a>
+      <a href="#skills"         class="mob-link">Skills</a>
+      <a href="#projects"       class="mob-link">Projects</a>
+      <a href="#certifications" class="mob-link">Certifications</a>
+      <a href="#contact"        class="mob-link">Contact</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =============================================
+         HERO SECTION
+         ============================================= -->
+    <section class="hero" id="home" aria-label="Introduction">
+
+      <!-- Floating orbs (decorative) -->
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+      <!-- Rising particles -->
+      <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+
+      <!-- Status badge -->
+      <div class="hero-badge">
+        <span>Open to Opportunities</span>
+      </div>
+
+      <!-- Name -->
+      <h1 class="hero-name">
+        <span class="name-plain">Krishna</span><br>
+        <span class="name-gradient">Mishra</span>
+      </h1>
+
+      <!-- Role -->
+      <p class="hero-role">
+        B.Tech CSE (Software Engineering) &nbsp;·&nbsp; <em>MIT Academy of Engineering</em>
+      </p>
+
+      <!-- Tagline -->
+      <p class="hero-tagline">
+        Aspiring Software Engineer &amp; AI enthusiast — building practical,
+        user-centric solutions that solve real-world problems.
+      </p>
+
+      <!-- Location -->
+      <p class="hero-location">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Pune, Maharashtra, India
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          View Projects
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Contact Me
+        </a>
+        <a href="mailto:krishna13mishra@gmail.com?subject=Resume Request" class="btn btn-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-text">Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         ABOUT SECTION
+         ============================================= -->
+    <section class="section" id="about" aria-label="About me">
+      <div class="section-inner">
+        <div class="section-label">01 — About</div>
+
+        <h2 class="section-title">
+          Crafting ideas into<br>
+          <span class="highlight">digital reality</span>
+        </h2>
+        <div class="divider"></div>
+
+        <div class="about-grid">
+
+          <!-- Left: bio -->
+          <div class="about-content">
+            <p>
+              I'm <strong>Krishna Rameshwar Mishra</strong>, a B.Tech Computer Science
+              (Software Engineering) student at <strong>MIT Academy of Engineering, Pune</strong>.
+              With a strong foundation in Python and Artificial Intelligence, I focus on building
+              practical, user-centric solutions that make a real difference.
+            </p>
+            <p>
+              My journey in technology is driven by a deep curiosity about how software can
+              solve real-world problems. I've collaborated on team projects — including the
+              <strong>Smart Campus Platform</strong> — designed to enhance the student experience
+              through technology.
+            </p>
+            <p>
+              I'm passionate about <strong>product development</strong>, continuously improving
+              my logic, exploring the software development lifecycle, and learning modern
+              technologies. I believe in building consistently and learning through doing.
+            </p>
+            <p>
+              When I'm not coding, I'm exploring AI research, refining my problem-solving skills,
+              and looking for opportunities to contribute to impactful, innovative teams.
+            </p>
+
+            <!-- Education card -->
+            <div class="edu-card">
+              <div class="edu-icon">🎓</div>
+              <h3>MIT Academy of Engineering</h3>
+              <p class="degree">B.Tech in Computer Science (Software Engineering)</p>
+              <p class="year">2025 – 2029 &nbsp;·&nbsp; Pune, India</p>
+              <div class="cgpa-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                CGPA: 8.76
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: stat cards -->
+          <div>
+            <div class="stats-grid" style="margin-bottom:1.5rem;">
+              <div class="stat-card">
+                <div class="stat-number">8.76</div>
+                <div class="stat-label">Current CGPA</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">Projects Built</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Certifications</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Curiosity Level</div>
+              </div>
+            </div>
+
+            <!-- Quick facts card -->
+            <div class="edu-card" style="margin-top:0;">
+              <div class="edu-icon">🚀</div>
+              <h3>Career Focus</h3>
+              <p class="degree">Software Engineering &amp; AI Development</p>
+              <p class="year" style="margin-bottom:0.75rem;">Actively Seeking Internships</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                <span class="skill-tag blue">AI / ML</span>
+                <span class="skill-tag purple">Product Dev</span>
+                <span class="skill-tag green">Python</span>
+                <span class="skill-tag orange">Web Dev</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SKILLS SECTION
+         ============================================= -->
+    <section class="section skills-bg" id="skills" aria-label="Skills">
+      <div class="section-inner">
+        <div class="section-label">02 — Skills</div>
+        <h2 class="section-title">
+          Tools &amp; <span class="highlight">Technologies</span>
+        </h2>
+        <div class="divider"></div>
+
+        <div class="skills-grid">
+
+          <!-- Programming -->
+          <div class="skill-category">
+            <span class="skill-cat-icon">⚡</span>
+            <div class="skill-cat-title">Programming</div>
+            <div class="skill-tags">
+              <span class="skill-tag blue">Python</span>
+              <span class="skill-tag green">HTML5</span>
+              <span class="skill-tag orange">CSS3</span>
+            </div>
+          </div>
+
+          <!-- Technologies -->
+          <div class="skill-category">
+            <span class="skill-cat-icon">🤖</span>
+            <div class="skill-cat-title">Technologies</div>
+            <div class="skill-tags">
+              <span class="skill-tag purple">AI Fundamentals</span>
+              <span class="skill-tag blue">Web Development</span>
+              <span class="skill-tag green">GitHub Collaboration</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-category">
+            <span class="skill-cat-icon">🛠️</span>
+            <div class="skill-cat-title">Tools &amp; Environment</div>
+            <div class="skill-tags">
+              <span class="skill-tag blue">VS Code</span>
+              <span class="skill-tag orange">Git</span>
+              <span class="skill-tag purple">GitHub</span>
+              <span class="skill-tag green">Linux</span>
+            </div>
+          </div>
+
+          <!-- Core Strengths (with bars) -->
+          <div class="skill-category">
+            <span class="skill-cat-icon">🧠</span>
+            <div class="skill-cat-title">Core Strengths</div>
+
+            <div class="strength-bar-wrap">
+              <div class="strength-label">
+                <span class="strength-name">Problem Solving</span>
+                <span class="strength-pct">90%</span>
+              </div>
+              <div class="strength-bar">
+                <div class="strength-fill" style="width:90%;"></div>
+              </div>
+            </div>
+
+            <div class="strength-bar-wrap">
+              <div class="strength-label">
+                <span class="strength-name">Team Collaboration</span>
+                <span class="strength-pct">88%</span>
+              </div>
+              <div class="strength-bar">
+                <div class="strength-fill" style="width:88%;"></div>
+              </div>
+            </div>
+
+            <div class="strength-bar-wrap">
+              <div class="strength-label">
+                <span class="strength-name">Adaptability</span>
+                <span class="strength-pct">92%</span>
+              </div>
+              <div class="strength-bar">
+                <div class="strength-fill" style="width:92%;"></div>
+              </div>
+            </div>
+
+            <div class="strength-bar-wrap">
+              <div class="strength-label">
+                <span class="strength-name">Product Thinking</span>
+                <span class="strength-pct">82%</span>
+              </div>
+              <div class="strength-bar">
+                <div class="strength-fill" style="width:82%;"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         PROJECTS SECTION
+         ============================================= -->
+    <section class="section" id="projects" aria-label="Projects">
+      <div class="section-inner">
+        <div class="section-label">03 — Projects</div>
+        <h2 class="section-title">
+          Things I've <span class="highlight">built</span>
+        </h2>
+        <div class="divider"></div>
+
+        <div class="projects-grid">
+
+          <!-- Project 1: Smart Campus -->
+          <article class="project-card">
+            <div class="project-number">01 / Project</div>
+            <h3 class="project-name">Smart Campus Platform</h3>
+            <p class="project-desc">
+              A web-based platform developed to assist students with academic and
+              campus-related services. Built collaboratively to create practical,
+              user-friendly solutions for real-world student challenges at MITAOE.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">GitHub</span>
+              <span class="project-tag">Team Project</span>
+            </div>
+            <div class="project-links">
+              <a href="https://smartcampusmitaoe.lovable.app" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: Linux Utility -->
+          <article class="project-card">
+            <div class="project-number">02 / Project</div>
+            <h3 class="project-name">Linux-Based Utility Project</h3>
+            <p class="project-desc">
+              A practical utility project built in a Linux environment, demonstrating
+              system-level programming skills, command-line proficiency, and
+              problem-solving in an OS-native context.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Linux</span>
+              <span class="project-tag">Shell</span>
+              <span class="project-tag">System Programming</span>
+              <span class="project-tag">Utility</span>
+            </div>
+            <div class="project-links">
+              <a href="https://drive.google.com/file/d/1kmrFCsI9XUCUoe-UUMSrVI2R4aMyagxE/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                View Project
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Python Problem Solving -->
+          <article class="project-card">
+            <div class="project-number">03 / Project</div>
+            <h3 class="project-name">Python Problem Solving Project</h3>
+            <p class="project-desc">
+              A structured collection of algorithmic solutions and Python programs
+              demonstrating problem-solving ability, logic building, and programming
+              efficiency across various domains and problem types.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Algorithms</span>
+              <span class="project-tag">Problem Solving</span>
+              <span class="project-tag">Logic Building</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/me13krishna" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         CERTIFICATIONS SECTION
+         ============================================= -->
+    <section class="section cert-bg" id="certifications" aria-label="Certifications">
+      <div class="section-inner">
+        <div class="section-label">04 — Certifications</div>
+        <h2 class="section-title">
+          Verified <span class="highlight">credentials</span>
+        </h2>
+        <div class="divider"></div>
+
+        <div class="cert-grid">
+
+          <!-- Python Essentials 1 -->
+          <a href="https://drive.google.com/file/d/1zA7c8tV_rTssF4mZjyH5CXC8A7KAQXEx/view?usp=sharing"
+             target="_blank" rel="noopener noreferrer" class="cert-card">
+            <div class="cert-icon-wrap" style="background:rgba(0,212,255,0.06);border-color:rgba(0,212,255,0.15);">
+              🐍
+            </div>
+            <div class="cert-title">Python Essentials 1</div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+            <p class="cert-desc">
+              Foundational Python programming — syntax, data types, functions,
+              conditionals, loops, and problem-solving basics.
+            </p>
+            <div class="cert-arrow">
+              View Certificate
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </a>
+
+          <!-- Python Essentials 2 -->
+          <a href="https://drive.google.com/file/d/1wLO78AnsiFYdneR52kJVVHtXp5OD-MrB/view?usp=sharing"
+             target="_blank" rel="noopener noreferrer" class="cert-card">
+            <div class="cert-icon-wrap" style="background:rgba(168,85,247,0.06);border-color:rgba(168,85,247,0.15);">
+              🐍
+            </div>
+            <div class="cert-title">Python Essentials 2</div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+            <p class="cert-desc">
+              Advanced Python concepts — OOP, modules, exceptions, file I/O,
+              and best practices for production-quality Python code.
+            </p>
+            <div class="cert-arrow">
+              View Certificate
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </a>
+
+          <!-- AI / Anthropic -->
+          <a href="https://drive.google.com/drive/folders/1NwgN57MNpqRToXKjqyQlWnfavFYlOZCx?usp=sharing"
+             target="_blank" rel="noopener noreferrer" class="cert-card">
+            <div class="cert-icon-wrap" style="background:rgba(45,127,255,0.06);border-color:rgba(45,127,255,0.15);">
+              🤖
+            </div>
+            <div class="cert-title">AI Certification</div>
+            <div class="cert-issuer">Anthropic</div>
+            <p class="cert-desc">
+              Fundamentals of Artificial Intelligence — AI ethics, large language models,
+              prompt engineering, and responsible AI development.
+            </p>
+            <div class="cert-arrow">
+              View Certificate
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         LEARNING & DEVELOPMENT SECTION
+         ============================================= -->
+    <section class="section" id="learning" aria-label="Learning and development">
+      <div class="section-inner">
+        <div class="section-label">05 — Growth</div>
+        <h2 class="section-title">
+          Always <span class="highlight">learning</span>
+        </h2>
+        <div class="divider"></div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-title">🔁 Consistent Programming Practice</div>
+              <p class="timeline-desc">
+                Solving algorithmic challenges daily to sharpen problem-solving instincts,
+                improve time complexity awareness, and build programming muscle memory.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--accent-violet);box-shadow:0 0 12px var(--accent-violet);"></div>
+            <div class="timeline-card">
+              <div class="timeline-title">🏗️ Building Projects Consistently</div>
+              <p class="timeline-desc">
+                Creating real-world projects beyond coursework — from web platforms to
+                utility tools — to build a strong portfolio and practical engineering intuition.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--accent-cyan);box-shadow:0 0 12px var(--accent-cyan);"></div>
+            <div class="timeline-card">
+              <div class="timeline-title">⚡ Improving Logic &amp; Efficiency</div>
+              <p class="timeline-desc">
+                Focusing on writing clean, maintainable, and efficient code —
+                studying data structures, algorithms, and design patterns to level up
+                engineering quality.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-title">🔬 Exploring the SDLC</div>
+              <p class="timeline-desc">
+                Learning the full Software Development Lifecycle — from ideation and
+                planning through development, testing, and deployment — to think
+                like a complete software engineer.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--accent-violet);box-shadow:0 0 12px var(--accent-violet);"></div>
+            <div class="timeline-card">
+              <div class="timeline-title">🌐 Learning Modern Technologies</div>
+              <p class="timeline-desc">
+                Staying current with emerging tools, frameworks, and AI advancements —
+                continuously expanding the tech stack to remain relevant and innovative.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         CONTACT SECTION
+         ============================================= -->
+    <section class="section contact-bg" id="contact" aria-label="Contact">
+      <div class="section-inner">
+        <div class="section-label">06 — Contact</div>
+        <h2 class="section-title">
+          Let's <span class="highlight">connect</span>
+        </h2>
+        <div class="divider"></div>
+
+        <div class="contact-grid">
+
+          <!-- Left: info -->
+          <div class="contact-info">
+            <h3>Open to conversations,<br>collaborations &amp; opportunities.</h3>
+            <p>
+              Whether you're looking for a motivated intern, want to collaborate on a
+              project, or just want to connect — I'm always happy to chat. Reach out
+              through any of the channels below.
+            </p>
+
+            <div class="contact-links">
+
+              <a href="mailto:krishna13mishra@gmail.com" class="contact-link">
+                <div class="contact-link-icon">✉️</div>
+                <div class="contact-link-text">
+                  <small>Email</small>
+                  <span>krishna13mishra@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com/in/krishnamishra13" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <div class="contact-link-icon">💼</div>
+                <div class="contact-link-text">
+                  <small>LinkedIn</small>
+                  <span>linkedin.com/in/krishnamishra13</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/me13krishna" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <div class="contact-link-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                </div>
+                <div class="contact-link-text">
+                  <small>GitHub</small>
+                  <span>github.com/me13krishna</span>
+                </div>
+              </a>
+
+              <div class="contact-link" style="cursor:default;">
+                <div class="contact-link-icon">📍</div>
+                <div class="contact-link-text">
+                  <small>Location</small>
+                  <span>Pune, Maharashtra, India</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: form UI (decorative / functional with mailto) -->
+          <div class="contact-form" role="form" aria-label="Contact form">
+            <div class="form-group">
+              <label class="form-label" for="form-name">Your Name</label>
+              <input class="form-input" type="text" id="form-name" name="name" placeholder="John Doe" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-email">Email Address</label>
+              <input class="form-input" type="email" id="form-email" name="email" placeholder="you@company.com" autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-subject">Subject</label>
+              <input class="form-input" type="text" id="form-subject" name="subject" placeholder="Internship opportunity / Collaboration" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-message">Message</label>
+              <textarea class="form-textarea" id="form-message" name="message" placeholder="Hi Krishna, I'd like to discuss…"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" id="sendBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-copy">
+        © 2025 <a href="#home">Krishna Rameshwar Mishra</a> — Built with passion &amp; precision.
+      </p>
+      <div class="footer-social" aria-label="Social links">
+        <a href="mailto:krishna13mishra@gmail.com" aria-label="Email">✉️</a>
+        <a href="https://linkedin.com/in/krishnamishra13" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+        <a href="https://github.com/me13krishna" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       MINIMAL JAVASCRIPT
+       — Mobile nav toggle only; no frameworks
+       ============================================= -->
+  <script>
+    /* Mobile navigation toggle */
+    const toggle   = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobLinks  = document.querySelectorAll('.mob-link');
+
+    function openMenu()  { mobileNav.classList.add('open');    toggle.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+    function closeMenu() { mobileNav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    function toggleMenu(){ mobileNav.classList.contains('open') ? closeMenu() : openMenu(); }
+
+    toggle.addEventListener('click', toggleMenu);
+    mobLinks.forEach(l => l.addEventListener('click', closeMenu));
+
+    /* Contact form → mailto fallback */
+    document.getElementById('sendBtn').addEventListener('click', function() {
+      const name    = document.getElementById('form-name').value.trim();
+      const email   = document.getElementById('form-email').value.trim();
+      const subject = document.getElementById('form-subject').value.trim() || 'Portfolio Contact';
+      const message = document.getElementById('form-message').value.trim();
+      if (!name || !email || !message) { alert('Please fill in at least your name, email and message.'); return; }
+      const body = encodeURIComponent(`Hi Krishna,\n\nName: ${name}\nEmail: ${email}\n\n${message}`);
+      window.location.href = `mailto:krishna13mishra@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    });
+  </script>
+
+</body>
+</html>
