@@ -12,6 +12,8 @@ import {
 import { personalInfo, stats } from '../data/portfolioData';
 import { playCyberClick } from '../utils/audio';
 
+import krishnaImg from '../assets/krishna.jpg';
+
 export default function About({ onOpenResume }) {
   return (
     <section id="about" className="py-20 relative">
@@ -39,10 +41,19 @@ export default function About({ onOpenResume }) {
           <div className="lg:col-span-7 space-y-6">
             
             <div className="glass-panel rounded-2xl p-7 border border-white/10 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base shadow-xl">
-              <h3 className="text-xl font-bold text-white flex items-center gap-2 font-display">
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" />
-                Who I Am
-              </h3>
+              <div className="flex items-center gap-3.5 mb-2">
+                <img 
+                  src={krishnaImg} 
+                  alt="Krishna Mishra" 
+                  className="w-12 h-12 rounded-xl object-cover border border-cyan-400/40 shadow-lg shadow-cyan-950/50" 
+                />
+                <div>
+                  <h3 className="text-xl font-bold text-white font-display">
+                    Who I Am
+                  </h3>
+                  <span className="text-xs font-mono text-cyan-400">Software Engineering Student &bull; MITAOE</span>
+                </div>
+              </div>
               
               <p>
                 I am <strong className="text-white font-semibold">Krishna Rameshwar Mishra</strong>, a B.Tech Computer Science 
