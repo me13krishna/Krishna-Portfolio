@@ -1,0 +1,278 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Terminal as TerminalIcon, X, Maximize2, Minimize2, Sparkles, Send } from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { personalInfo, accounts, projects } from '../data/portfolioData';
+import { playCyberClick, playCyberBeep, playSuccessFanfare } from '../utils/audio';
+
+export default function TerminalModal({ isOpen, onClose, onOpenResume, onToggleMatrix }) {
+  const [input, setInput] = useState('');
+  const [history, setHistory] = useState([
+    { type: 'system', text: 'KM-OS v2.4 (x86_64-pc-none-elf) - Cyber Terminal' },
+    { type: 'system', text: 'Type "help" for a list of available commands.' },
+  ]);
+  const [commandHistory, setCommandHistory] = useState([]);
+  const [historyIdx, setHistoryIdx] = useState(-1);
+  const bottomRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [history]);
+
+  if (!isOpen) return null;
+
+  const handleCommand = (e) => {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (commandHistory.length > 0 && historyIdx < commandHistory.length - 1) {
+        const nextIdx = historyIdx + 1;
+        setHistoryIdx(nextIdx);
+        setInput(commandHistory[commandHistory.length - 1 - nextIdx]);
+      }
+      return;
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIdx > 0) {
+        const nextIdx = historyIdx - 1;
+        setHistoryIdx(nextIdx);
+        setInput(commandHistory[commandHistory.length - 1 - nextIdx]);
+      } else if (historyIdx === 0) {
+        setHistoryIdx(-1);
+        setInput('');
+      }
+      return;
+    }
+
+    if (e.key !== 'Enter') return;
+    
+    playCyberBeep();
+    const rawCmd = input.trim();
+    const cmd = rawCmd.toLowerCase();
+
+    if (!cmd) return;
+
+    setCommandHistory((prev) => [...prev, rawCmd]);
+    setHistoryIdx(-1);
+
+    const newHistory = [...history, { type: 'input', text: `$ ${rawCmd}` }];
+
+    switch (cmd) {
+      case 'help':
+        newHistory.push({
+          type: 'output',
+          text: `AVAILABLE COMMANDS:
+  help       - Show this command reference
+  about      - Display bio, education & college info
+  skills     - View programming languages & tech stack
+  projects   - List completed & featured projects
+  accounts   - View developer profiles & socials
+  resume     - View / download resume
+  matrix     - Toggle green matrix digital rain mode
+  sudo hire  - Fast-track hire approval (Try it!)
+  clear      - Clear the console screen
+  exit       - Close this terminal session`
+        });
+        break;
+
+      case 'about':
+        newHistory.push({
+          type: 'output',
+          text: `NAME: ${personalInfo.name}
+ROLE: ${personalInfo.role}
+COLLEGE: ${personalInfo.college}
+DEGREE: ${personalInfo.degree} (Batch ${personalInfo.batch})
+CGPA: ${personalInfo.cgpa} / 10.0
+LOCATION: ${personalInfo.location}
+STATUS: ${personalInfo.status}`
+        });
+        break;
+
+      case 'skills':
+        newHistory.push({
+          type: 'output',
+          text: `CORE STACK:
+  • Python (Advanced, Cisco Certified)
+  • Artificial Intelligence & Prompt Engineering (Anthropic Certified)
+  • Linux System Scripting & POSIX Automation
+  • Web Development: HTML5, CSS3, Modern JavaScript & React
+  • Data Structures & Algorithmic Problem Solving (LeetCode)`
+        });
+        break;
+
+      case 'projects':
+        newHistory.push({
+          type: 'output',
+          text: projects.map(p => `• [${p.category}] ${p.title} -> ${p.liveUrl}`).join('\n')
+        });
+        break;
+
+      case 'accounts':
+        newHistory.push({
+          type: 'output',
+          text: `DEVELOPER & SOCIAL PROFILES:
+  • GitHub: https://github.com/me13krishna
+  • LeetCode: https://leetcode.com/u/me13krishna/
+  • LinkedIn: https://linkedin.com/in/krishnamishra13
+  • Instagram (Personal): @krishnamishra.13
+  • Instagram (Content Creator): @krishna.builds (Upcoming Era)
+  • Certifications Drive: ${personalInfo.certificatesDriveUrl}`
+        });
+        break;
+
+      case 'resume':
+        newHistory.push({ type: 'output', text: 'Opening resume drawer...' });
+        onOpenResume();
+        break;
+
+      case 'matrix':
+        newHistory.push({ type: 'output', text: 'Toggling digital matrix rain effect...' });
+        if (onToggleMatrix) onToggleMatrix();
+        break;
+
+      case 'sudo hire':
+      case 'hire':
+        playSuccessFanfare();
+        try {
+          confetti({
+            particleCount: 100,
+            spread: 90,
+            origin: { y: 0.5 },
+            colors: ['#00f0ff', '#10b981', '#f59e0b']
+          });
+        } catch (e) {}
+        newHistory.push({
+          type: 'output',
+          text: `[ACCESS GRANTED] 🎉
+Krishna Rameshwar Mishra is ready to create value for your team!
+Contact: ${personalInfo.email}`
+        });
+        break;
+
+      case 'clear':
+        setHistory([]);
+        setInput('');
+        return;
+
+      case 'exit':
+      case 'quit':
+        onClose();
+        return;
+
+      default:
+        newHistory.push({
+          type: 'error',
+          text: `Command not recognized: "${rawCmd}". Type "help" to see valid commands.`
+        });
+    }
+
+    setHistory(newHistory);
+    setInput('');
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-void/85 backdrop-blur-md animate-in fade-in duration-200">
+      
+      {/* Terminal Window Box */}
+      <div 
+        className="w-full max-w-3xl h-[520px] rounded-2xl glass-panel-glow bg-deep/95 border border-cyan-500/40 shadow-2xl flex flex-col overflow-hidden relative"
+        onClick={() => inputRef.current?.focus()}
+      >
+        {/* Scanline Effect */}
+        <div className="scanline" />
+
+        {/* Top Window Bar */}
+        <div className="flex items-center justify-between px-4 py-3 bg-surface/80 border-b border-white/10 select-none">
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={() => { playCyberClick(); onClose(); }}
+              className="w-3.5 h-3.5 rounded-full bg-rose-500 hover:brightness-125 transition-all" 
+              title="Close"
+            />
+            <div className="w-3.5 h-3.5 rounded-full bg-amber-500" />
+            <div className="w-3.5 h-3.5 rounded-full bg-emerald-500" />
+            <div className="flex items-center gap-1.5 ml-3 text-xs font-mono text-slate-300 font-semibold">
+              <TerminalIcon className="w-3.5 h-3.5 text-cyan-400" />
+              <span>krishna@mitaoe-shell:~ (bash)</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30">
+              Interactive
+            </span>
+            <button
+              onClick={() => { playCyberClick(); onClose(); }}
+              className="text-slate-400 hover:text-white p-1 rounded hover:bg-white/10"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Terminal Body */}
+        <div className="flex-1 p-4 font-mono text-xs overflow-y-auto space-y-2 select-text">
+          {history.map((line, idx) => (
+            <div key={idx} className="leading-relaxed whitespace-pre-wrap">
+              {line.type === 'system' && (
+                <span className="text-cyan-400/90">{line.text}</span>
+              )}
+              {line.type === 'input' && (
+                <span className="text-amber-300 font-bold">{line.text}</span>
+              )}
+              {line.type === 'output' && (
+                <span className="text-slate-200">{line.text}</span>
+              )}
+              {line.type === 'error' && (
+                <span className="text-rose-400">{line.text}</span>
+              )}
+            </div>
+          ))}
+
+          {/* Active Input Line */}
+          <div className="flex items-center gap-2 text-cyan-400 pt-1">
+            <span className="text-purple-400 font-bold">$</span>
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleCommand}
+              className="flex-1 bg-transparent border-none outline-none text-slate-100 font-mono text-xs focus:ring-0 p-0"
+              placeholder="Type command ('help', 'sudo hire', 'matrix', 'skills')..."
+            />
+          </div>
+
+          <div ref={bottomRef} />
+        </div>
+
+        {/* Quick Command Suggestions Footer */}
+        <div className="p-2.5 bg-surface/60 border-t border-white/5 flex flex-wrap items-center gap-1.5 text-[11px] font-mono text-slate-400 select-none">
+          <span className="text-slate-500">Quick:</span>
+          {['help', 'about', 'skills', 'projects', 'accounts', 'sudo hire', 'matrix', 'clear'].map((cmd) => (
+            <button
+              key={cmd}
+              onClick={(e) => {
+                e.stopPropagation();
+                playCyberClick();
+                setInput(cmd);
+                inputRef.current?.focus();
+              }}
+              className="px-2 py-0.5 rounded bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/5 transition-colors"
+            >
+              {cmd}
+            </button>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
+}
