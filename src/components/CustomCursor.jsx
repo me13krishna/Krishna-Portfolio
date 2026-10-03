@@ -44,10 +44,10 @@ export default function CustomCursor() {
       }}
     >
       <div
-        className={`-translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-mono text-[9px] font-semibold uppercase tracking-widest transition-all duration-300 ${
+        className={`-translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-mono text-[9px] font-bold uppercase tracking-widest transition-all duration-300 ${
           hovered
-            ? 'w-11 h-11 bg-[#E2A866] text-[#0E0E10] shadow-lg shadow-black/40 scale-100'
-            : 'w-3 h-3 bg-[#F7F6F2]/80 border border-white/20'
+            ? 'w-11 h-11 bg-sun text-forest-dark shadow-md scale-100'
+            : 'w-3 h-3 bg-forest/80 dark:bg-sun/80 border border-white/20'
         }`}
       >
         {cursorText}

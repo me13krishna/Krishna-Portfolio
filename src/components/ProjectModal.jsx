@@ -17,11 +17,11 @@ export default function ProjectModal({ project, onClose }) {
   const isReport = project.isReport || !!project.reportDetails;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0E0E10]/85 backdrop-blur-xl animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/60 dark:bg-dark-bg/85 backdrop-blur-xl animate-in fade-in duration-200">
       
       {/* Modal Dialog */}
       <div 
-        className="w-full max-w-3xl rounded-[32px] bg-[#151518] border border-white/[0.08] p-7 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto text-left"
+        className="w-full max-w-3xl rounded-[32px] bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 p-7 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -30,7 +30,7 @@ export default function ProjectModal({ project, onClose }) {
             playCyberClick();
             onClose();
           }}
-          className="absolute top-6 right-6 p-2 rounded-full text-[#9B988E] hover:text-[#F7F6F2] bg-white/[0.04] hover:bg-white/[0.08] transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-full text-charcoal-muted dark:text-dark-textMuted hover:text-charcoal dark:hover:text-warm-white bg-forest/5 dark:bg-white/5 hover:bg-forest/10 dark:hover:bg-white/10 transition-colors"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -39,38 +39,38 @@ export default function ProjectModal({ project, onClose }) {
         {/* Modal Header */}
         <div className="space-y-3 mb-8">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#E2A866]/10 text-[#E2A866] border border-[#E2A866]/20">
+            <span className="text-xs font-mono px-3 py-1 rounded-full bg-forest/5 dark:bg-sun/10 text-forest dark:text-sun border border-forest/10 dark:border-sun/20 font-medium">
               {project.category}
             </span>
-            <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#728A7C]/15 text-[#8FA699] border border-[#728A7C]/30">
+            <span className="text-xs font-mono px-3 py-1 rounded-full bg-leaf/10 dark:bg-leaf/20 text-olive dark:text-leaf border border-leaf/20 dark:border-leaf/30 font-medium">
               {project.status}
             </span>
           </div>
 
-          <h3 className="text-2xl sm:text-4xl font-bold text-[#F7F6F2] tracking-tight">
+          <h3 className="text-2xl sm:text-4xl font-bold text-charcoal dark:text-warm-white tracking-tight">
             {project.title}
           </h3>
 
-          <p className="text-sm text-[#9B988E] font-editorial italic text-base">
+          <p className="text-sm text-charcoal-muted dark:text-dark-textMuted font-editorial italic text-base">
             {project.tagline}
           </p>
         </div>
 
         {/* Description */}
-        <div className="space-y-6 text-[#E3E1D8] text-sm leading-relaxed mb-8 font-normal">
+        <div className="space-y-6 text-charcoal-muted dark:text-dark-textMuted text-sm leading-relaxed mb-8 font-normal">
           <p>{project.description}</p>
 
           {/* Key Highlights */}
           <div className="space-y-3 pt-2">
-            <h4 className="text-xs uppercase font-mono tracking-wider text-[#9B988E] font-medium flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#E2A866]" />
+            <h4 className="text-xs uppercase font-mono tracking-wider text-forest dark:text-sun font-semibold flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-leaf dark:text-sun" />
               <span>Engineering Architecture &amp; Highlights:</span>
             </h4>
             <div className="space-y-2">
               {project.highlights.map((highlight, idx) => (
-                <div key={idx} className="flex items-start gap-3 text-xs text-[#9B988E]">
-                  <CheckCircle2 className="w-4 h-4 text-[#728A7C] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#E3E1D8]">{highlight}</span>
+                <div key={idx} className="flex items-start gap-3 text-xs text-charcoal dark:text-warm-white font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-leaf dark:text-sun flex-shrink-0 mt-0.5" />
+                  <span>{highlight}</span>
                 </div>
               ))}
             </div>
@@ -78,27 +78,29 @@ export default function ProjectModal({ project, onClose }) {
 
           {/* Special Section: Data Analytics & DV Report Details */}
           {isReport && project.reportDetails && (
-            <div className="space-y-5 pt-6 border-t border-white/[0.06]">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[#F7F6F2]">
-                <BarChart2 className="w-4 h-4 text-[#E2A866]" />
+            <div className="space-y-5 pt-6 border-t border-forest/10 dark:border-white/10">
+              <div className="flex items-center gap-2 text-sm font-semibold text-charcoal dark:text-warm-white">
+                <BarChart2 className="w-4 h-4 text-forest dark:text-sun" />
                 <span>32-Page Data Visualisation Research Report</span>
               </div>
 
               {/* Dataset info */}
-              <div className="p-4 rounded-2xl bg-[#1C1C21]/60 border border-white/[0.06] space-y-1">
-                <span className="text-[11px] font-mono text-[#E2A866] uppercase tracking-wider block">Dataset Source &amp; Scope:</span>
-                <p className="text-xs text-[#E3E1D8]">{project.reportDetails.dataset}</p>
+              <div className="p-4 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 space-y-1 shadow-sm">
+                <span className="text-[11px] font-mono text-forest dark:text-sun uppercase tracking-wider block font-semibold">
+                  Dataset Source &amp; Scope:
+                </span>
+                <p className="text-xs text-charcoal dark:text-warm-white">{project.reportDetails.dataset}</p>
               </div>
 
               {/* Orange Operations */}
               <div className="space-y-2">
-                <span className="text-xs font-mono uppercase text-[#9B988E] font-semibold block flex items-center gap-2">
-                  <Cpu className="w-3.5 h-3.5 text-[#728A7C]" />
+                <span className="text-xs font-mono uppercase text-charcoal-muted dark:text-dark-textMuted font-semibold block flex items-center gap-2">
+                  <Cpu className="w-3.5 h-3.5 text-olive dark:text-leaf" />
                   <span>Orange Data Mining Pipeline:</span>
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   {project.reportDetails.orangeOperations.map((op, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-[#1C1C21]/40 border border-white/[0.04] text-[#E3E1D8]">
+                    <div key={i} className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 text-charcoal dark:text-warm-white shadow-sm">
                       &bull; {op}
                     </div>
                   ))}
@@ -107,14 +109,14 @@ export default function ProjectModal({ project, onClose }) {
 
               {/* Tableau Charts Breakdown */}
               <div className="space-y-2">
-                <span className="text-xs font-mono uppercase text-[#9B988E] font-semibold block flex items-center gap-2">
-                  <Database className="w-3.5 h-3.5 text-[#E2A866]" />
+                <span className="text-xs font-mono uppercase text-charcoal-muted dark:text-dark-textMuted font-semibold block flex items-center gap-2">
+                  <Database className="w-3.5 h-3.5 text-gold dark:text-sun" />
                   <span>Tableau Visualisation (5 Multi-Level Grains):</span>
                 </span>
-                <div className="space-y-2 text-xs text-[#E3E1D8]">
+                <div className="space-y-2 text-xs text-charcoal dark:text-warm-white">
                   {project.reportDetails.tableauCharts.map((ch, i) => (
-                    <div key={i} className="p-2.5 rounded-xl bg-[#1C1C21]/40 border border-white/[0.04] flex items-center gap-3">
-                      <span className="text-[#E2A866] font-mono text-[11px]">0{i + 1}</span>
+                    <div key={i} className="p-2.5 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-3 shadow-sm">
+                      <span className="text-forest dark:text-sun font-mono text-[11px] font-bold">0{i + 1}</span>
                       <span>{ch}</span>
                     </div>
                   ))}
@@ -122,14 +124,14 @@ export default function ProjectModal({ project, onClose }) {
               </div>
 
               {/* Key Findings */}
-              <div className="p-5 rounded-2xl bg-[#1C1C21]/70 border border-white/[0.06] space-y-2">
-                <span className="text-xs font-mono text-[#E2A866] font-medium uppercase tracking-wider block">
+              <div className="p-5 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 space-y-2 shadow-sm">
+                <span className="text-xs font-mono text-forest dark:text-sun font-semibold uppercase tracking-wider block">
                   Empirical Findings &amp; Conclusions:
                 </span>
-                <ul className="space-y-1.5 text-xs text-[#E3E1D8]">
+                <ul className="space-y-1.5 text-xs text-charcoal dark:text-warm-white">
                   {project.reportDetails.kpis.map((kpi, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <span className="text-[#E2A866]">&bull;</span>
+                      <span className="text-leaf dark:text-sun">&bull;</span>
                       <span>{kpi}</span>
                     </li>
                   ))}
@@ -141,14 +143,14 @@ export default function ProjectModal({ project, onClose }) {
 
         {/* Tech Stack Tags */}
         <div className="mb-8">
-          <h4 className="text-xs uppercase font-mono tracking-wider text-[#9B988E] font-medium mb-3">
+          <h4 className="text-xs uppercase font-mono tracking-wider text-charcoal-muted dark:text-dark-textMuted font-medium mb-3">
             Technologies &amp; Libraries:
           </h4>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs font-sans px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#E3E1D8]"
+                className="text-xs font-sans px-3.5 py-1 rounded-full bg-forest/5 dark:bg-white/5 border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white"
               >
                 {tag}
               </span>
@@ -157,17 +159,17 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Action Footer */}
-        <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-white/[0.06]">
+        <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-forest/10 dark:border-white/10">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
-              className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#F7F6F2] hover:bg-white text-[#0E0E10] font-semibold text-xs transition-all shadow-md"
+              className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-xs transition-all shadow-md"
             >
               <span>{isReport ? "Open Research Report & Archive" : "Launch Production Platform"}</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#0E0E10]" />
+              <ExternalLink className="w-3.5 h-3.5" />
             </a>
           )}
 
@@ -177,7 +179,7 @@ export default function ProjectModal({ project, onClose }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
-              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#1C1C21] hover:bg-[#23232A] text-[#F7F6F2] font-semibold text-xs border border-white/[0.08] transition-all"
+              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-cream-card dark:bg-dark-cardElevated hover:bg-cream-subtle text-charcoal dark:text-warm-white font-semibold text-xs border border-forest/15 dark:border-white/10 transition-all"
             >
               <GithubIcon className="w-4 h-4" />
               <span>GitHub Repository</span>

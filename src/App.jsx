@@ -19,9 +19,36 @@ import { Search, Sparkles } from 'lucide-react';
 import { playCyberClick } from './utils/audio';
 
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('km_portfolio_theme');
+      if (stored === 'dark' || stored === 'light') return stored;
+      // Light mode is the primary experience; only default to dark if the OS explicitly prefers dark
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    }
+    return 'light'; // Light mode is primary
+  });
+
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
+
+  // Sync theme changes with DOM and localStorage
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('km_portfolio_theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('km_portfolio_theme', 'light');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   // Initialize Lenis buttery-smooth scrolling
   useEffect(() => {
@@ -60,20 +87,22 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0E0E10] text-[#F7F6F2] relative selection:bg-[#E2A866]/25 selection:text-white bg-grain overflow-x-hidden">
+    <div className="min-h-screen bg-cream dark:bg-dark-bg text-charcoal dark:text-warm-white relative selection:bg-leaf/25 dark:selection:bg-sun/25 bg-grain transition-colors duration-300 overflow-x-hidden">
       
-      {/* Subtle Architectural Grid Lines - Restrained & Warm */}
-      <div className="fixed inset-0 bg-architect-grid pointer-events-none opacity-30 z-0" />
+      {/* Subtle Natural Grid Pattern */}
+      <div className="fixed inset-0 bg-natural-grid pointer-events-none opacity-40 z-0" />
       
-      {/* Ambient Atmospheric Lighting (Sage + Amber) */}
-      <div className="fixed top-0 right-1/4 w-[700px] h-[700px] bg-[#728A7C]/[0.04] rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="fixed bottom-1/4 left-10 w-[600px] h-[600px] bg-[#E2A866]/[0.035] rounded-full blur-[180px] pointer-events-none z-0" />
+      {/* Atmospheric Sunlight & Canopy Glows */}
+      <div className="fixed top-0 right-1/4 w-[700px] h-[700px] bg-sunlight-radial pointer-events-none z-0" />
+      <div className="fixed bottom-1/4 left-10 w-[600px] h-[600px] bg-canopy-glow pointer-events-none z-0" />
 
       {/* Smooth Editorial Custom Cursor */}
       <CustomCursor />
 
-      {/* Main Top Navigation */}
+      {/* Sticky Translucent Navigation */}
       <Navbar 
+        theme={theme}
+        onToggleTheme={toggleTheme}
         onOpenTerminal={() => setTerminalOpen(true)}
         onOpenPalette={() => setPaletteOpen(true)}
         onOpenResume={() => setResumeOpen(true)}
@@ -82,19 +111,19 @@ export default function App() {
       {/* Primary Narrative & Content Flow */}
       <main className="relative z-10">
         
-        {/* 1. Hero Statement & Art-Directed Portrait of Krishna */}
+        {/* 1. Hero Statement & Editorial Portrait of Krishna */}
         <Hero 
           onOpenTerminal={() => setTerminalOpen(true)}
           onOpenResume={() => setResumeOpen(true)}
         />
         
-        {/* 2. Proof of Craft / Core Pillars (Build • Solve • Compete • Create) */}
+        {/* 2. Core Pillars of Execution / Proof of Craft */}
         <ProofStrip />
 
-        {/* 3. Selected Works: Flagship Magazine Cases + 12-Project Directory */}
+        {/* 3. Featured Case Studies & Complete Directory (12 Projects) */}
         <Projects />
 
-        {/* 4. Problem Solving Arena: Think -> Solve -> Ship (LeetCode, CodeChef, HackerRank) */}
+        {/* 4. Problem Solving / Coding Profiles Arena (LeetCode, CodeChef, HackerRank) */}
         <ProblemSolving />
 
         {/* 5. Authentic Story & Academic Journey */}
@@ -105,10 +134,10 @@ export default function App() {
         {/* 6. Experience & Leadership Timeline */}
         <Experience />
 
-        {/* 7. Categorized Technologies & Systems */}
+        {/* 7. Categorized Technologies & System Craft */}
         <Skills />
 
-        {/* 8. Verified Credentials & Google Drive Repository */}
+        {/* 8. Credentials & Google Drive Repository */}
         <Certifications />
 
         {/* 9. Direct Outreach & Message Channels */}
@@ -116,24 +145,22 @@ export default function App() {
 
       </main>
 
-      {/* 10. Warm Poetic Footer */}
-      <Footer 
-        onOpenTerminal={() => setTerminalOpen(true)}
-      />
+      {/* 10. Minimal Premium Footer */}
+      <Footer />
 
       {/* Quiet Floating Quick Navigation Pill (Bottom-Left) */}
-      <div className="fixed bottom-6 left-6 z-40 hidden md:flex items-center gap-2 bg-[#151518]/90 p-1.5 rounded-full border border-white/[0.08] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#E2A866]/30">
+      <div className="fixed bottom-6 left-6 z-40 hidden md:flex items-center gap-2 bg-cream-card/90 dark:bg-dark-card/90 p-1.5 rounded-full border border-forest/10 dark:border-white/10 shadow-soft-card backdrop-blur-xl transition-all duration-300 hover:border-leaf/40 dark:hover:border-sun/40">
         <button
           onClick={() => {
             playCyberClick();
             setPaletteOpen(true);
           }}
-          className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1C1C21] hover:bg-[#23232A] text-[#9B988E] hover:text-[#F7F6F2] text-xs font-mono transition-all"
+          className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream dark:bg-dark-cardElevated hover:bg-cream-subtle dark:hover:bg-dark-card text-charcoal-muted dark:text-dark-textMuted hover:text-charcoal dark:hover:text-warm-white text-xs font-mono transition-all"
           title="Quick Navigation (⌘K)"
         >
-          <Search className="w-3.5 h-3.5 text-[#E2A866]" />
+          <Search className="w-3.5 h-3.5 text-forest dark:text-sun" />
           <span>Quick Find</span>
-          <kbd className="text-[10px] bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-[#E3E1D8]">⌘K</kbd>
+          <kbd className="text-[10px] bg-forest/5 dark:bg-white/10 border border-forest/10 dark:border-white/10 px-1.5 py-0.5 rounded text-charcoal dark:text-warm-white">⌘K</kbd>
         </button>
 
         <button
@@ -141,15 +168,15 @@ export default function App() {
             playCyberClick();
             setResumeOpen(true);
           }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/5 text-[#9B988E] hover:text-[#F7F6F2] text-xs font-sans transition-all"
-          title="Review Official Resume"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-forest/5 dark:hover:bg-white/5 text-charcoal-muted dark:text-dark-textMuted hover:text-charcoal dark:hover:text-warm-white text-xs font-sans transition-all"
+          title="Review Curriculum Vitae"
         >
-          <Sparkles className="w-3 h-3 text-[#728A7C]" />
+          <Sparkles className="w-3 h-3 text-leaf dark:text-sun" />
           <span>Resume</span>
         </button>
       </div>
 
-      {/* Modals */}
+      {/* Interactive Modals */}
       <TerminalModal 
         isOpen={terminalOpen} 
         onClose={() => setTerminalOpen(false)}

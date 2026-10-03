@@ -7,7 +7,7 @@ import { playCyberClick, playCyberBeep, playSuccessFanfare } from '../utils/audi
 export default function TerminalModal({ isOpen, onClose, onOpenResume }) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([
-    { type: 'system', text: 'Krishna Mishra — Developer Console [v2.4]' },
+    { type: 'system', text: 'Krishna Mishra — Developer Console [v2.5 Nature × Tech Edition]' },
     { type: 'system', text: 'Type "help" for a list of available exploration commands.' },
   ]);
   const [commandHistory, setCommandHistory] = useState([]);
@@ -91,7 +91,7 @@ INSTITUTION: ${personalInfo.college}
 DEGREE: ${personalInfo.degree} (2025–2029)
 CGPA: ${personalInfo.cgpa} / 10.0
 LOCATION: ${personalInfo.location}
-PHILOSOPHY: Crafting software with quiet depth and human intuition.`
+PHILOSOPHY: Building ideas that turn into real, practical products.`
         });
         break;
 
@@ -149,7 +149,7 @@ ${experiences.map(e => `• [${e.period}] ${e.role} @ ${e.company} (${e.type})\n
             particleCount: 80,
             spread: 80,
             origin: { y: 0.5 },
-            colors: ['#E2A866', '#728A7C', '#F7F6F2']
+            colors: ['#E8C547', '#7FA63A', '#173D2B']
           });
         } catch (e) {}
         newHistory.push({
@@ -182,36 +182,36 @@ Contact directly: ${personalInfo.email}`
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0E0E10]/85 backdrop-blur-xl animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/60 dark:bg-dark-bg/85 backdrop-blur-xl animate-in fade-in duration-200">
       
       {/* Terminal Window Box */}
       <div 
-        className="w-full max-w-3xl h-[520px] rounded-[28px] bg-[#151518] border border-white/[0.08] shadow-2xl flex flex-col overflow-hidden relative text-left"
+        className="w-full max-w-3xl h-[520px] rounded-[28px] bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 shadow-2xl flex flex-col overflow-hidden relative text-left"
         onClick={() => inputRef.current?.focus()}
       >
         {/* Top Window Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#0E0E10]/80 border-b border-white/[0.06] select-none">
+        <div className="flex items-center justify-between px-6 py-4 bg-forest/[0.04] dark:bg-dark-bg/80 border-b border-forest/10 dark:border-white/10 select-none">
           <div className="flex items-center gap-2">
             <button 
               onClick={() => { playCyberClick(); onClose(); }}
-              className="w-3 h-3 rounded-full bg-red-500/70 hover:opacity-100 transition-opacity" 
+              className="w-3 h-3 rounded-full bg-rose-500/80 hover:opacity-100 transition-opacity" 
               title="Close"
             />
-            <div className="w-3 h-3 rounded-full bg-[#E2A866]/70" />
-            <div className="w-3 h-3 rounded-full bg-[#728A7C]/70" />
-            <div className="flex items-center gap-2 ml-4 text-xs font-mono text-[#9B988E]">
-              <TerminalIcon className="w-3.5 h-3.5 text-[#E2A866]" />
+            <div className="w-3 h-3 rounded-full bg-sun/80" />
+            <div className="w-3 h-3 rounded-full bg-leaf/80" />
+            <div className="flex items-center gap-2 ml-4 text-xs font-mono text-charcoal-muted dark:text-dark-textMuted">
+              <TerminalIcon className="w-3.5 h-3.5 text-forest dark:text-sun" />
               <span>krishna@workstation:~</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/[0.04] text-[#9B988E] border border-white/[0.06]">
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-forest/5 dark:bg-white/5 text-forest dark:text-sun border border-forest/10 dark:border-white/10 font-medium">
               Console
             </span>
             <button
               onClick={() => { playCyberClick(); onClose(); }}
-              className="text-[#9B988E] hover:text-[#F7F6F2] p-1 rounded-full hover:bg-white/[0.04]"
+              className="text-charcoal-muted dark:text-dark-textMuted hover:text-charcoal dark:hover:text-warm-white p-1 rounded-full hover:bg-forest/5 dark:hover:bg-white/5"
             >
               <X className="w-4 h-4" />
             </button>
@@ -223,30 +223,30 @@ Contact directly: ${personalInfo.email}`
           {history.map((line, idx) => (
             <div key={idx} className="leading-relaxed whitespace-pre-wrap">
               {line.type === 'system' && (
-                <span className="text-[#9B988E]">{line.text}</span>
+                <span className="text-charcoal-muted dark:text-dark-textMuted">{line.text}</span>
               )}
               {line.type === 'input' && (
-                <span className="text-[#E2A866] font-medium">{line.text}</span>
+                <span className="text-forest dark:text-sun font-semibold">{line.text}</span>
               )}
               {line.type === 'output' && (
-                <span className="text-[#E3E1D8]">{line.text}</span>
+                <span className="text-charcoal dark:text-warm-white">{line.text}</span>
               )}
               {line.type === 'error' && (
-                <span className="text-[#D9A38C]">{line.text}</span>
+                <span className="text-rose-600 dark:text-rose-400">{line.text}</span>
               )}
             </div>
           ))}
 
           {/* Active Input Line */}
-          <div className="flex items-center gap-2 text-[#E2A866] pt-1">
-            <span className="text-[#728A7C] font-mono font-medium">krishna@workstation:~$</span>
+          <div className="flex items-center gap-2 text-forest dark:text-sun pt-1">
+            <span className="text-leaf font-mono font-bold">krishna@workstation:~$</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleCommand}
-              className="flex-1 bg-transparent border-none outline-none text-[#F7F6F2] font-mono text-xs focus:ring-0 p-0"
+              className="flex-1 bg-transparent border-none outline-none text-charcoal dark:text-warm-white font-mono text-xs focus:ring-0 p-0"
               placeholder="Type command ('help', 'projects', 'about')..."
             />
           </div>
@@ -255,7 +255,7 @@ Contact directly: ${personalInfo.email}`
         </div>
 
         {/* Quick Command Suggestions Footer */}
-        <div className="p-3.5 bg-[#0E0E10]/60 border-t border-white/[0.06] flex flex-wrap items-center gap-2 text-[11px] font-mono text-[#9B988E] select-none">
+        <div className="p-3.5 bg-forest/[0.02] dark:bg-dark-bg/60 border-t border-forest/10 dark:border-white/10 flex flex-wrap items-center gap-2 text-[11px] font-mono text-charcoal-muted dark:text-dark-textMuted select-none">
           <span>Suggestions:</span>
           {['help', 'about', 'skills', 'experience', 'projects', 'contact', 'resume', 'hire'].map((cmd) => (
             <button
@@ -266,7 +266,7 @@ Contact directly: ${personalInfo.email}`
                 setInput(cmd);
                 inputRef.current?.focus();
               }}
-              className="px-2.5 py-1 rounded-lg bg-white/[0.04] hover:bg-[#F7F6F2] hover:text-[#0E0E10] text-[#E3E1D8] border border-white/[0.06] transition-colors"
+              className="px-2.5 py-1 rounded-lg bg-forest/5 dark:bg-white/5 hover:bg-forest dark:hover:bg-sun hover:text-warm-white dark:hover:text-forest-dark text-charcoal dark:text-warm-white border border-forest/10 dark:border-white/10 transition-colors"
             >
               {cmd}
             </button>

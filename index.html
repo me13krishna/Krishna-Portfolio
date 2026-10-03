@@ -9,20 +9,34 @@
     
     <!-- Open Graph / Meta -->
     <meta property="og:title" content="Krishna Mishra — Software Engineer & AI Builder" />
-    <meta property="og:description" content="Crafting software with quiet depth and human intuition. Selected works, AI systems, and engineering philosophy." />
+    <meta property="og:description" content="Building ideas that turn into real products. Software Engineer & AI Builder at MITAOE Pune." />
     <meta property="og:type" content="website" />
     
     <title>Krishna Mishra — Software Engineer & AI Builder</title>
     
-    <!-- Favicon SVG -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23121214'/><text x='50%' y='63%' text-anchor='middle' font-family='serif' font-style='italic' font-weight='600' font-size='44' fill='%23E2A866'>K</text></svg>" />
+    <!-- Favicon SVG - Nature & Technology Sun/Leaf icon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23173D2B'/><circle cx='50' cy='50' r='24' fill='%23E8C547'/><text x='50%' y='63%' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='38' fill='%23102A1F'>K</text></svg>" />
 
     <!-- Google Fonts: Plus Jakarta Sans (Modern Geometric Sans) + Newsreader (Editorial Serif) + DM Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Theme Initialization Script (Light Mode Primary, respects user choice / system preference) -->
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('km_portfolio_theme');
+          if (stored === 'dark' || (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-[#0E0E10] text-[#F7F6F2] antialiased selection:bg-[#E2A866]/20 selection:text-[#FFFFFF] overflow-x-hidden">
+  <body class="bg-cream dark:bg-dark-bg text-charcoal dark:text-warm-white antialiased transition-colors duration-300 selection:bg-leaf/25 dark:selection:bg-sun/25 overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

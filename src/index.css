@@ -4,39 +4,31 @@
 
 @layer base {
   :root {
-    --color-obsidian: #0E0E10;
-    --color-surface: #151518;
-    --color-surface-elevated: #1C1C21;
-    --color-linen: #F7F6F2;
-    --color-linen-dim: #E3E1D8;
-    --color-linen-muted: #9B988E;
-    --color-amber-gold: #E2A866;
-    --color-sage: #728A7C;
-    --color-terracotta: #C48B71;
+    --forest: #173D2B;
+    --deep-green: #102A1F;
+    --olive: #596B32;
+    --leaf: #7FA63A;
+    --lime: #B5C94A;
+    --sun: #E8C547;
+    --gold: #D9A441;
+    --cream: #F7F3E8;
+    --warm-white: #FFFDF5;
+    --charcoal: #121714;
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #0E0E10;
-    color: #F7F6F2;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
   body {
-    background-color: #0E0E10;
-    color: #F7F6F2;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  ::selection {
-    background-color: rgba(226, 168, 102, 0.25);
-    color: #FFFFFF;
-  }
 }
 
-/* Lenis Smooth Scroll Rules */
+/* Lenis Smooth Scroll Configuration */
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -57,50 +49,65 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* Subtle Cinematic Film Grain Texture */
+/* Subtle Organic Film Grain Texture */
 .bg-grain {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.028'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
-/* Subtle Architectural Grid Lines - Warm & Very Restrained */
-.bg-architect-grid {
+/* Faint Sunlight & Leaf Ambient Lighting */
+.bg-sunlight-radial {
+  background: radial-gradient(circle at 75% 20%, rgba(232, 197, 71, 0.12) 0%, rgba(232, 197, 71, 0) 55%);
+}
+
+.dark .bg-sunlight-radial {
+  background: radial-gradient(circle at 75% 20%, rgba(232, 197, 71, 0.08) 0%, rgba(232, 197, 71, 0) 60%);
+}
+
+.bg-canopy-glow {
+  background: radial-gradient(circle at 20% 40%, rgba(127, 166, 58, 0.1) 0%, rgba(127, 166, 58, 0) 60%);
+}
+
+.dark .bg-canopy-glow {
+  background: radial-gradient(circle at 20% 40%, rgba(127, 166, 58, 0.07) 0%, rgba(127, 166, 58, 0) 65%);
+}
+
+/* Premium Organic Cards */
+.card-nature {
+  background: #FFFDF5;
+  border: 1px solid rgba(23, 61, 43, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(23, 61, 43, 0.05);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .card-nature {
+  background: #111F17;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+}
+
+.card-nature:hover {
+  transform: translateY(-2px);
+  border-color: rgba(127, 166, 58, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(23, 61, 43, 0.1);
+}
+
+.dark .card-nature:hover {
+  border-color: rgba(232, 197, 71, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* Subtle Organic Grid Pattern */
+.bg-natural-grid {
   background-size: 80px 80px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    linear-gradient(to right, rgba(23, 61, 43, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 61, 43, 0.02) 1px, transparent 1px);
 }
 
-/* Soft Luxury Glassmorphic Panels */
-.panel-soft {
-  background: rgba(21, 21, 24, 0.72);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.panel-soft:hover {
-  border-color: rgba(226, 168, 102, 0.22);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.65), 0 0 30px -5px rgba(226, 168, 102, 0.05);
-}
-
-.panel-elevated {
-  background: rgba(28, 28, 33, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6);
-}
-
-/* Warm Ambient Glow Utilities */
-.glow-amber-soft {
-  background: radial-gradient(circle, rgba(226, 168, 102, 0.12) 0%, rgba(226, 168, 102, 0) 70%);
-}
-
-.glow-sage-soft {
-  background: radial-gradient(circle, rgba(114, 138, 124, 0.12) 0%, rgba(114, 138, 124, 0) 70%);
+.dark .bg-natural-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 /* Editorial Serif & Display Typography */
@@ -110,18 +117,24 @@ html.lenis, html.lenis body {
   font-weight: 400;
 }
 
-/* Custom Refined Scrollbar */
+/* Custom Scrollbar - Natural tones */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0E0E10;
+  background: #F7F3E8;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0B1510;
 }
 ::-webkit-scrollbar-thumb {
-  background: #23232A;
+  background: #596B32;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E2A866;
+  background: #7FA63A;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #E8C547;
 }

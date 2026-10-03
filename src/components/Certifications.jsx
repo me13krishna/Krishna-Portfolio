@@ -17,38 +17,38 @@ export default function Certifications() {
   const getIcon = (iconName) => {
     switch (iconName) {
       case 'cloud':
-        return <Cloud className="w-5 h-5 text-[#E2A866]" />;
+        return <Cloud className="w-5 h-5 text-forest dark:text-sun" />;
       case 'bot':
-        return <Bot className="w-5 h-5 text-[#728A7C]" />;
+        return <Bot className="w-5 h-5 text-leaf dark:text-leaf" />;
       case 'terminal':
-        return <Terminal className="w-5 h-5 text-[#C48B71]" />;
+        return <Terminal className="w-5 h-5 text-olive dark:text-sun" />;
       case 'shield':
-        return <Shield className="w-5 h-5 text-[#E2A866]" />;
+        return <Shield className="w-5 h-5 text-gold dark:text-sun" />;
       case 'cpu':
-        return <Cpu className="w-5 h-5 text-[#728A7C]" />;
+        return <Cpu className="w-5 h-5 text-forest dark:text-leaf" />;
       default:
-        return <Award className="w-5 h-5 text-[#E2A866]" />;
+        return <Award className="w-5 h-5 text-forest dark:text-sun" />;
     }
   };
 
   return (
-    <section id="certifications" className="py-28 relative border-t border-white/[0.06] bg-[#121215]/30">
+    <section id="certifications" className="py-28 relative border-t border-forest/10 dark:border-white/10">
       
       {/* Background Soft Glow */}
-      <div className="absolute top-1/3 left-1/4 w-[450px] h-[450px] bg-[#E2A866]/[0.035] rounded-full blur-[170px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/4 w-[450px] h-[450px] bg-sunlight-radial pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-20 space-y-3 text-left">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E2A866] font-medium block">
-            Verified Credentials &bull; Industry Accreditation
+          <span className="text-xs font-mono uppercase tracking-widest text-forest dark:text-sun font-semibold block">
+            ACHIEVEMENTS &bull; ACCREDITATION &bull; VERIFICATION
           </span>
-          <h2 className="text-4xl sm:text-6xl font-bold text-[#F7F6F2] tracking-tight">
-            Credentials &amp; Recognition
+          <h2 className="text-4xl sm:text-6xl font-bold text-charcoal dark:text-warm-white tracking-tight">
+            Credentials &amp; Milestones
           </h2>
-          <p className="text-sm sm:text-base text-[#9B988E] leading-relaxed font-normal">
-            Formal technical certifications spanning AWS, IBM, Cisco Networking Academy, corporate engineering simulations (JPMorganChase, Deloitte), Anthropic Claude, and nasscom. All high-resolution PDF credentials are archived in Google Drive.
+          <p className="text-sm sm:text-base text-charcoal-muted dark:text-dark-textMuted leading-relaxed font-normal">
+            Formal technical certifications spanning AWS Cloud, IBM AI, Cisco Networking Academy, corporate simulations (JPMorganChase, Deloitte), Anthropic Claude, and nasscom. All high-resolution PDF credentials are archived in Google Drive.
           </p>
         </div>
 
@@ -57,54 +57,54 @@ export default function Certifications() {
           {certifications.map((cert) => (
             <div
               key={cert.id}
-              className="rounded-[28px] p-8 bg-[#151518]/90 border border-white/[0.06] hover:border-[#E2A866]/30 transition-all duration-400 flex flex-col justify-between hover:-translate-y-1.5 shadow-soft-card group"
+              className="rounded-[28px] p-8 bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 hover:border-leaf/40 dark:hover:border-sun/40 transition-all duration-400 flex flex-col justify-between hover:-translate-y-1.5 shadow-soft-card group"
             >
               <div>
                 {/* Header Icon + Verification Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-11 h-11 rounded-2xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <div className="w-11 h-11 rounded-2xl bg-forest/5 dark:bg-white/5 border border-forest/10 dark:border-white/10 flex items-center justify-center group-hover:scale-105 transition-transform">
                     {getIcon(cert.icon)}
                   </div>
                   
-                  <span className="text-[10px] font-mono px-3 py-0.5 rounded-full bg-white/[0.04] text-[#E3E1D8] border border-white/[0.06]">
+                  <span className="text-[10px] font-mono px-3 py-0.5 rounded-full bg-forest/5 dark:bg-white/5 text-forest dark:text-sun border border-forest/10 dark:border-white/10 font-medium">
                     Verified
                   </span>
                 </div>
 
                 {/* Issuer & Date */}
-                <div className="text-xs font-mono text-[#9B988E] mb-1.5">
+                <div className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted mb-1.5">
                   {cert.issuer} &bull; {cert.date}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-[#F7F6F2] group-hover:text-white transition-colors mb-3">
+                <h3 className="text-lg font-bold text-charcoal dark:text-warm-white group-hover:text-forest dark:group-hover:text-sun transition-colors mb-3">
                   {cert.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs text-[#9B988E] mb-5 leading-relaxed font-normal">
+                <p className="text-xs text-charcoal-muted dark:text-dark-textMuted mb-5 leading-relaxed font-normal">
                   {cert.description}
                 </p>
 
                 {/* Topics */}
                 <div className="space-y-2 mb-6">
                   {cert.topics.map((t) => (
-                    <div key={t} className="flex items-center gap-2.5 text-[11px] text-[#9B988E]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#728A7C] flex-shrink-0" />
-                      <span className="text-[#E3E1D8]">{t}</span>
+                    <div key={t} className="flex items-center gap-2.5 text-[11px] text-charcoal-muted dark:text-dark-textMuted">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-leaf dark:text-sun flex-shrink-0" />
+                      <span className="text-charcoal dark:text-warm-white">{t}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* View in Drive Link */}
-              <div className="pt-4 border-t border-white/[0.06]">
+              <div className="pt-4 border-t border-forest/10 dark:border-white/10">
                 <a
                   href={personalInfo.certificatesDriveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/[0.04] hover:bg-[#F7F6F2] hover:text-[#0E0E10] text-[#E3E1D8] text-xs font-medium transition-all border border-white/[0.06]"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-forest/5 dark:bg-white/5 hover:bg-forest dark:hover:bg-sun hover:text-warm-white dark:hover:text-forest-dark text-charcoal dark:text-warm-white text-xs font-medium transition-all border border-forest/10 dark:border-white/10"
                 >
                   <span>View in Drive Archive</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -116,19 +116,19 @@ export default function Certifications() {
         </div>
 
         {/* Master Google Drive Archive Banner */}
-        <div className="rounded-[32px] p-8 sm:p-12 bg-gradient-to-r from-[#17171C] via-[#1A1A22] to-[#17171C] border border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-soft-lift text-left">
+        <div className="rounded-[32px] p-8 sm:p-12 bg-forest dark:bg-dark-card border border-forest/20 dark:border-white/10 text-warm-white flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-soft-lift text-left">
           <div className="flex items-start sm:items-center gap-5">
-            <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 text-[#E2A866] shadow-sm">
+            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0 text-sun shadow-sm">
               <FolderDown className="w-7 h-7" />
             </div>
             <div>
               <div className="flex items-center gap-3">
-                <h4 className="text-[#F7F6F2] font-bold text-xl sm:text-2xl tracking-tight">Official Credentials Drive Repository</h4>
-                <span className="hidden sm:inline-block text-[11px] font-mono px-3 py-0.5 rounded-full bg-[#E2A866]/10 text-[#E2A866] border border-[#E2A866]/20 font-medium">
+                <h4 className="text-warm-white font-bold text-xl sm:text-2xl tracking-tight">Official Credentials Drive Repository</h4>
+                <span className="hidden sm:inline-block text-[11px] font-mono px-3 py-0.5 rounded-full bg-sun/20 text-sun border border-sun/30 font-medium">
                   Verified Archive
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-[#9B988E] mt-1.5 max-w-2xl leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-warm-white/80 dark:text-dark-textMuted mt-1.5 max-w-2xl leading-relaxed font-normal">
                 Direct access to all verified PDF credentials, completion transcripts, and badges for AWS, IBM, Cisco, JPMorganChase, Deloitte, Anthropic, and nasscom.
               </p>
             </div>
@@ -139,7 +139,7 @@ export default function Certifications() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={playCyberClick}
-            className="flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#F7F6F2] hover:bg-white text-[#0E0E10] font-semibold text-xs transition-all shadow-md active:scale-98"
+            className="flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-sun hover:bg-sun-light text-forest-dark font-semibold text-xs transition-all shadow-md active:scale-98"
           >
             <span>Open Google Drive Folder</span>
             <ExternalLink className="w-4 h-4" />
