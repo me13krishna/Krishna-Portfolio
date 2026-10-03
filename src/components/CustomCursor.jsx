@@ -36,7 +36,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="pointer-events-none fixed z-50 transition-transform duration-75 ease-out hidden md:block"
+      className="pointer-events-none fixed z-50 transition-transform duration-100 ease-out hidden md:block"
       style={{
         transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
         left: 0,
@@ -44,10 +44,10 @@ export default function CustomCursor() {
       }}
     >
       <div
-        className={`-translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-mono text-[9px] font-bold uppercase tracking-widest transition-all duration-200 ${
+        className={`-translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-mono text-[9px] font-semibold uppercase tracking-widest transition-all duration-300 ${
           hovered
-            ? 'w-12 h-12 bg-ember text-white shadow-lg shadow-ember/30 scale-100'
-            : 'w-3 h-3 bg-white/80 border border-white/20'
+            ? 'w-11 h-11 bg-[#E2A866] text-[#0E0E10] shadow-lg shadow-black/40 scale-100'
+            : 'w-3 h-3 bg-[#F7F6F2]/80 border border-white/20'
         }`}
       >
         {cursorText}

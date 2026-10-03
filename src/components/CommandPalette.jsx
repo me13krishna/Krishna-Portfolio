@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Search, 
-  X, 
   ArrowRight, 
   Terminal, 
   FileText, 
@@ -49,141 +48,116 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
   const actions = [
     {
       id: 'proj',
-      title: 'Explore Technical Projects',
-      sub: 'watsonx AI Startup Mentor, Qlockain Blockchain, Future of Work, StadiumOps',
-      icon: <Sparkles className="w-4 h-4 text-cyan-400" />,
+      title: 'Explore Selected Works',
+      sub: 'Qlockain Vault, Startup Mentor AI, StadiumOps, AI Workforce Report',
+      icon: <Sparkles className="w-4 h-4 text-[#E2A866]" />,
       action: () => { window.location.href = '#projects'; onClose(); }
     },
     {
       id: 'qlockain-live',
       title: 'Launch Qlockain (Live on Render)',
       sub: 'qlockain.onrender.com — Blockchain Identity Vault',
-      icon: <ExternalLink className="w-4 h-4 text-purple-400" />,
+      icon: <ExternalLink className="w-4 h-4 text-[#728A7C]" />,
       action: () => { window.open('https://qlockain.onrender.com/', '_blank'); onClose(); }
     },
     {
       id: 'startup-mentor-live',
-      title: 'Launch Startup Mentor (Live on Render)',
+      title: 'Launch Startup Mentor AI (Live on Render)',
       sub: 'startup-mentor-jftd.onrender.com — AI Blueprint Generator',
-      icon: <ExternalLink className="w-4 h-4 text-cyan-400" />,
+      icon: <ExternalLink className="w-4 h-4 text-[#E2A866]" />,
       action: () => { window.open('https://startup-mentor-jftd.onrender.com/', '_blank'); onClose(); }
     },
     {
       id: 'stadiumops-live',
       title: 'Launch StadiumOps AI (Live on Vercel)',
-      sub: 'stadiumopsai-xi.vercel.app — Venue & Crowd Operations',
-      icon: <ExternalLink className="w-4 h-4 text-emerald-400" />,
+      sub: 'stadiumopsai-xi.vercel.app — Venue & Crowd Intelligence',
+      icon: <ExternalLink className="w-4 h-4 text-[#728A7C]" />,
       action: () => { window.open('https://stadiumopsai-xi.vercel.app/', '_blank'); onClose(); }
     },
     {
       id: 'prakrushti-live',
       title: 'Launch Prakrushti (Live on Vercel)',
-      sub: 'prakrushti.vercel.app — Hackathon Build',
-      icon: <ExternalLink className="w-4 h-4 text-amber-400" />,
+      sub: 'prakrushti.vercel.app — Hackathon Platform',
+      icon: <ExternalLink className="w-4 h-4 text-[#C48B71]" />,
       action: () => { window.open('https://prakrushti.vercel.app/', '_blank'); onClose(); }
     },
     {
       id: 'exp',
-      title: 'View Work Experience & Internships',
+      title: 'View Work Experience & Leadership',
       sub: 'Indian Pixel, Drishyam, CodeAlpha, IBM SkillsBuild',
-      icon: <Briefcase className="w-4 h-4 text-purple-400" />,
+      icon: <Briefcase className="w-4 h-4 text-[#E2A866]" />,
       action: () => { window.location.href = '#experience'; onClose(); }
     },
     {
       id: 'cert-drive',
-      title: 'Open Google Drive Certificates Archive',
-      sub: 'Official repository with verified credentials',
-      icon: <FolderDown className="w-4 h-4 text-cyan-300" />,
+      title: 'Open Google Drive Credentials Archive',
+      sub: 'Verified certifications & transcripts folder',
+      icon: <FolderDown className="w-4 h-4 text-[#E2A866]" />,
       action: () => { window.open(personalInfo.certificatesDriveUrl, '_blank'); onClose(); }
     },
     {
-      id: 'acc',
-      title: 'Developer Accounts & Profiles',
-      sub: 'LeetCode, CodeChef, GitHub, Medium, Creator IG',
-      icon: <Code2 className="w-4 h-4 text-purple-400" />,
-      action: () => { window.location.href = '#accounts'; onClose(); }
-    },
-    {
       id: 'resume',
-      title: 'View & Request Resume',
-      sub: 'Open resume snapshot and PDF link',
-      icon: <FileText className="w-4 h-4 text-amber-400" />,
+      title: 'View & Request Curriculum Vitae',
+      sub: 'Academic records, achievements, and technical stack',
+      icon: <FileText className="w-4 h-4 text-[#728A7C]" />,
       action: () => { onClose(); onOpenResume(); }
-    },
-    {
-      id: 'cli',
-      title: 'Launch Interactive CLI Terminal',
-      sub: 'Execute bash-like portfolio commands',
-      icon: <Terminal className="w-4 h-4 text-emerald-400" />,
-      action: () => { onClose(); onOpenTerminal(); }
     },
     {
       id: 'gh',
       title: 'Open GitHub Profile',
       sub: 'github.com/me13krishna',
-      icon: <GithubIcon className="w-4 h-4 text-slate-300" />,
+      icon: <GithubIcon className="w-4 h-4 text-[#F7F6F2]" />,
       action: () => { window.open(personalInfo.githubUrl, '_blank'); onClose(); }
     },
     {
       id: 'li',
       title: 'Open LinkedIn Profile',
       sub: 'linkedin.com/in/krishnamishra13',
-      icon: <LinkedinIcon className="w-4 h-4 text-blue-400" />,
+      icon: <LinkedinIcon className="w-4 h-4 text-[#8FA699]" />,
       action: () => { window.open(personalInfo.linkedinUrl, '_blank'); onClose(); }
     },
     {
       id: 'lc',
       title: 'Open LeetCode Profile',
       sub: 'leetcode.com/u/me13_krishna',
-      icon: <LeetcodeIcon className="w-4 h-4 text-amber-400" />,
+      icon: <LeetcodeIcon className="w-4 h-4 text-[#E2A866]" />,
       action: () => { window.open(personalInfo.leetcodeUrl, '_blank'); onClose(); }
     },
     {
       id: 'cc',
       title: 'Open CodeChef Profile',
       sub: 'codechef.com/users/me13_krishna',
-      icon: <CodechefIcon className="w-4 h-4 text-amber-500" />,
+      icon: <CodechefIcon className="w-4 h-4 text-[#C48B71]" />,
       action: () => { window.open(personalInfo.codechefUrl, '_blank'); onClose(); }
     },
     {
       id: 'med',
-      title: 'Open Medium Blog',
+      title: 'Read Medium Publications',
       sub: 'medium.com/@krishna1307mishra',
-      icon: <MediumIcon className="w-4 h-4 text-emerald-400" />,
+      icon: <MediumIcon className="w-4 h-4 text-[#8FA699]" />,
       action: () => { window.open(personalInfo.mediumUrl, '_blank'); onClose(); }
     },
     {
       id: 'ig-creator',
       title: 'Follow Creator Page (@yappp.kris)',
-      sub: 'Tech reels, coding tutorials, AI breakdowns',
-      icon: <InstagramIcon className="w-4 h-4 text-fuchsia-400" />,
+      sub: 'Engineering breakdowns & student tutorials',
+      icon: <InstagramIcon className="w-4 h-4 text-[#D9A38C]" />,
       action: () => { window.open(personalInfo.creatorInstaUrl, '_blank'); onClose(); }
     },
     {
       id: 'x',
       title: 'Follow on X (Twitter)',
       sub: 'x.com/yapppkris',
-      icon: <TwitterIcon className="w-4 h-4 text-slate-300" />,
+      icon: <TwitterIcon className="w-4 h-4 text-[#9B988E]" />,
       action: () => { window.open(personalInfo.twitterUrl, '_blank'); onClose(); }
     },
     {
       id: 'copy-email',
       title: 'Copy Email Address',
       sub: personalInfo.email,
-      icon: <Mail className="w-4 h-4 text-blue-400" />,
+      icon: <Mail className="w-4 h-4 text-[#E2A866]" />,
       action: () => {
         navigator.clipboard.writeText(personalInfo.email);
-        onClose();
-        alert('Email copied: ' + personalInfo.email);
-      }
-    },
-    {
-      id: 'party',
-      title: 'Trigger Confetti Burst 🎉',
-      sub: 'Add some celebratory vibes',
-      icon: <Sparkles className="w-4 h-4 text-fuchsia-400" />,
-      action: () => {
-        confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } });
         onClose();
       }
     }
@@ -195,24 +169,24 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 p-4 bg-void/90 backdrop-blur-md animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 p-4 bg-[#0E0E10]/85 backdrop-blur-xl animate-in fade-in duration-150">
       
       <div 
-        className="w-full max-w-xl rounded-3xl bg-surface border border-borderMuted shadow-2xl overflow-hidden"
+        className="w-full max-w-xl rounded-[28px] bg-[#151518] border border-white/[0.08] shadow-2xl overflow-hidden text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-borderMuted gap-3">
-          <Search className="w-5 h-5 text-ember flex-shrink-0" />
+        <div className="flex items-center px-5 py-4 border-b border-white/[0.06] gap-3">
+          <Search className="w-5 h-5 text-[#E2A866] flex-shrink-0" />
           <input
             autoFocus
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Type a command or jump to profile / project..."
-            className="flex-1 bg-transparent border-none outline-none text-white text-sm font-sans placeholder-ivory-muted/40 focus:ring-0"
+            placeholder="Type a command or jump to section / project..."
+            className="flex-1 bg-transparent border-none outline-none text-[#F7F6F2] text-sm font-sans placeholder-[#9B988E]/40 focus:ring-0"
           />
-          <kbd className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-ivory-muted font-mono">
+          <kbd className="text-[10px] bg-white/[0.06] px-2 py-0.5 rounded text-[#9B988E] font-mono">
             ESC
           </kbd>
         </div>
@@ -220,8 +194,8 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
         {/* Action Results */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
           {filtered.length === 0 ? (
-            <div className="p-6 text-center text-xs text-ivory-muted font-mono">
-              No matching commands or actions found.
+            <div className="p-6 text-center text-xs text-[#9B988E] font-mono">
+              No matching actions found.
             </div>
           ) : (
             filtered.map((item) => (
@@ -231,32 +205,32 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
                   playCyberClick();
                   item.action();
                 }}
-                className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all text-left group"
+                className="w-full flex items-center justify-between p-3.5 rounded-2xl hover:bg-white/[0.04] transition-all text-left group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-surface border border-white/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/[0.04] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
                     {item.icon}
                   </div>
                   <div>
-                    <h5 className="text-xs font-semibold text-white group-hover:text-ember transition-colors">
+                    <h5 className="text-xs font-semibold text-[#F7F6F2] group-hover:text-white transition-colors">
                       {item.title}
                     </h5>
-                    <p className="text-[11px] text-ivory-muted truncate max-w-sm">
+                    <p className="text-[11px] text-[#9B988E] truncate max-w-sm">
                       {item.sub}
                     </p>
                   </div>
                 </div>
 
-                <ArrowRight className="w-4 h-4 text-ivory-muted group-hover:text-ember group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-[#9B988E] group-hover:text-[#E2A866] group-hover:translate-x-0.5 transition-all" />
               </button>
             ))
           )}
         </div>
 
         {/* Footer shortcuts */}
-        <div className="px-4 py-2 bg-void/60 border-t border-borderMuted flex items-center justify-between text-[11px] font-mono text-ivory-muted">
-          <span>Use ⌘K / Ctrl+K anytime</span>
-          <span className="text-ember font-semibold">Krishna Mishra</span>
+        <div className="px-5 py-2.5 bg-[#0E0E10]/60 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-[#9B988E]">
+          <span>Press ⌘K or Ctrl+K anytime</span>
+          <span className="text-[#E2A866]">Krishna Mishra</span>
         </div>
 
       </div>

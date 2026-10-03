@@ -3,14 +3,10 @@ import {
   X, 
   ExternalLink, 
   CheckCircle2, 
-  Layers, 
-  Calendar, 
-  Tag, 
   BarChart2, 
   Cpu, 
   Database, 
-  Sparkles,
-  FileText
+  Sparkles
 } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import { playCyberClick } from '../utils/audio';
@@ -21,11 +17,11 @@ export default function ProjectModal({ project, onClose }) {
   const isReport = project.isReport || !!project.reportDetails;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-void/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0E0E10]/85 backdrop-blur-xl animate-in fade-in duration-200">
       
       {/* Modal Dialog */}
       <div 
-        className="w-full max-w-3xl rounded-2xl glass-panel-glow bg-deep/95 border border-cyan-500/40 p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+        className="w-full max-w-3xl rounded-[32px] bg-[#151518] border border-white/[0.08] p-7 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -34,47 +30,47 @@ export default function ProjectModal({ project, onClose }) {
             playCyberClick();
             onClose();
           }}
-          className="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-full text-[#9B988E] hover:text-[#F7F6F2] bg-white/[0.04] hover:bg-white/[0.08] transition-colors"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Header */}
-        <div className="space-y-2 mb-6">
+        <div className="space-y-3 mb-8">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+            <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#E2A866]/10 text-[#E2A866] border border-[#E2A866]/20">
               {project.category}
             </span>
-            <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#728A7C]/15 text-[#8FA699] border border-[#728A7C]/30">
               {project.status}
             </span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-display">
+          <h3 className="text-2xl sm:text-4xl font-bold text-[#F7F6F2] tracking-tight">
             {project.title}
           </h3>
 
-          <p className="text-sm text-cyan-300 font-medium">
+          <p className="text-sm text-[#9B988E] font-editorial italic text-base">
             {project.tagline}
           </p>
         </div>
 
         {/* Description */}
-        <div className="space-y-4 text-slate-300 text-sm leading-relaxed mb-6">
+        <div className="space-y-6 text-[#E3E1D8] text-sm leading-relaxed mb-8 font-normal">
           <p>{project.description}</p>
 
           {/* Key Highlights */}
-          <div className="space-y-2 pt-2">
-            <h4 className="text-xs uppercase font-mono tracking-wider text-slate-400 font-bold flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-cyan-400" />
-              <span>Engineering Highlights &amp; Scope:</span>
+          <div className="space-y-3 pt-2">
+            <h4 className="text-xs uppercase font-mono tracking-wider text-[#9B988E] font-medium flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[#E2A866]" />
+              <span>Engineering Architecture &amp; Highlights:</span>
             </h4>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {project.highlights.map((highlight, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span>{highlight}</span>
+                <div key={idx} className="flex items-start gap-3 text-xs text-[#9B988E]">
+                  <CheckCircle2 className="w-4 h-4 text-[#728A7C] flex-shrink-0 mt-0.5" />
+                  <span className="text-[#E3E1D8]">{highlight}</span>
                 </div>
               ))}
             </div>
@@ -82,27 +78,27 @@ export default function ProjectModal({ project, onClose }) {
 
           {/* Special Section: Data Analytics & DV Report Details */}
           {isReport && project.reportDetails && (
-            <div className="space-y-4 pt-4 border-t border-white/10">
-              <div className="flex items-center gap-2 text-sm font-bold text-white font-display">
-                <BarChart2 className="w-4 h-4 text-cyan-400" />
-                <span>32-Page Data Visualisation Report Breakdown</span>
+            <div className="space-y-5 pt-6 border-t border-white/[0.06]">
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#F7F6F2]">
+                <BarChart2 className="w-4 h-4 text-[#E2A866]" />
+                <span>32-Page Data Visualisation Research Report</span>
               </div>
 
               {/* Dataset info */}
-              <div className="p-3.5 rounded-xl bg-surface/60 border border-white/10 space-y-1">
-                <span className="text-[11px] font-mono text-cyan-400 uppercase tracking-wider block">Dataset Source:</span>
-                <p className="text-xs text-slate-200">{project.reportDetails.dataset}</p>
+              <div className="p-4 rounded-2xl bg-[#1C1C21]/60 border border-white/[0.06] space-y-1">
+                <span className="text-[11px] font-mono text-[#E2A866] uppercase tracking-wider block">Dataset Source &amp; Scope:</span>
+                <p className="text-xs text-[#E3E1D8]">{project.reportDetails.dataset}</p>
               </div>
 
               {/* Orange Operations */}
               <div className="space-y-2">
-                <span className="text-xs font-mono uppercase text-slate-400 font-semibold block flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-purple-400" />
+                <span className="text-xs font-mono uppercase text-[#9B988E] font-semibold block flex items-center gap-2">
+                  <Cpu className="w-3.5 h-3.5 text-[#728A7C]" />
                   <span>Orange Data Mining Pipeline:</span>
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   {project.reportDetails.orangeOperations.map((op, i) => (
-                    <div key={i} className="p-2.5 rounded-lg bg-void/50 border border-white/5 text-slate-300">
+                    <div key={i} className="p-3 rounded-xl bg-[#1C1C21]/40 border border-white/[0.04] text-[#E3E1D8]">
                       &bull; {op}
                     </div>
                   ))}
@@ -111,29 +107,29 @@ export default function ProjectModal({ project, onClose }) {
 
               {/* Tableau Charts Breakdown */}
               <div className="space-y-2">
-                <span className="text-xs font-mono uppercase text-slate-400 font-semibold block flex items-center gap-1.5">
-                  <Database className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Tableau Visualisation (5 Grains &amp; Charts):</span>
+                <span className="text-xs font-mono uppercase text-[#9B988E] font-semibold block flex items-center gap-2">
+                  <Database className="w-3.5 h-3.5 text-[#E2A866]" />
+                  <span>Tableau Visualisation (5 Multi-Level Grains):</span>
                 </span>
-                <div className="space-y-1.5 text-xs text-slate-300">
+                <div className="space-y-2 text-xs text-[#E3E1D8]">
                   {project.reportDetails.tableauCharts.map((ch, i) => (
-                    <div key={i} className="p-2 rounded-lg bg-void/40 border border-white/5 flex items-center gap-2">
-                      <span className="text-cyan-400 font-mono text-[11px]">0{i + 1}</span>
+                    <div key={i} className="p-2.5 rounded-xl bg-[#1C1C21]/40 border border-white/[0.04] flex items-center gap-3">
+                      <span className="text-[#E2A866] font-mono text-[11px]">0{i + 1}</span>
                       <span>{ch}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Executive KPIs & Key Finding */}
-              <div className="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-1.5">
-                <span className="text-xs font-mono text-purple-300 font-bold uppercase tracking-wider block">
-                  Key Research Conclusions &amp; KPIs:
+              {/* Key Findings */}
+              <div className="p-5 rounded-2xl bg-[#1C1C21]/70 border border-white/[0.06] space-y-2">
+                <span className="text-xs font-mono text-[#E2A866] font-medium uppercase tracking-wider block">
+                  Empirical Findings &amp; Conclusions:
                 </span>
-                <ul className="space-y-1 text-xs text-slate-300">
+                <ul className="space-y-1.5 text-xs text-[#E3E1D8]">
                   {project.reportDetails.kpis.map((kpi, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-purple-400 font-bold">&gt;</span>
+                    <li key={i} className="flex items-start gap-2.5">
+                      <span className="text-[#E2A866]">&bull;</span>
                       <span>{kpi}</span>
                     </li>
                   ))}
@@ -145,14 +141,14 @@ export default function ProjectModal({ project, onClose }) {
 
         {/* Tech Stack Tags */}
         <div className="mb-8">
-          <h4 className="text-xs uppercase font-mono tracking-wider text-slate-400 font-bold mb-2">
+          <h4 className="text-xs uppercase font-mono tracking-wider text-[#9B988E] font-medium mb-3">
             Technologies &amp; Libraries:
           </h4>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200"
+                className="text-xs font-sans px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#E3E1D8]"
               >
                 {tag}
               </span>
@@ -161,17 +157,17 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Action Footer */}
-        <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
+        <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-white/[0.06]">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
-              className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:brightness-110 text-white font-semibold text-xs transition-all shadow-lg shadow-cyan-500/20"
+              className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#F7F6F2] hover:bg-white text-[#0E0E10] font-semibold text-xs transition-all shadow-md"
             >
-              <span>{isReport ? "Open Research Report & Archive" : "Visit Live Platform / Resource"}</span>
-              <ExternalLink className="w-4 h-4" />
+              <span>{isReport ? "Open Research Report & Archive" : "Launch Production Platform"}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#0E0E10]" />
             </a>
           )}
 
@@ -181,7 +177,7 @@ export default function ProjectModal({ project, onClose }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
-              className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl glass-panel hover:bg-white/10 text-slate-200 font-semibold text-xs border border-white/10 transition-all"
+              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#1C1C21] hover:bg-[#23232A] text-[#F7F6F2] font-semibold text-xs border border-white/[0.08] transition-all"
             >
               <GithubIcon className="w-4 h-4" />
               <span>GitHub Repository</span>

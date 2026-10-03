@@ -7,8 +7,7 @@ import {
   MapPin, 
   CheckCircle2,
   FolderDown,
-  ExternalLink,
-  ArrowUpRight
+  ExternalLink
 } from 'lucide-react';
 import { 
   LinkedinIcon, 
@@ -21,7 +20,7 @@ import {
 } from './SocialIcons';
 import confetti from 'canvas-confetti';
 import { personalInfo } from '../data/portfolioData';
-import { playCyberClick, playSuccessFanfare, playCyberBeep } from '../utils/audio';
+import { playCyberClick, playCyberBeep } from '../utils/audio';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -38,7 +37,7 @@ export default function Contact() {
     playCyberBeep();
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
-    setToastMessage('Email copied to clipboard');
+    setToastMessage('Email address copied to clipboard');
     setTimeout(() => {
       setCopied(false);
       setToastMessage('');
@@ -52,18 +51,17 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      setToastMessage('Please fill in required fields.');
+      setToastMessage('Please complete all required fields.');
       setTimeout(() => setToastMessage(''), 3000);
       return;
     }
 
-    playSuccessFanfare();
     try {
       confetti({
-        particleCount: 50,
-        spread: 70,
+        particleCount: 40,
+        spread: 60,
         origin: { y: 0.7 },
-        colors: ['#FF5500', '#FFAA00', '#FFFFFF']
+        colors: ['#E2A866', '#728A7C', '#F7F6F2']
       });
     } catch (err) {}
 
@@ -74,7 +72,7 @@ export default function Contact() {
     window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
 
     setSubmitted(true);
-    setToastMessage('Opening your mail client...');
+    setToastMessage('Opening your email client...');
     setTimeout(() => {
       setSubmitted(false);
       setToastMessage('');
@@ -82,103 +80,103 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative border-t border-borderMuted">
+    <section id="contact" className="py-28 relative border-t border-white/[0.06]">
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-surface/95 border border-ember/50 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 animate-in fade-in duration-200">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+        <div className="fixed bottom-8 right-8 z-50 bg-[#1C1C21]/95 border border-white/[0.1] text-[#F7F6F2] px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 backdrop-blur-xl animate-in fade-in duration-200">
+          <CheckCircle2 className="w-4 h-4 text-[#728A7C]" />
           <span className="text-xs font-mono">{toastMessage}</span>
         </div>
       )}
 
       {/* Background Soft Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ember/5 rounded-full blur-[180px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[#E2A866]/[0.035] rounded-full blur-[190px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 space-y-3">
-          <span className="text-[11px] font-mono uppercase tracking-widest text-ember font-semibold block">
+        <div className="max-w-3xl mb-20 space-y-3 text-left">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#E2A866] font-medium block">
             Initiate Contact &bull; Collaboration
           </span>
-          <h2 className="headline-editorial text-4xl sm:text-6xl font-extrabold text-white uppercase tracking-tighter">
-            Let's Build Together.
+          <h2 className="text-4xl sm:text-6xl font-bold text-[#F7F6F2] tracking-tight">
+            Let's start a conversation.
           </h2>
-          <p className="text-xs sm:text-base text-ivory-muted leading-relaxed">
-            Open for software engineering internships, AI/ML development initiatives, high-impact project collaborations, or discussing new technologies.
+          <p className="text-sm sm:text-base text-[#9B988E] leading-relaxed font-normal">
+            Whether you have an engineering role, a startup project, an AI architecture question, or simply want to talk craft over coffee — my inbox is always open.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-left">
           
           {/* Left Column (5 cols): Direct Channels & Info */}
-          <div className="lg:col-span-5 space-y-6 text-left">
+          <div className="lg:col-span-5 space-y-6">
             
-            <div className="rounded-3xl p-8 bg-surface/90 border border-borderMuted space-y-6 shadow-xl">
+            <div className="rounded-[32px] p-8 sm:p-9 bg-[#151518]/90 border border-white/[0.07] space-y-6 shadow-soft-card">
               <div>
-                <h3 className="text-xl font-bold font-display text-white">
-                  Direct Communication
+                <h3 className="text-xl font-bold text-[#F7F6F2] tracking-tight">
+                  Direct Channels
                 </h3>
-                <p className="text-xs text-ivory-muted mt-1 leading-relaxed">
-                  Fastest response via direct email or LinkedIn message.
+                <p className="text-xs text-[#9B988E] mt-1 leading-relaxed">
+                  I usually respond within a few hours to direct emails and LinkedIn messages.
                 </p>
               </div>
 
               {/* Email Box */}
-              <div className="p-4 rounded-2xl bg-void/60 border border-borderMuted space-y-2">
+              <div className="p-5 rounded-2xl bg-[#1C1C21]/60 border border-white/[0.06] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-ember uppercase tracking-wider font-semibold">
+                  <span className="text-[11px] font-mono text-[#E2A866] uppercase tracking-wider font-medium">
                     Direct Email
                   </span>
                   <button
                     onClick={copyEmail}
-                    className="flex items-center gap-1 text-[11px] text-ivory-muted hover:text-white transition-colors"
+                    className="flex items-center gap-1.5 text-xs text-[#9B988E] hover:text-[#F7F6F2] transition-colors"
                   >
-                    {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                    {copied ? <Check className="w-3.5 h-3.5 text-[#728A7C]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copied ? 'Copied' : 'Copy'}</span>
                   </button>
                 </div>
                 <a 
                   href={`mailto:${personalInfo.email}`}
-                  className="text-sm font-semibold text-white hover:text-ember transition-colors block truncate font-mono"
+                  className="text-sm font-medium text-[#F7F6F2] hover:text-[#E2A866] transition-colors block truncate font-mono"
                 >
                   {personalInfo.email}
                 </a>
               </div>
 
               {/* Location */}
-              <div className="flex items-center gap-3.5 text-xs text-ivory-dim">
-                <div className="w-10 h-10 rounded-xl bg-surface border border-white/10 flex items-center justify-center text-ember flex-shrink-0">
+              <div className="flex items-center gap-3.5 text-xs text-[#E3E1D8]">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-[#728A7C] flex-shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">Location Base</div>
-                  <div className="text-ivory-muted">Pune Division, Maharashtra, India</div>
+                  <div className="font-medium text-[#F7F6F2]">Location Base</div>
+                  <div className="text-[#9B988E]">Pune Division, Maharashtra, India</div>
                 </div>
               </div>
 
               {/* Credentials Link */}
-              <div className="p-3.5 rounded-2xl bg-void/40 border border-white/5 flex items-center justify-between gap-3">
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.04] flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5">
-                  <FolderDown className="w-4 h-4 text-amberGold flex-shrink-0" />
-                  <span className="text-xs text-ivory-dim">Verified Credentials Folder</span>
+                  <FolderDown className="w-4 h-4 text-[#E2A866] flex-shrink-0" />
+                  <span className="text-xs text-[#E3E1D8]">Verified Credentials Archive</span>
                 </div>
                 <a
                   href={personalInfo.certificatesDriveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="text-xs font-semibold text-ember hover:text-white flex items-center gap-1 flex-shrink-0"
+                  className="text-xs font-medium text-[#E2A866] hover:text-white flex items-center gap-1 flex-shrink-0"
                 >
                   <span>Open Drive</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
 
-              {/* All Platform Links */}
-              <div className="pt-4 border-t border-borderMuted space-y-3">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-ivory-muted block">
+              {/* Social Platforms Row */}
+              <div className="pt-4 border-t border-white/[0.06] space-y-3">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#9B988E] block">
                   Find Me Online:
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -187,70 +185,70 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl bg-surface hover:bg-surfaceHover text-ivory-dim hover:text-white border border-borderMuted transition-colors"
+                    className="p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-[#9B988E] hover:text-[#F7F6F2] border border-white/[0.06] transition-colors"
                     title="LinkedIn"
                   >
-                    <LinkedinIcon className="w-4 h-4 text-blue-400" />
+                    <LinkedinIcon className="w-4 h-4" />
                   </a>
                   <a
                     href={personalInfo.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl bg-surface hover:bg-surfaceHover text-ivory-dim hover:text-white border border-borderMuted transition-colors"
+                    className="p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-[#9B988E] hover:text-[#F7F6F2] border border-white/[0.06] transition-colors"
                     title="GitHub"
                   >
-                    <GithubIcon className="w-4 h-4 text-slate-200" />
+                    <GithubIcon className="w-4 h-4" />
                   </a>
                   <a
                     href={personalInfo.leetcodeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl bg-surface hover:bg-surfaceHover text-ivory-dim hover:text-white border border-borderMuted transition-colors"
+                    className="p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-[#9B988E] hover:text-[#F7F6F2] border border-white/[0.06] transition-colors"
                     title="LeetCode"
                   >
-                    <LeetcodeIcon className="w-4 h-4 text-amber-400" />
+                    <LeetcodeIcon className="w-4 h-4" />
                   </a>
                   <a
                     href={personalInfo.codechefUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl bg-surface hover:bg-surfaceHover text-ivory-dim hover:text-white border border-borderMuted transition-colors"
+                    className="p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-[#9B988E] hover:text-[#F7F6F2] border border-white/[0.06] transition-colors"
                     title="CodeChef"
                   >
-                    <CodechefIcon className="w-4 h-4 text-ember" />
+                    <CodechefIcon className="w-4 h-4" />
                   </a>
                   <a
                     href={personalInfo.mediumUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl bg-surface hover:bg-surfaceHover text-ivory-dim hover:text-white border border-borderMuted transition-colors"
+                    className="p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-[#9B988E] hover:text-[#F7F6F2] border border-white/[0.06] transition-colors"
                     title="Medium"
                   >
-                    <MediumIcon className="w-4 h-4 text-emerald-400" />
+                    <MediumIcon className="w-4 h-4" />
                   </a>
                   <a
                     href={personalInfo.creatorInstaUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl bg-surface hover:bg-surfaceHover text-ivory-dim hover:text-white border border-borderMuted transition-colors"
+                    className="p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-[#9B988E] hover:text-[#F7F6F2] border border-white/[0.06] transition-colors"
                     title="Instagram Creator (@yappp.kris)"
                   >
-                    <InstagramIcon className="w-4 h-4 text-fuchsia-400" />
+                    <InstagramIcon className="w-4 h-4" />
                   </a>
                   <a
                     href={personalInfo.twitterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl bg-surface hover:bg-surfaceHover text-ivory-dim hover:text-white border border-borderMuted transition-colors"
+                    className="p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-[#9B988E] hover:text-[#F7F6F2] border border-white/[0.06] transition-colors"
                     title="X / Twitter"
                   >
-                    <TwitterIcon className="w-4 h-4 text-slate-300" />
+                    <TwitterIcon className="w-4 h-4" />
                   </a>
                 </div>
               </div>
@@ -263,15 +261,15 @@ export default function Contact() {
           <div className="lg:col-span-7">
             <form 
               onSubmit={handleSubmit}
-              className="rounded-3xl p-8 sm:p-9 bg-surface/90 border border-borderMuted shadow-2xl space-y-5 text-left"
+              className="rounded-[32px] p-8 sm:p-10 bg-[#151518]/90 border border-white/[0.07] shadow-soft-card space-y-5"
             >
-              <h3 className="text-xl font-bold font-display text-white">
-                Send a Direct Message
+              <h3 className="text-xl font-bold text-[#F7F6F2] tracking-tight">
+                Send a Note
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="name" className="text-xs font-mono text-ivory-muted">
+                  <label htmlFor="name" className="text-xs font-mono text-[#9B988E]">
                     Your Name *
                   </label>
                   <input
@@ -281,13 +279,13 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="e.g. Alex Morgan"
-                    className="w-full px-4 py-3 rounded-xl bg-void/70 border border-borderMuted focus:border-ember focus:outline-none text-sm text-white placeholder-ivory-muted/40 transition-colors"
+                    placeholder="e.g. Maya Patel"
+                    className="w-full px-4 py-3 rounded-2xl bg-[#0E0E10]/80 border border-white/[0.06] focus:border-[#E2A866] focus:outline-none text-sm text-[#F7F6F2] placeholder-[#9B988E]/40 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-xs font-mono text-ivory-muted">
+                  <label htmlFor="email" className="text-xs font-mono text-[#9B988E]">
                     Email Address *
                   </label>
                   <input
@@ -297,14 +295,14 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="alex@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-void/70 border border-borderMuted focus:border-ember focus:outline-none text-sm text-white placeholder-ivory-muted/40 transition-colors"
+                    placeholder="maya@studio.com"
+                    className="w-full px-4 py-3 rounded-2xl bg-[#0E0E10]/80 border border-white/[0.06] focus:border-[#E2A866] focus:outline-none text-sm text-[#F7F6F2] placeholder-[#9B988E]/40 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="subject" className="text-xs font-mono text-ivory-muted">
+                <label htmlFor="subject" className="text-xs font-mono text-[#9B988E]">
                   Subject
                 </label>
                 <input
@@ -313,13 +311,13 @@ export default function Contact() {
                   type="text"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Internship Opportunity / Project Collaboration / Tech Discussion"
-                  className="w-full px-4 py-3 rounded-xl bg-void/70 border border-borderMuted focus:border-ember focus:outline-none text-sm text-white placeholder-ivory-muted/40 transition-colors"
+                  placeholder="Engineering Collaboration / Role Opportunity / General Inquiry"
+                  className="w-full px-4 py-3 rounded-2xl bg-[#0E0E10]/80 border border-white/[0.06] focus:border-[#E2A866] focus:outline-none text-sm text-[#F7F6F2] placeholder-[#9B988E]/40 transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="message" className="text-xs font-mono text-ivory-muted">
+                <label htmlFor="message" className="text-xs font-mono text-[#9B988E]">
                   Message *
                 </label>
                 <textarea
@@ -329,18 +327,18 @@ export default function Contact() {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Hi Krishna, I reviewed your work on Qlockain & Startup Mentor and would love to connect regarding..."
-                  className="w-full px-4 py-3 rounded-xl bg-void/70 border border-borderMuted focus:border-ember focus:outline-none text-sm text-white placeholder-ivory-muted/40 transition-colors resize-none"
+                  placeholder="Hi Krishna, I reviewed your work on Qlockain & Startup Mentor and would love to chat about..."
+                  className="w-full px-4 py-3 rounded-2xl bg-[#0E0E10]/80 border border-white/[0.06] focus:border-[#E2A866] focus:outline-none text-sm text-[#F7F6F2] placeholder-[#9B988E]/40 transition-colors resize-none font-sans"
                 />
               </div>
 
               <button
                 type="submit"
                 onClick={playCyberClick}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-ember hover:bg-ember-light text-white font-semibold text-sm shadow-xl shadow-ember/25 transition-all active:scale-98"
+                className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-[#F7F6F2] hover:bg-white text-[#0E0E10] font-semibold text-sm shadow-md transition-all active:scale-98"
               >
-                <Send className="w-4 h-4" />
-                <span>{submitted ? 'Message Ready!' : 'Send Direct Message'}</span>
+                <Send className="w-4 h-4 text-[#0E0E10]" />
+                <span>{submitted ? 'Message Ready' : 'Send Message'}</span>
               </button>
             </form>
           </div>

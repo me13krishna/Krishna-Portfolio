@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, Terminal, Trophy, Sparkles, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { stats } from '../data/portfolioData';
 
 export default function ProofStrip() {
@@ -7,97 +7,101 @@ export default function ProofStrip() {
     {
       num: "01",
       tag: "BUILD",
-      title: "Production Products & Platforms",
-      desc: "Full-stack architectures, IBM watsonx AI generators, decentralized blockchain vaults, and real-time operations dashboards.",
-      metric: "12+ Repositories & Deployments",
+      title: "Production Systems",
+      desc: "Architecting end-to-end full-stack platforms, IBM watsonx AI orchestrations, cryptographic blockchain vaults, and real-time operations dashboards.",
+      metric: "12+ Shipped Deployments",
       link: "#projects"
     },
     {
       num: "02",
       tag: "SOLVE",
-      title: "Algorithmic Problem Solving",
-      desc: "Rigorous daily data structures, time complexity optimization, and competitive coding across LeetCode, CodeChef, and HackerRank.",
+      title: "Algorithmic Rigor",
+      desc: "Continuous algorithmic discipline across LeetCode, CodeChef, and HackerRank. Obsessed with optimal time complexity and deterministic memory bounds.",
       metric: "Active Competitive Rating",
       link: "#problem-solving"
     },
     {
       num: "03",
       tag: "COMPETE",
-      title: "Hackathons & Sprint Execution",
-      desc: "High-intensity rapid prototyping under real-world constraints: Smart India Hackathon (SIH 2024 Netra X) and Prakrushti.",
-      metric: "National Hackathon Builds",
+      title: "High-Stakes Sprints",
+      desc: "Rapid prototyping and resilient engineering under intense pressure: Smart India Hackathon (SIH 2024 Netra X) and Prakrushti.",
+      metric: "National Hackathons",
       link: "#projects"
     },
     {
       num: "04",
       tag: "CREATE",
-      title: "Tech Writing & Content Creation",
-      desc: "Breaking down complex AI systems through in-depth Medium publications and developer reels on Instagram (@yappp.kris).",
-      metric: "Articles & Visual Breakdowns",
-      link: "#accounts"
+      title: "Writing & Insights",
+      desc: "Demystifying complex generative systems and workforce shifts through long-form Medium research publications and visual tech breakdowns.",
+      metric: "Published Technical Essays",
+      link: "#contact"
     }
   ];
 
   return (
-    <section className="py-16 relative border-y border-borderMuted bg-surface/40">
+    <section className="py-20 relative border-y border-white/[0.06] bg-[#121215]/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-          <div>
-            <span className="text-[11px] font-mono uppercase tracking-widest text-ember font-semibold block mb-2">
-              Core Pillars of Execution
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="space-y-2 text-left">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#E2A866] font-medium block">
+              Core Pillars &bull; Execution
             </span>
-            <h2 className="headline-editorial text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#F7F6F2] tracking-tight">
               Proof of Craft
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-ivory-muted max-w-md">
-            Tangible engineering execution across software architecture, competitive algorithms, national hackathons, and technical writing.
+          <p className="text-sm text-[#9B988E] max-w-md text-left leading-relaxed">
+            Tangible engineering depth across software architecture, competitive algorithms, national hackathons, and published technical writing.
           </p>
         </div>
 
-        {/* 4 Pillars Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* 4 Pillars - Soft Elevated Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((pillar) => (
             <a
               key={pillar.num}
               href={pillar.link}
-              className="group p-6 rounded-2xl bg-surface/80 border border-borderMuted hover:border-ember/40 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+              className="group p-7 rounded-[26px] bg-[#17171C]/80 border border-white/[0.06] hover:border-[#E2A866]/30 transition-all duration-400 flex flex-col justify-between hover:-translate-y-1.5 shadow-soft-card hover:shadow-soft-lift text-left"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xs text-ivory-muted font-bold">
-                    {pillar.num} // {pillar.tag}
+                <div className="flex items-center justify-between mb-5">
+                  <span className="font-mono text-xs text-[#9B988E] font-medium tracking-wider">
+                    {pillar.num} &bull; {pillar.tag}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-ivory-muted group-hover:text-ember group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  <div className="w-8 h-8 rounded-full bg-white/[0.03] group-hover:bg-[#E2A866]/15 flex items-center justify-center transition-colors">
+                    <ArrowUpRight className="w-4 h-4 text-[#9B988E] group-hover:text-[#E2A866] transition-colors" />
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-white font-display mb-2 group-hover:text-ember transition-colors">
+
+                <h3 className="text-xl font-bold text-[#F7F6F2] mb-3 group-hover:text-white transition-colors">
                   {pillar.title}
                 </h3>
-                <p className="text-xs text-ivory-muted leading-relaxed mb-6">
+
+                <p className="text-xs text-[#9B988E] leading-relaxed mb-6 font-normal">
                   {pillar.desc}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-borderMuted text-[11px] font-mono text-amberGold font-semibold">
-                &gt; {pillar.metric}
+              <div className="pt-4 border-t border-white/[0.06] text-xs font-mono text-[#E2A866] font-medium">
+                {pillar.metric}
               </div>
             </a>
           ))}
         </div>
 
-        {/* Real Metrics Banner */}
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-borderMuted">
+        {/* Authentic Metric Pillars */}
+        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-5 pt-8 border-t border-white/[0.06]">
           {stats.map((s, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-surface/30 text-left">
-              <div className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+            <div key={idx} className="p-5 rounded-2xl bg-[#151518]/60 border border-white/[0.04] text-left">
+              <div className="text-3xl sm:text-4xl font-bold text-[#F7F6F2] tracking-tight">
                 {s.value}
               </div>
-              <div className="text-xs font-bold text-ivory-dim mt-1">
+              <div className="text-xs font-semibold text-[#E3E1D8] mt-1.5">
                 {s.label}
               </div>
-              <div className="text-[11px] font-mono text-ivory-muted mt-0.5 truncate">
+              <div className="text-[11px] text-[#9B988E] font-mono mt-0.5 truncate">
                 {s.subtext}
               </div>
             </div>
