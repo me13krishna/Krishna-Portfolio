@@ -17,10 +17,10 @@ import krishnaImg from '../assets/krishna.jpg';
 
 export default function About({ onOpenResume }) {
   const facts = [
-    { label: "Location", value: "Pune, Maharashtra, India", icon: <MapPin className="w-4 h-4 text-olive dark:text-leaf" /> },
-    { label: "College", value: "MIT Academy of Engineering (8.76 CGPA)", icon: <GraduationCap className="w-4 h-4 text-gold dark:text-sun" /> },
-    { label: "Focus Areas", value: "Distributed Systems, AI Reasoning & Full-Stack", icon: <Cpu className="w-4 h-4 text-forest dark:text-leaf" /> },
-    { label: "Current Interests", value: "Edge Vision, Agentic Workflows, System Call Internals", icon: <Sparkles className="w-4 h-4 text-sun" /> }
+    { label: "Location", value: "Pune Division, Maharashtra, India", icon: <MapPin className="w-4 h-4 text-olive dark:text-leaf" /> },
+    { label: "Institution", value: "MIT Academy of Engineering (Sep 2025 – 2029)", icon: <GraduationCap className="w-4 h-4 text-gold dark:text-sun" /> },
+    { label: "Focus Areas", value: "Artificial Intelligence, Generative AI & Software Development", icon: <Cpu className="w-4 h-4 text-forest dark:text-leaf" /> },
+    { label: "Academic Foundation", value: "HSC: 86.00% | SSC: 94.40%", icon: <Sparkles className="w-4 h-4 text-sun" /> }
   ];
 
   const tenets = [
@@ -71,18 +71,18 @@ export default function About({ onOpenResume }) {
               <div className="relative rounded-[22px] overflow-hidden aspect-[4/5] bg-cream dark:bg-dark-bg border border-forest/10 dark:border-white/10">
                 <img
                   src={krishnaImg}
-                  alt="Krishna Rameshwar Mishra"
+                  alt="Krishna Mishra"
                   className="w-full h-full object-cover object-center filter contrast-[1.02] group-hover:scale-[1.02] transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 inset-x-4 p-4 rounded-xl bg-cream-card/95 dark:bg-dark-card/95 backdrop-blur-xl border border-forest/10 dark:border-white/10 shadow-sm">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-sm font-bold text-charcoal dark:text-warm-white">Krishna Rameshwar Mishra</h4>
-                      <p className="text-[11px] font-mono text-forest dark:text-sun">MITAOE Pune &bull; Batch 2025–2029</p>
+                      <h4 className="text-sm font-bold text-charcoal dark:text-warm-white">Krishna Mishra</h4>
+                      <p className="text-[11px] font-mono text-forest dark:text-sun">MITAOE &bull; Sep 2025 – 2029</p>
                     </div>
-                    <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-forest/5 dark:bg-sun/10 text-forest dark:text-sun font-bold">
-                      8.76 CGPA
+                    <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-forest/5 dark:bg-sun/10 text-forest dark:text-sun font-bold">
+                      B.Tech
                     </span>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export default function About({ onOpenResume }) {
                 I didn’t enter computer science for the trend cycles. I fell in love with that quiet moment when an idea sketched on paper turns into a deterministic, dependable system that genuinely helps someone.
               </p>
               <p className="text-sm text-charcoal-muted dark:text-dark-textMuted leading-relaxed">
-                As a software engineering student at MITAOE Pune (8.76 CGPA), I treat software as an exacting craft. Whether architecting SHA-256 cryptographic vaults in Python, orchestrating enterprise reasoning models with IBM watsonx, or co-founding Indian Pixel, I balance clean algorithmic Big-O complexity with calm, human-centered interfaces.
+                As a Computer Science undergraduate at MIT Academy of Engineering, I treat software engineering as an exacting craft. Whether architecting SHA-256 cryptographic vaults in Python, orchestrating enterprise reasoning models with IBM watsonx, or co-founding Indian Pixel, I balance algorithmic rigor with calm, human-centered interfaces.
               </p>
               
               <div className="pt-2 flex flex-wrap items-center gap-3">

@@ -87,11 +87,9 @@ export default function TerminalModal({ isOpen, onClose, onOpenResume }) {
           type: 'output',
           text: `NAME: ${personalInfo.name}
 ROLE: ${personalInfo.role}
-INSTITUTION: ${personalInfo.college}
-DEGREE: ${personalInfo.degree} (2025–2029)
-CGPA: ${personalInfo.cgpa} / 10.0
+INSTITUTION: ${personalInfo.college} (${personalInfo.batch})
 LOCATION: ${personalInfo.location}
-PHILOSOPHY: Building ideas that turn into real, practical products.`
+SUMMARY: ${personalInfo.summary}`
         });
         break;
 
@@ -100,19 +98,20 @@ PHILOSOPHY: Building ideas that turn into real, practical products.`
         newHistory.push({
           type: 'output',
           text: `WORK EXPERIENCE & VENTURES:
-${experiences.map(e => `• [${e.period}] ${e.role} @ ${e.company} (${e.type})\n  -> ${e.description}`).join('\n')}`
+${experiences.map(e => `• [${e.period}] ${e.role} @ ${e.company}\n  -> ${e.description}`).join('\n')}`
         });
         break;
 
       case 'skills':
         newHistory.push({
           type: 'output',
-          text: `TECHNICAL STACK & CRAFT:
-  • Languages: Python, C, JavaScript (ES6+), SQL
-  • Frameworks: React, Vite, Node.js, Express.js, REST APIs
-  • AI Systems: IBM watsonx Orchestrate, Gemini 1.5, Computer Vision, Agentic AI
-  • Analytics: Tableau, Orange Data Mining, Kaggle Datasets
-  • Systems: Linux POSIX, Git, GitHub`
+          text: `TECHNICAL STACK & CRAFT (FROM RESUME):
+  • Programming: Python, JavaScript, C, Java
+  • Web: HTML, CSS, React, Vite, Node.js, Express.js, REST APIs
+  • AI/ML: Generative AI, Machine Learning, Prompt Engineering, Agentic AI, Computer Vision
+  • AI Platforms: IBM watsonx, IBM Cloud, Gemini API
+  • Data: Data Analysis, Tableau, Orange Data Mining
+  • Tools: Git, GitHub, Jupyter Notebook, VS Code`
         });
         break;
 

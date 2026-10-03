@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Mail, GraduationCap, ExternalLink, Briefcase, FolderGit2, FileText } from 'lucide-react';
+import { X, GraduationCap, ExternalLink, Briefcase, Download, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { personalInfo, educationList, experiences, projects } from '../data/portfolioData';
 import { playCyberClick } from '../utils/audio';
@@ -7,7 +7,7 @@ import { playCyberClick } from '../utils/audio';
 export default function ResumeModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
-  const handleDownload = () => {
+  const handleDownloadClick = () => {
     playCyberClick();
     try {
       confetti({
@@ -17,7 +17,6 @@ export default function ResumeModal({ isOpen, onClose }) {
         colors: ['#E8C547', '#7FA63A', '#173D2B']
       });
     } catch (e) {}
-    window.location.href = `mailto:${personalInfo.email}?subject=Resume Request - Krishna Mishra`;
   };
 
   return (
@@ -46,10 +45,10 @@ export default function ResumeModal({ isOpen, onClose }) {
           </div>
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-charcoal dark:text-warm-white tracking-tight">
-              Curriculum Vitae / Dossier
+              Curriculum Vitae / Resume
             </h3>
             <p className="text-xs font-mono text-forest dark:text-sun mt-0.5 font-medium">
-              Krishna Rameshwar Mishra &bull; Software Engineer &bull; AI Builder
+              Krishna Mishra &bull; Computer Science Undergraduate &bull; MITAOE
             </p>
           </div>
         </div>
@@ -60,10 +59,10 @@ export default function ResumeModal({ isOpen, onClose }) {
           {/* Executive Summary */}
           <div className="p-5 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 space-y-2 shadow-sm">
             <h4 className="text-xs uppercase font-mono tracking-wider text-forest dark:text-sun font-semibold">
-              Professional Summary
+              Summary
             </h4>
-            <p className="text-xs text-charcoal-muted dark:text-dark-textMuted leading-relaxed font-normal">
-              Computer Science undergraduate focused on Artificial Intelligence, Distributed Architectures, and Software Craftsmanship. Hands-on experience as Co-Founder at Indian Pixel and engineering internships, developing AI applications, responsive web interfaces, and data-driven solutions with Python, JavaScript, React, Node.js, IBM watsonx, Gemini API, and Tableau.
+            <p className="text-xs text-charcoal dark:text-warm-white leading-relaxed font-normal">
+              {personalInfo.summary}
             </p>
           </div>
 
@@ -91,16 +90,18 @@ export default function ResumeModal({ isOpen, onClose }) {
           <div className="space-y-3">
             <h4 className="text-xs uppercase font-mono tracking-wider text-charcoal-muted dark:text-dark-textMuted font-medium flex items-center gap-2">
               <Briefcase className="w-4 h-4 text-leaf dark:text-leaf" />
-              <span>Experience &amp; Internships</span>
+              <span>Work Experience</span>
             </h4>
             <div className="space-y-2.5 text-xs">
               {experiences.map((exp) => (
                 <div key={exp.id} className="p-4 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 space-y-1 shadow-sm">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-charcoal dark:text-warm-white">{exp.role} — <span className="text-forest dark:text-sun">{exp.company}</span></span>
-                    <span className="font-mono text-[11px] text-charcoal-muted dark:text-dark-textMuted">{exp.period}</span>
+                    <span className="font-mono text-[10px] text-charcoal-muted dark:text-dark-textMuted">{exp.period}</span>
                   </div>
-                  <p className="text-[11px] text-charcoal-muted dark:text-dark-textMuted">{exp.description}</p>
+                  <p className="text-[11px] text-charcoal-muted dark:text-dark-textMuted leading-relaxed pt-1">
+                    {exp.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -108,15 +109,14 @@ export default function ResumeModal({ isOpen, onClose }) {
 
           {/* Key Projects */}
           <div className="space-y-3">
-            <h4 className="text-xs uppercase font-mono tracking-wider text-charcoal-muted dark:text-dark-textMuted font-medium flex items-center gap-2">
-              <FolderGit2 className="w-4 h-4 text-olive dark:text-sun" />
-              <span>Flagship Works</span>
+            <h4 className="text-xs uppercase font-mono tracking-wider text-charcoal-muted dark:text-dark-textMuted font-medium">
+              Projects
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              {projects.slice(0, 4).map((proj) => (
-                <div key={proj.id} className="p-4 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 shadow-sm">
-                  <span className="font-semibold text-charcoal dark:text-warm-white block mb-1">{proj.title}</span>
-                  <span className="text-[11px] text-charcoal-muted dark:text-dark-textMuted block line-clamp-2">{proj.tagline}</span>
+              {projects.slice(0, 4).map((p) => (
+                <div key={p.id} className="p-3.5 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 space-y-1">
+                  <span className="font-bold text-charcoal dark:text-warm-white block">{p.title}</span>
+                  <p className="text-[11px] text-charcoal-muted dark:text-dark-textMuted">{p.tagline}</p>
                 </div>
               ))}
             </div>
@@ -126,13 +126,15 @@ export default function ResumeModal({ isOpen, onClose }) {
 
         {/* Action Row */}
         <div className="flex flex-col sm:flex-row items-center gap-3 pt-6 border-t border-forest/10 dark:border-white/10">
-          <button
-            onClick={handleDownload}
+          <a
+            href="/resume.pdf"
+            download="Krishna_Mishra_Resume.pdf"
+            onClick={handleDownloadClick}
             className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-xs transition-all shadow-md active:scale-98"
           >
-            <Mail className="w-4 h-4" />
-            <span>Request Official PDF Resume</span>
-          </button>
+            <Download className="w-4 h-4" />
+            <span>Download Official PDF Resume</span>
+          </a>
 
           <a
             href={personalInfo.certificatesDriveUrl}

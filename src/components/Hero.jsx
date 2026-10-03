@@ -65,7 +65,7 @@ export default function Hero({ onOpenResume }) {
 
               {/* Short Supporting Sentence */}
               <p className="text-base sm:text-lg font-normal text-charcoal-muted dark:text-dark-textMuted tracking-normal leading-relaxed max-w-xl">
-                I’m <strong className="text-charcoal dark:text-warm-white font-semibold">{personalInfo.shortName}</strong> — Software Engineer &amp; AI Builder at <strong className="text-charcoal dark:text-warm-white font-semibold">MIT Academy of Engineering, Pune</strong> (CGPA 8.76). Crafting thoughtful software, intelligent systems, and calm digital experiences.
+                I’m <strong className="text-charcoal dark:text-warm-white font-semibold">{personalInfo.name}</strong> — Computer Science undergraduate at <strong className="text-charcoal dark:text-warm-white font-semibold">{personalInfo.college}</strong> ({personalInfo.batch}). Focused on Artificial Intelligence, Generative AI, and software development.
               </p>
             </div>
 
@@ -76,8 +76,8 @@ export default function Hero({ onOpenResume }) {
                 <span>Pune, India</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white font-mono text-[11px]">
-                <span className="text-forest dark:text-sun font-bold">8.76</span>
-                <span>CGPA &bull; MITAOE</span>
+                <span className="text-forest dark:text-sun font-bold">{personalInfo.batch}</span>
+                <span>&bull; MITAOE</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white font-mono text-[11px]">
                 <Sparkles className="w-3 h-3 text-sun" />
