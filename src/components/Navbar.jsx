@@ -34,6 +34,7 @@ export default function Navbar({ onOpenTerminal, onOpenPalette, onOpenResume }) 
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Accounts", href: "#accounts" },
+    { name: "Experience", href: "#experience" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Certifications", href: "#certifications" },
@@ -65,13 +66,13 @@ export default function Navbar({ onOpenTerminal, onOpenPalette, onOpenResume }) 
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 glass-panel px-4 py-1.5 rounded-full border-white/10">
+        <nav className="hidden md:flex items-center gap-1 glass-panel px-3 py-1.5 rounded-full border-white/10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={playCyberClick}
-              className="text-xs lg:text-sm font-medium text-slate-300 hover:text-cyan-400 px-3 py-1.5 rounded-full hover:bg-white/5 transition-all duration-200"
+              className="text-xs lg:text-sm font-medium text-slate-300 hover:text-cyan-400 px-2.5 py-1.5 rounded-full hover:bg-white/5 transition-all duration-200"
             >
               {link.name}
             </a>
@@ -193,7 +194,7 @@ export default function Navbar({ onOpenTerminal, onOpenPalette, onOpenResume }) 
               className="w-full flex items-center justify-center gap-2 text-xs font-semibold py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-400 text-slate-950"
             >
               <FileText className="w-4 h-4" />
-              <span>View & Download Resume</span>
+              <span>View &amp; Request Resume</span>
             </button>
           </div>
         </div>

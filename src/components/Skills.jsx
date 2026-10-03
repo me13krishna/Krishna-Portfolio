@@ -19,6 +19,8 @@ export default function Skills() {
     switch (icon) {
       case 'code':
         return <Code2 className="w-5 h-5 text-cyan-400" />;
+      case 'layers':
+        return <Layers className="w-5 h-5 text-blue-400" />;
       case 'cpu':
         return <BrainCircuit className="w-5 h-5 text-purple-400" />;
       case 'terminal':

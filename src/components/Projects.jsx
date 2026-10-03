@@ -5,7 +5,11 @@ import {
   ArrowUpRight, 
   Layers, 
   Info,
-  Sparkles
+  Sparkles,
+  Cpu,
+  ShieldCheck,
+  BarChart3,
+  Globe
 } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import confetti from 'canvas-confetti';
@@ -30,6 +34,13 @@ export default function Projects() {
     }
   };
 
+  const getCategoryIcon = (category) => {
+    if (category.includes('AI')) return <Cpu className="w-4 h-4 text-cyan-400" />;
+    if (category.includes('Blockchain')) return <ShieldCheck className="w-4 h-4 text-purple-400" />;
+    if (category.includes('Analytics')) return <BarChart3 className="w-4 h-4 text-emerald-400" />;
+    return <Globe className="w-4 h-4 text-blue-400" />;
+  };
+
   return (
     <section id="projects" className="py-20 relative">
       
@@ -41,15 +52,16 @@ export default function Projects() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase">
-            <span>03 — Featured Works</span>
+            <span>04 — Featured Works</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">
-            Real-World <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">Software Projects</span>
+            Technical &amp; AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">Projects</span>
           </h2>
           
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            A curated showcase of collaborative campus web platforms, Linux system utilities, and algorithmic engineering solutions.
+            Real-world systems spanning IBM watsonx generative blueprints, blockchain identity vaults, 
+            workforce data analytics dashboards, and campus software platforms.
           </p>
         </div>
 
@@ -70,8 +82,9 @@ export default function Projects() {
                     <span className="font-mono text-xs text-slate-500 font-bold">
                       0{idx + 1} //
                     </span>
-                    <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
-                      {proj.category}
+                    <span className="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                      {getCategoryIcon(proj.category)}
+                      <span>{proj.category}</span>
                     </span>
                   </div>
 
@@ -113,7 +126,7 @@ export default function Projects() {
                   onClick={() => handleLaunchProject(proj.liveUrl)}
                   className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-semibold transition-all hover:shadow-lg hover:shadow-cyan-950/40"
                 >
-                  <span>Live Resource</span>
+                  <span>Project Resource</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
 

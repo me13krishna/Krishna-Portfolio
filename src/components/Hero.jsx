@@ -46,7 +46,7 @@ export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-mono tracking-wide shadow-lg shadow-cyan-950/50 backdrop-blur-md animate-pulse-slow">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="w-2 h-2 rounded-full bg-emerald-400 -ml-4" />
-              <span>Open to Engineering Internships</span>
+              <span>Open to Software &amp; AI Internships</span>
               <span className="text-slate-500">|</span>
               <span className="text-slate-300 font-bold">CGPA 8.76</span>
             </div>
@@ -61,22 +61,21 @@ export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
               </h1>
 
               <p className="text-lg sm:text-xl font-medium text-slate-300 leading-relaxed max-w-xl">
-                B.Tech in <span className="text-cyan-300 font-semibold">Computer Science (Software Engineering)</span> at{' '}
+                B.Tech in <span className="text-cyan-300 font-semibold">Computer Software Engineering</span> at{' '}
                 <span className="text-purple-300 font-semibold">MIT Academy of Engineering, Pune</span>.
               </p>
             </div>
 
             {/* Tagline */}
             <p className="text-slate-400 text-sm sm:text-base font-normal leading-relaxed max-w-xl">
-              Passionate software engineer &amp; AI enthusiast crafting practical student platforms, 
-              Linux system utilities, and high-performance applications.
+              Building AI-powered applications, responsive web interfaces, and data-driven solutions with Python, watsonx Orchestrate, Gemini API, and React.
             </p>
 
             {/* Location & Institution Tags */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-mono text-slate-400 pt-1">
               <div className="flex items-center gap-1.5 bg-surface/80 px-3 py-1.5 rounded-md border border-white/5">
                 <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Pune, Maharashtra, India</span>
+                <span>Pune Division, Maharashtra, India</span>
               </div>
               <div className="flex items-center gap-1.5 bg-surface/80 px-3 py-1.5 rounded-md border border-white/5">
                 <GraduationCap className="w-3.5 h-3.5 text-purple-400" />
@@ -96,12 +95,12 @@ export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
               </a>
 
               <a
-                href="#accounts"
+                href="#experience"
                 onClick={playCyberClick}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface/80 hover:bg-surface text-slate-200 hover:text-white font-semibold text-sm border border-cyan-500/30 hover:border-cyan-400 transition-all shadow-lg hover:shadow-cyan-950/30"
               >
                 <Sparkles className="w-4 h-4 text-cyan-400" />
-                <span>Accounts Hub</span>
+                <span>Experience</span>
               </a>
 
               <button
@@ -140,7 +139,7 @@ export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
                   <span className="text-purple-400">$</span> <span className="text-cyan-300">krishna</span> --status
                 </p>
                 <p className="text-slate-400 text-[11px]">
-                  &gt; [READY] B.Tech CSE Student @ MITAOE | CGPA: <span className="text-emerald-400 font-bold">8.76</span>
+                  &gt; [READY] B.Tech Software Engineering @ MITAOE | CGPA: <span className="text-emerald-400 font-bold">8.76</span> | Co-Founder @ Indian Pixel
                 </p>
               </div>
             </div>
@@ -172,7 +171,7 @@ export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-sm font-bold text-white font-display">Krishna Mishra</h3>
-                      <p className="text-[11px] font-mono text-cyan-400">Software Engineer &bull; MITAOE</p>
+                      <p className="text-[11px] font-mono text-cyan-400">AI Developer &bull; Software Engineer</p>
                     </div>
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
                   </div>

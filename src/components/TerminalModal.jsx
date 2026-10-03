@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Terminal as TerminalIcon, X, Maximize2, Minimize2, Sparkles, Send } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { personalInfo, accounts, projects } from '../data/portfolioData';
+import { personalInfo, accounts, projects, experiences, certifications } from '../data/portfolioData';
 import { playCyberClick, playCyberBeep, playSuccessFanfare } from '../utils/audio';
 
 export default function TerminalModal({ isOpen, onClose, onOpenResume, onToggleMatrix }) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([
-    { type: 'system', text: 'KM-OS v2.4 (x86_64-pc-none-elf) - Cyber Terminal' },
+    { type: 'system', text: 'KM-OS v3.0 (x86_64-pc-none-elf) - Cyber Terminal' },
     { type: 'system', text: 'Type "help" for a list of available commands.' },
   ]);
   const [commandHistory, setCommandHistory] = useState([]);
@@ -71,10 +71,12 @@ export default function TerminalModal({ isOpen, onClose, onOpenResume, onToggleM
           text: `AVAILABLE COMMANDS:
   help       - Show this command reference
   about      - Display bio, education & college info
-  skills     - View programming languages & tech stack
-  projects   - List completed & featured projects
-  accounts   - View developer profiles & socials
-  resume     - View / download resume
+  skills     - View programming languages, AI & tech stack
+  experience - View work experience & internships (Indian Pixel, IBM, etc.)
+  projects   - List completed & featured projects (watsonx, Blockchain, etc.)
+  accounts   - View developer profiles & socials (LeetCode, CodeChef, Medium, etc.)
+  certs      - View verified certificates & Google Drive link
+  resume     - View / request resume
   matrix     - Toggle green matrix digital rain mode
   sudo hire  - Fast-track hire approval (Try it!)
   clear      - Clear the console screen
@@ -91,26 +93,37 @@ COLLEGE: ${personalInfo.college}
 DEGREE: ${personalInfo.degree} (Batch ${personalInfo.batch})
 CGPA: ${personalInfo.cgpa} / 10.0
 LOCATION: ${personalInfo.location}
-STATUS: ${personalInfo.status}`
+STATUS: ${personalInfo.status}
+SUMMARY: Computer Science undergraduate focused on AI, Generative AI, and software engineering.`
+        });
+        break;
+
+      case 'experience':
+      case 'exp':
+        newHistory.push({
+          type: 'output',
+          text: `WORK EXPERIENCE & INTERNSHIPS:
+${experiences.map(e => `• [${e.period}] ${e.role} @ ${e.company} (${e.type})\n  -> ${e.description}`).join('\n')}`
         });
         break;
 
       case 'skills':
         newHistory.push({
           type: 'output',
-          text: `CORE STACK:
-  • Python (Advanced, Cisco Certified)
-  • Artificial Intelligence & Prompt Engineering (Anthropic Certified)
-  • Linux System Scripting & POSIX Automation
-  • Web Development: HTML5, CSS3, Modern JavaScript & React
-  • Data Structures & Algorithmic Problem Solving (LeetCode)`
+          text: `TECHNICAL SKILLS & TOOLS:
+  • Programming: Python, JavaScript (ES6+), C, Java
+  • Web & APIs: HTML, CSS, React, Vite, Node.js, Express.js, REST APIs
+  • AI / ML: Generative AI, Machine Learning, Prompt Engineering, Agentic AI, Computer Vision
+  • AI Platforms: IBM watsonx Orchestrate, IBM Cloud, Gemini API
+  • Data: Data Analysis, Tableau, Orange Data Mining
+  • Dev Tools: Git, GitHub, Jupyter Notebook, VS Code`
         });
         break;
 
       case 'projects':
         newHistory.push({
           type: 'output',
-          text: projects.map(p => `• [${p.category}] ${p.title} -> ${p.liveUrl}`).join('\n')
+          text: projects.map(p => `• [${p.category}] ${p.title}\n  -> ${p.tagline}\n  Resource: ${p.liveUrl}`).join('\n\n')
         });
         break;
 
@@ -118,17 +131,32 @@ STATUS: ${personalInfo.status}`
         newHistory.push({
           type: 'output',
           text: `DEVELOPER & SOCIAL PROFILES:
-  • GitHub: https://github.com/me13krishna
-  • LeetCode: https://leetcode.com/u/me13krishna/
-  • LinkedIn: https://linkedin.com/in/krishnamishra13
-  • Instagram (Personal): @krishnamishra.13
-  • Instagram (Content Creator): @krishna.builds (Upcoming Era)
+  • GitHub: ${personalInfo.githubUrl}
+  • LinkedIn: ${personalInfo.linkedinUrl}
+  • LeetCode: ${personalInfo.leetcodeUrl}
+  • CodeChef: ${personalInfo.codechefUrl}
+  • HackerRank: ${personalInfo.hackerrankUrl}
+  • Medium: ${personalInfo.mediumUrl}
+  • X (Twitter): ${personalInfo.twitterUrl}
+  • Instagram (Creator): ${personalInfo.creatorInstaUrl}
+  • Instagram (Personal): ${personalInfo.personalInstaUrl}
   • Certifications Drive: ${personalInfo.certificatesDriveUrl}`
         });
         break;
 
+      case 'certs':
+      case 'certifications':
+      case 'drive':
+        newHistory.push({
+          type: 'output',
+          text: `VERIFIED CREDENTIALS ARCHIVE:
+  Google Drive URL: ${personalInfo.certificatesDriveUrl}
+  Track: AWS GenAI, IBM Cloud/AI, Cisco Networking Academy, Job Simulations (JPMorganChase, Deloitte), Anthropic Claude, nasscom Digit 101.`
+        });
+        break;
+
       case 'resume':
-        newHistory.push({ type: 'output', text: 'Opening resume drawer...' });
+        newHistory.push({ type: 'output', text: 'Opening resume modal...' });
         onOpenResume();
         break;
 
@@ -246,7 +274,7 @@ Contact: ${personalInfo.email}`
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleCommand}
               className="flex-1 bg-transparent border-none outline-none text-slate-100 font-mono text-xs focus:ring-0 p-0"
-              placeholder="Type command ('help', 'sudo hire', 'matrix', 'skills')..."
+              placeholder="Type command ('help', 'experience', 'projects', 'accounts', 'certs', 'sudo hire')..."
             />
           </div>
 
@@ -256,7 +284,7 @@ Contact: ${personalInfo.email}`
         {/* Quick Command Suggestions Footer */}
         <div className="p-2.5 bg-surface/60 border-t border-white/5 flex flex-wrap items-center gap-1.5 text-[11px] font-mono text-slate-400 select-none">
           <span className="text-slate-500">Quick:</span>
-          {['help', 'about', 'skills', 'projects', 'accounts', 'sudo hire', 'matrix', 'clear'].map((cmd) => (
+          {['help', 'about', 'skills', 'experience', 'projects', 'accounts', 'certs', 'sudo hire', 'matrix'].map((cmd) => (
             <button
               key={cmd}
               onClick={(e) => {

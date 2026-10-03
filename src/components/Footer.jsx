@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Heart, Sparkles } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, InstagramIcon, LeetcodeIcon } from './SocialIcons';
+import { Mail, Heart, Sparkles, FolderDown } from 'lucide-react';
+import { 
+  GithubIcon, 
+  LinkedinIcon, 
+  InstagramIcon, 
+  LeetcodeIcon,
+  CodechefIcon,
+  MediumIcon,
+  TwitterIcon 
+} from './SocialIcons';
 import { personalInfo } from '../data/portfolioData';
 import { playCyberClick } from '../utils/audio';
 
@@ -33,7 +41,7 @@ export default function Footer({ onOpenTerminal }) {
               Krishna<span className="text-cyan-400">.</span>
             </a>
             <p className="text-xs text-slate-500 font-mono">
-              B.Tech Computer Science (Software Engineering) &bull; MITAOE
+              B.Tech Computer Software Engineering &bull; MITAOE Pune
             </p>
           </div>
 
@@ -45,52 +53,92 @@ export default function Footer({ onOpenTerminal }) {
           </div>
 
           {/* Social Icons row */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
             <a
-              href="https://github.com/me13krishna"
+              href={personalInfo.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
               className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
-              title="GitHub"
+              title="GitHub (@me13krishna)"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://linkedin.com/in/krishnamishra13"
+              href={personalInfo.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
               className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
-              title="LinkedIn"
+              title="LinkedIn (krishnamishra13)"
             >
-              <LinkedinIcon className="w-4 h-4" />
+              <LinkedinIcon className="w-4 h-4 text-blue-400" />
             </a>
             <a
-              href="https://leetcode.com/u/me13krishna/"
+              href={personalInfo.leetcodeUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
               className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
-              title="LeetCode"
+              title="LeetCode (@me13_krishna)"
             >
               <LeetcodeIcon className="w-4 h-4 text-amber-400" />
             </a>
             <a
-              href="https://instagram.com"
+              href={personalInfo.codechefUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={playCyberClick}
               className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
-              title="Instagram"
+              title="CodeChef (me13_krishna)"
             >
-              <InstagramIcon className="w-4 h-4 text-pink-400" />
+              <CodechefIcon className="w-4 h-4 text-amber-500" />
+            </a>
+            <a
+              href={personalInfo.mediumUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playCyberClick}
+              className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
+              title="Medium (@krishna1307mishra)"
+            >
+              <MediumIcon className="w-4 h-4 text-emerald-400" />
+            </a>
+            <a
+              href={personalInfo.creatorInstaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playCyberClick}
+              className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
+              title="Instagram Creator (@yappp.kris)"
+            >
+              <InstagramIcon className="w-4 h-4 text-fuchsia-400" />
+            </a>
+            <a
+              href={personalInfo.twitterUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playCyberClick}
+              className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
+              title="X / Twitter (@yapppkris)"
+            >
+              <TwitterIcon className="w-4 h-4 text-slate-300" />
+            </a>
+            <a
+              href={personalInfo.certificatesDriveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playCyberClick}
+              className="p-2 rounded-lg glass-panel hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
+              title="Google Drive Certificates Archive"
+            >
+              <FolderDown className="w-4 h-4 text-cyan-400" />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
               onClick={playCyberClick}
               className="p-2 rounded-lg glass-panel hover:text-white hover:border-cyan-500/40 transition-colors"
-              title="Email"
+              title="Email (krishna1307mishra@gmail.com)"
             >
               <Mail className="w-4 h-4" />
             </a>
@@ -101,7 +149,7 @@ export default function Footer({ onOpenTerminal }) {
         {/* Bottom copyright & quick command prompt */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
           <div>
-            &copy; {new Date().getFullYear()} Krishna Rameshwar Mishra. Designed &amp; Engineered with React &amp; Tailwind.
+            &copy; {new Date().getFullYear()} Krishna Rameshwar Mishra. Built with React, Vite &amp; Tailwind CSS.
           </div>
 
           <button

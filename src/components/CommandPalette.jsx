@@ -8,9 +8,19 @@ import {
   Mail, 
   Sparkles, 
   ExternalLink, 
-  Code2 
+  Code2,
+  FolderDown,
+  Briefcase
 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { 
+  GithubIcon, 
+  LinkedinIcon, 
+  LeetcodeIcon, 
+  CodechefIcon, 
+  MediumIcon, 
+  InstagramIcon, 
+  TwitterIcon 
+} from './SocialIcons';
 import confetti from 'canvas-confetti';
 import { personalInfo } from '../data/portfolioData';
 import { playCyberClick, playCyberBeep } from '../utils/audio';
@@ -39,17 +49,38 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
   const actions = [
     {
       id: 'proj',
-      title: 'Explore Projects',
-      sub: 'Jump to software & platform projects',
+      title: 'Explore Technical Projects',
+      sub: 'watsonx AI Startup Mentor, Qlockain Blockchain, Future of Work',
       icon: <Sparkles className="w-4 h-4 text-cyan-400" />,
       action: () => { window.location.href = '#projects'; onClose(); }
     },
     {
+      id: 'exp',
+      title: 'View Work Experience & Internships',
+      sub: 'Indian Pixel, Drishyam, CodeAlpha, IBM SkillsBuild',
+      icon: <Briefcase className="w-4 h-4 text-purple-400" />,
+      action: () => { window.location.href = '#experience'; onClose(); }
+    },
+    {
+      id: 'cert-drive',
+      title: 'Open Google Drive Certificates Archive',
+      sub: 'Official repository with verified credentials',
+      icon: <FolderDown className="w-4 h-4 text-cyan-300" />,
+      action: () => { window.open(personalInfo.certificatesDriveUrl, '_blank'); onClose(); }
+    },
+    {
       id: 'acc',
       title: 'Developer Accounts & Profiles',
-      sub: 'View LeetCode, GitHub, Instagrams, X',
+      sub: 'LeetCode, CodeChef, GitHub, Medium, Creator IG',
       icon: <Code2 className="w-4 h-4 text-purple-400" />,
       action: () => { window.location.href = '#accounts'; onClose(); }
+    },
+    {
+      id: 'resume',
+      title: 'View & Request Resume',
+      sub: 'Open resume snapshot and PDF link',
+      icon: <FileText className="w-4 h-4 text-amber-400" />,
+      action: () => { onClose(); onOpenResume(); }
     },
     {
       id: 'cli',
@@ -59,11 +90,53 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
       action: () => { onClose(); onOpenTerminal(); }
     },
     {
-      id: 'resume',
-      title: 'View & Download Resume',
-      sub: 'Open resume snapshot and PDF link',
-      icon: <FileText className="w-4 h-4 text-amber-400" />,
-      action: () => { onClose(); onOpenResume(); }
+      id: 'gh',
+      title: 'Open GitHub Profile',
+      sub: 'github.com/me13krishna',
+      icon: <GithubIcon className="w-4 h-4 text-slate-300" />,
+      action: () => { window.open(personalInfo.githubUrl, '_blank'); onClose(); }
+    },
+    {
+      id: 'li',
+      title: 'Open LinkedIn Profile',
+      sub: 'linkedin.com/in/krishnamishra13',
+      icon: <LinkedinIcon className="w-4 h-4 text-blue-400" />,
+      action: () => { window.open(personalInfo.linkedinUrl, '_blank'); onClose(); }
+    },
+    {
+      id: 'lc',
+      title: 'Open LeetCode Profile',
+      sub: 'leetcode.com/u/me13_krishna',
+      icon: <LeetcodeIcon className="w-4 h-4 text-amber-400" />,
+      action: () => { window.open(personalInfo.leetcodeUrl, '_blank'); onClose(); }
+    },
+    {
+      id: 'cc',
+      title: 'Open CodeChef Profile',
+      sub: 'codechef.com/users/me13_krishna',
+      icon: <CodechefIcon className="w-4 h-4 text-amber-500" />,
+      action: () => { window.open(personalInfo.codechefUrl, '_blank'); onClose(); }
+    },
+    {
+      id: 'med',
+      title: 'Open Medium Blog',
+      sub: 'medium.com/@krishna1307mishra',
+      icon: <MediumIcon className="w-4 h-4 text-emerald-400" />,
+      action: () => { window.open(personalInfo.mediumUrl, '_blank'); onClose(); }
+    },
+    {
+      id: 'ig-creator',
+      title: 'Follow Creator Page (@yappp.kris)',
+      sub: 'Tech reels, coding tutorials, AI breakdowns',
+      icon: <InstagramIcon className="w-4 h-4 text-fuchsia-400" />,
+      action: () => { window.open(personalInfo.creatorInstaUrl, '_blank'); onClose(); }
+    },
+    {
+      id: 'x',
+      title: 'Follow on X (Twitter)',
+      sub: 'x.com/yapppkris',
+      icon: <TwitterIcon className="w-4 h-4 text-slate-300" />,
+      action: () => { window.open(personalInfo.twitterUrl, '_blank'); onClose(); }
     },
     {
       id: 'copy-email',
@@ -75,20 +148,6 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
         onClose();
         alert('Email copied: ' + personalInfo.email);
       }
-    },
-    {
-      id: 'gh',
-      title: 'Open GitHub Profile',
-      sub: 'github.com/me13krishna',
-      icon: <GithubIcon className="w-4 h-4 text-slate-300" />,
-      action: () => { window.open('https://github.com/me13krishna', '_blank'); onClose(); }
-    },
-    {
-      id: 'li',
-      title: 'Open LinkedIn Profile',
-      sub: 'linkedin.com/in/krishnamishra13',
-      icon: <LinkedinIcon className="w-4 h-4 text-blue-400" />,
-      action: () => { window.open('https://linkedin.com/in/krishnamishra13', '_blank'); onClose(); }
     },
     {
       id: 'party',
@@ -122,7 +181,7 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Type a command or jump to section..."
+            placeholder="Type a command or jump to profile / project..."
             className="flex-1 bg-transparent border-none outline-none text-white text-sm font-sans placeholder-slate-500 focus:ring-0"
           />
           <kbd className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-slate-400 font-mono">
@@ -154,7 +213,7 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
                     <h5 className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors">
                       {item.title}
                     </h5>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-[11px] text-slate-400 truncate max-w-sm">
                       {item.sub}
                     </p>
                   </div>

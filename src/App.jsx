@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import AccountsHub from './components/AccountsHub';
+import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Certifications from './components/Certifications';
@@ -50,6 +51,8 @@ export default function App() {
         />
 
         <AccountsHub />
+
+        <Experience />
 
         <Skills />
 

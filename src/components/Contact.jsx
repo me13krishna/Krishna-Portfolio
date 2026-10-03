@@ -7,9 +7,19 @@ import {
   MapPin, 
   MessageSquare, 
   Sparkles, 
-  CheckCircle2
+  CheckCircle2,
+  FolderDown,
+  ExternalLink
 } from 'lucide-react';
-import { LinkedinIcon, GithubIcon, InstagramIcon } from './SocialIcons';
+import { 
+  LinkedinIcon, 
+  GithubIcon, 
+  InstagramIcon, 
+  LeetcodeIcon, 
+  CodechefIcon, 
+  MediumIcon,
+  TwitterIcon 
+} from './SocialIcons';
 import confetti from 'canvas-confetti';
 import { personalInfo } from '../data/portfolioData';
 import { playCyberClick, playSuccessFanfare, playCyberBeep } from '../utils/audio';
@@ -92,7 +102,7 @@ export default function Contact() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase">
-            <span>05 — Get In Touch</span>
+            <span>06 — Get In Touch</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">
@@ -100,7 +110,7 @@ export default function Contact() {
           </h2>
           
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Open for software engineering internships, collaborative development projects, or discussing tech.
+            Open for software engineering internships, AI/ML development, collaborative projects, or tech banter.
           </p>
         </div>
 
@@ -115,7 +125,7 @@ export default function Contact() {
                   Communication Channels
                 </h3>
                 <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                  Have an internship role, an ambitious project idea, or just want to network? My inbox is always open.
+                  Have an internship role, an AI project idea, or want to connect? My inbox and socials are always open.
                 </p>
               </div>
 
@@ -146,45 +156,113 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-white">Location</div>
-                  <div className="text-slate-400">Pune, Maharashtra, India</div>
+                  <div className="text-slate-400">Pune Division, Maharashtra, India</div>
                 </div>
               </div>
 
+              {/* Verified Certificates Quick Link */}
+              <div className="p-3.5 rounded-xl bg-cyan-950/40 border border-cyan-500/20 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5">
+                  <FolderDown className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                  <span className="text-xs text-slate-300">Google Drive Credentials Folder</span>
+                </div>
+                <a
+                  href={personalInfo.certificatesDriveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={playCyberClick}
+                  className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 flex-shrink-0"
+                >
+                  <span>Open</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+
               {/* Fast Social Links row */}
-              <div className="pt-4 border-t border-white/10 space-y-2">
+              <div className="pt-4 border-t border-white/10 space-y-2.5">
                 <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
-                  Connect Across Platforms:
+                  Connect Across All Platforms:
                 </span>
                 <div className="flex flex-wrap gap-2">
                   <a
-                    href="https://linkedin.com/in/krishnamishra13"
+                    href={personalInfo.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
                     className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-cyan-300 border-white/10 hover:border-cyan-500/30 transition-all"
-                    title="LinkedIn"
+                    title="LinkedIn (krishnamishra13)"
                   >
-                    <LinkedinIcon className="w-4 h-4" />
+                    <LinkedinIcon className="w-4 h-4 text-blue-400" />
                   </a>
                   <a
-                    href="https://github.com/me13krishna"
+                    href={personalInfo.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-purple-300 border-white/10 hover:border-purple-500/30 transition-all"
-                    title="GitHub"
+                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-white border-white/10 hover:border-purple-500/30 transition-all"
+                    title="GitHub (@me13krishna)"
                   >
-                    <GithubIcon className="w-4 h-4" />
+                    <GithubIcon className="w-4 h-4 text-slate-200" />
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href={personalInfo.leetcodeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playCyberClick}
-                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-pink-300 border-white/10 hover:border-pink-500/30 transition-all"
-                    title="Instagram"
+                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-amber-400 border-white/10 hover:border-amber-500/30 transition-all"
+                    title="LeetCode (@me13_krishna)"
                   >
-                    <InstagramIcon className="w-4 h-4" />
+                    <LeetcodeIcon className="w-4 h-4 text-amber-400" />
+                  </a>
+                  <a
+                    href={personalInfo.codechefUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playCyberClick}
+                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-amber-500 border-white/10 hover:border-amber-500/30 transition-all"
+                    title="CodeChef (me13_krishna)"
+                  >
+                    <CodechefIcon className="w-4 h-4 text-amber-500" />
+                  </a>
+                  <a
+                    href={personalInfo.mediumUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playCyberClick}
+                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-emerald-400 border-white/10 hover:border-emerald-500/30 transition-all"
+                    title="Medium (@krishna1307mishra)"
+                  >
+                    <MediumIcon className="w-4 h-4 text-emerald-400" />
+                  </a>
+                  <a
+                    href={personalInfo.creatorInstaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playCyberClick}
+                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-fuchsia-400 border-white/10 hover:border-fuchsia-500/30 transition-all"
+                    title="Instagram Creator (@yappp.kris)"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-fuchsia-400" />
+                  </a>
+                  <a
+                    href={personalInfo.personalInstaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playCyberClick}
+                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-pink-400 border-white/10 hover:border-pink-500/30 transition-all"
+                    title="Instagram Personal (@me13_krishna)"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-pink-400" />
+                  </a>
+                  <a
+                    href={personalInfo.twitterUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playCyberClick}
+                    className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-cyan-400 border-white/10 hover:border-cyan-500/30 transition-all"
+                    title="X / Twitter (@yapppkris)"
+                  >
+                    <TwitterIcon className="w-4 h-4 text-slate-300" />
                   </a>
                 </div>
               </div>
@@ -247,7 +325,7 @@ export default function Contact() {
                   type="text"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Software Internship / Project Collaboration"
+                  placeholder="Software Internship / Project Collaboration / Tech Talk"
                   className="w-full px-4 py-2.5 rounded-xl bg-void/70 border border-white/10 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 text-sm text-white placeholder-slate-500 transition-colors"
                 />
               </div>

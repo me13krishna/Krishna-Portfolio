@@ -8,14 +8,18 @@ import {
   Copy, 
   Check, 
   Sparkles,
-  Award
+  Award,
+  BookOpen
 } from 'lucide-react';
 import { 
   GithubIcon, 
   LinkedinIcon, 
   InstagramIcon, 
   TwitterIcon, 
-  LeetcodeIcon 
+  LeetcodeIcon,
+  CodechefIcon,
+  HackerrankIcon,
+  MediumIcon
 } from './SocialIcons';
 import { accounts } from '../data/portfolioData';
 import { playCyberClick, playCyberBeep } from '../utils/audio';
@@ -35,19 +39,23 @@ export default function AccountsHub() {
   const getIcon = (iconName) => {
     switch (iconName) {
       case 'github':
-        return <GithubIcon className="w-5 h-5" />;
+        return <GithubIcon className="w-5 h-5 text-slate-200" />;
       case 'linkedin':
-        return <LinkedinIcon className="w-5 h-5" />;
-      case 'code':
+        return <LinkedinIcon className="w-5 h-5 text-blue-400" />;
+      case 'leetcode':
         return <LeetcodeIcon className="w-5 h-5 text-amber-400" />;
+      case 'codechef':
+        return <CodechefIcon className="w-5 h-5 text-amber-500" />;
+      case 'hackerrank':
+        return <HackerrankIcon className="w-5 h-5 text-emerald-400" />;
+      case 'medium':
+        return <MediumIcon className="w-5 h-5 text-emerald-300" />;
       case 'instagram':
         return <InstagramIcon className="w-5 h-5 text-pink-400" />;
       case 'camera':
         return <Video className="w-5 h-5 text-fuchsia-400" />;
-      case 'terminal':
-        return <Terminal className="w-5 h-5 text-emerald-400" />;
       case 'twitter':
-        return <TwitterIcon className="w-5 h-5" />;
+        return <TwitterIcon className="w-5 h-5 text-slate-300" />;
       case 'folder':
         return <FolderDown className="w-5 h-5 text-cyan-400" />;
       default:
@@ -77,16 +85,16 @@ export default function AccountsHub() {
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
             All my programming platforms, competitive coding profiles, open-source repositories, 
-            personal links, and upcoming developer content creation hub in one unified place.
+            tech articles, creator hubs, and verified credentials drive in one unified place.
           </p>
         </div>
 
         {/* Accounts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {accounts.map((acc) => (
             <div
               key={acc.id}
-              className={`group relative rounded-2xl glass-panel p-6 border transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between ${
+              className={`group relative rounded-2xl glass-panel p-5 border transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between ${
                 acc.highlight 
                   ? 'border-cyan-500/30 shadow-lg shadow-cyan-950/20 hover:border-cyan-400/60 hover:shadow-cyan-500/15' 
                   : 'border-white/10 hover:border-purple-500/40 hover:shadow-purple-500/15'
@@ -97,14 +105,16 @@ export default function AccountsHub() {
 
               <div>
                 {/* Header inside card: Icon + Badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:scale-110 group-hover:rotate-3 transition-transform text-white shadow-inner">
+                <div className="flex items-center justify-between mb-3.5">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:scale-110 group-hover:rotate-3 transition-transform text-white shadow-inner">
                     {getIcon(acc.icon)}
                   </div>
                   
-                  <span className={`text-[10px] font-mono px-2.5 py-1 rounded-full font-semibold border ${
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-semibold border ${
                     acc.id === 'insta-creator' 
                       ? 'bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/40 animate-pulse'
+                      : acc.id === 'certificates-drive'
+                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
                       : 'bg-white/5 text-slate-300 border-white/10'
                   }`}>
                     {acc.badge}
@@ -112,11 +122,11 @@ export default function AccountsHub() {
                 </div>
 
                 {/* Account Details */}
-                <div className="space-y-1 mb-3">
-                  <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
+                <div className="space-y-1 mb-2">
+                  <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
                     {acc.category}
                   </p>
-                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
                     {acc.name}
                   </h3>
                 </div>
@@ -128,7 +138,7 @@ export default function AccountsHub() {
 
               {/* Handle with quick Copy button */}
               <div className="pt-3 border-t border-white/5 mt-auto">
-                <div className="flex items-center justify-between gap-2 mb-3 bg-void/60 px-3 py-1.5 rounded-lg border border-white/5 text-xs font-mono">
+                <div className="flex items-center justify-between gap-1.5 mb-2.5 bg-void/60 px-2.5 py-1.5 rounded-lg border border-white/5 text-xs font-mono">
                   <span className="text-slate-300 truncate" title={acc.handle}>
                     {acc.handle}
                   </span>
@@ -153,7 +163,7 @@ export default function AccountsHub() {
                   onClick={playCyberClick}
                   className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-white/5 hover:bg-cyan-500/20 text-slate-200 hover:text-cyan-300 border border-white/5 hover:border-cyan-500/30 text-xs font-semibold transition-all group-hover:shadow-md"
                 >
-                  <span>Visit Profile</span>
+                  <span>Visit Link</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -170,26 +180,26 @@ export default function AccountsHub() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h4 className="text-white font-bold text-base">Content Creation Journey Starting Soon</h4>
+                <h4 className="text-white font-bold text-base">Content Creation Hub: @yappp.kris</h4>
                 <span className="text-[10px] font-mono bg-fuchsia-500/30 text-fuchsia-200 px-2 py-0.5 rounded-full border border-fuchsia-400/40 font-semibold">
-                  Exciting Era
+                  Tech Reels &amp; AI
                 </span>
               </div>
               <p className="text-xs text-slate-300 mt-1 max-w-2xl">
-                Preparing short-form engineering breakdowns, AI tool tutorials, campus tech life, and daily coding solutions. Stay tuned or drop a follow!
+                Watch engineering breakdowns, generative AI experiments, daily coding hacks, and life as an engineering student. Drop a follow on Instagram!
               </p>
             </div>
           </div>
 
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/yappp.kris?stkn=cjl2YTZ0eWV6MzJu"
             target="_blank"
             rel="noopener noreferrer"
             onClick={playCyberClick}
             className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:brightness-110 text-white font-semibold text-xs shadow-lg shadow-fuchsia-500/20 transition-all active:scale-95"
           >
             <InstagramIcon className="w-4 h-4" />
-            <span>Follow Creator Page</span>
+            <span>Follow @yappp.kris</span>
           </a>
         </div>
 
