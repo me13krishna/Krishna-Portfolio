@@ -4,11 +4,11 @@ import {
   Copy, 
   Check, 
   MapPin, 
-  CheckCircle2,
-  FolderDown,
-  ExternalLink,
-  Mail,
-  ArrowUpRight
+  CheckCircle2, 
+  Mail, 
+  ArrowUpRight,
+  Sparkles,
+  MessageSquare
 } from 'lucide-react';
 import { 
   LinkedinIcon, 
@@ -31,7 +31,9 @@ export default function Contact() {
     message: ''
   });
   const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [toastMessage, setToastMessage] = useState('');
 
   const copyEmail = () => {
@@ -49,35 +51,50 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      setToastMessage('Please complete all required fields.');
-      setTimeout(() => setToastMessage(''), 3000);
+      setErrorMsg('Please fill in your name, email, and message.');
+      setTimeout(() => setErrorMsg(''), 3500);
       return;
     }
 
-    try {
-      confetti({
-        particleCount: 45,
-        spread: 60,
-        origin: { y: 0.7 },
-        colors: ['#E8C547', '#7FA63A', '#173D2B']
+    setIsSubmitting(true);
+    setErrorMsg('');
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...formData })
+    })
+      .then(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+        try {
+          confetti({
+            particleCount: 50,
+            spread: 60,
+            origin: { y: 0.7 },
+            colors: ['#E8C547', '#7FA63A', '#173D2B']
+          });
+        } catch (err) {}
+      })
+      .catch((error) => {
+        // Fallback for local testing: open mailto
+        setIsSubmitting(false);
+        setSubmitted(true);
+        const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name}`);
+        const body = encodeURIComponent(
+          `Hello Krishna,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        );
+        window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
       });
-    } catch (err) {}
-
-    const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Hello Krishna,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
-
-    setSubmitted(true);
-    setToastMessage('Opening your email client...');
-    setTimeout(() => {
-      setSubmitted(false);
-      setToastMessage('');
-    }, 4000);
   };
 
   return (
@@ -96,254 +113,277 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="max-w-3xl mb-20 space-y-3 text-left">
+        {/* Section Header with Strong Closing Headline */}
+        <div className="max-w-3xl mb-16 space-y-3 text-left">
           <span className="text-xs font-mono uppercase tracking-widest text-forest dark:text-sun font-semibold block">
-            GET IN TOUCH &bull; COLLABORATION
+            CONTACT &bull; INQUIRIES &bull; COLLABORATIONS
           </span>
           <h2 className="text-4xl sm:text-6xl font-bold text-charcoal dark:text-warm-white tracking-tight">
-            Have an idea worth building?
+            Let’s build something{' '}
+            <span className="text-forest dark:text-sun font-serif italic font-normal">
+              thoughtful together.
+            </span>
           </h2>
           <p className="text-sm sm:text-base text-charcoal-muted dark:text-dark-textMuted leading-relaxed font-normal">
-            Whether you have an ambitious software project, an AI architecture question, or are looking for a dedicated software engineering builder — my inbox is always open.
+            Whether you have an internship opening, a distributed systems challenge, an AI reasoning pipeline, or an ambitious product in mind — my inbox is always open.
           </p>
         </div>
 
-        {/* Forest Green Container */}
-        <div className="rounded-[36px] bg-forest dark:bg-dark-card border border-forest/20 dark:border-white/10 p-8 sm:p-12 text-warm-white shadow-soft-lift text-left">
+        {/* 12-Column Responsive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 text-left">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column (5 cols): Direct Channels, Socials & Location */}
+          <div className="lg:col-span-5 space-y-6">
             
-            {/* Left Column (5 cols): Direct Channels & Online Presence */}
-            <div className="lg:col-span-5 space-y-6">
-              
-              <div>
-                <h3 className="text-2xl font-bold text-warm-white tracking-tight">
-                  Direct Channels
-                </h3>
-                <p className="text-xs text-warm-white/75 dark:text-dark-textMuted mt-1 leading-relaxed">
-                  Fastest response via direct email or LinkedIn message.
-                </p>
-              </div>
+            {/* Direct Email Card */}
+            <div className="p-7 rounded-[28px] bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-4 shadow-soft-card">
+              <span className="text-xs font-mono uppercase tracking-wider text-forest dark:text-sun font-semibold block">
+                Direct Electronic Mail
+              </span>
 
-              {/* Email Box */}
-              <div className="p-5 rounded-2xl bg-white/10 dark:bg-dark-cardElevated border border-white/10 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-sun uppercase tracking-wider font-semibold">
-                    Direct Email
-                  </span>
-                  <button
-                    onClick={copyEmail}
-                    className="flex items-center gap-1.5 text-xs text-warm-white/80 hover:text-warm-white transition-colors"
-                  >
-                    {copied ? <Check className="w-3.5 h-3.5 text-sun" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copied ? 'Copied' : 'Copy'}</span>
-                  </button>
+              <div className="p-4 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 truncate">
+                  <Mail className="w-4 h-4 text-forest dark:text-sun flex-shrink-0" />
+                  <span className="text-xs font-mono text-charcoal dark:text-warm-white truncate">{personalInfo.email}</span>
                 </div>
-                <a 
-                  href={`mailto:${personalInfo.email}`}
-                  className="text-sm font-semibold text-warm-white hover:text-sun transition-colors block truncate font-mono"
+                <button
+                  onClick={copyEmail}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-forest/5 dark:bg-white/5 hover:bg-forest/10 dark:hover:bg-white/10 text-xs font-sans text-forest dark:text-warm-white transition-all flex-shrink-0"
                 >
-                  {personalInfo.email}
-                </a>
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-leaf" />
+                      <span className="text-leaf font-medium">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-olive dark:text-sun" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
               </div>
 
-              {/* Location Badge */}
-              <div className="flex items-center gap-3.5 text-xs text-warm-white/90">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-sun flex-shrink-0">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="font-semibold text-warm-white">Location Base</div>
-                  <div className="text-warm-white/70 dark:text-dark-textMuted">Pune Division, Maharashtra, India</div>
-                </div>
+              <div className="flex items-center gap-2 text-xs font-mono text-charcoal-muted dark:text-dark-textMuted pt-1">
+                <MapPin className="w-3.5 h-3.5 text-olive dark:text-leaf" />
+                <span>Pune, Maharashtra, India (IST / UTC+5:30)</span>
               </div>
+            </div>
 
-              {/* Drive Link */}
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5">
-                  <FolderDown className="w-4 h-4 text-sun flex-shrink-0" />
-                  <span className="text-xs text-warm-white/90">Verified Credentials Folder</span>
-                </div>
+            {/* Social Network Ecosystem */}
+            <div className="p-7 rounded-[28px] bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-4 shadow-soft-card">
+              <span className="text-xs font-mono uppercase tracking-wider text-forest dark:text-sun font-semibold block">
+                Online Presence &amp; Profiles
+              </span>
+
+              <div className="grid grid-cols-2 gap-2.5">
                 <a
-                  href={personalInfo.certificatesDriveUrl}
+                  href={personalInfo.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="text-xs font-semibold text-sun hover:underline flex items-center gap-1 flex-shrink-0"
+                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
                 >
-                  <span>Open Drive</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <GithubIcon className="w-4 h-4" />
+                  <span className="font-mono text-[11px]">GitHub</span>
+                </a>
+
+                <a
+                  href={personalInfo.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={playCyberClick}
+                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                >
+                  <LinkedinIcon className="w-4 h-4 text-olive dark:text-sun" />
+                  <span className="font-mono text-[11px]">LinkedIn</span>
+                </a>
+
+                <a
+                  href={personalInfo.leetcodeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={playCyberClick}
+                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                >
+                  <LeetcodeIcon className="w-4 h-4 text-sun" />
+                  <span className="font-mono text-[11px]">LeetCode</span>
+                </a>
+
+                <a
+                  href={personalInfo.codechefUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={playCyberClick}
+                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                >
+                  <CodechefIcon className="w-4 h-4 text-leaf" />
+                  <span className="font-mono text-[11px]">CodeChef</span>
+                </a>
+
+                <a
+                  href={personalInfo.mediumUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={playCyberClick}
+                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                >
+                  <MediumIcon className="w-4 h-4 text-forest dark:text-sun" />
+                  <span className="font-mono text-[11px]">Medium</span>
+                </a>
+
+                <a
+                  href={personalInfo.twitterUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={playCyberClick}
+                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                >
+                  <TwitterIcon className="w-4 h-4 text-charcoal dark:text-warm-white" />
+                  <span className="font-mono text-[11px]">X / Twitter</span>
                 </a>
               </div>
-
-              {/* Social Channels Row */}
-              <div className="pt-4 border-t border-white/10 space-y-3">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-warm-white/70 block">
-                  Find Me Online:
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  <a
-                    href={personalInfo.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCyberClick}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-warm-white transition-colors"
-                    title="LinkedIn"
-                  >
-                    <LinkedinIcon className="w-4 h-4 text-sun" />
-                  </a>
-                  <a
-                    href={personalInfo.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCyberClick}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-warm-white transition-colors"
-                    title="GitHub"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={personalInfo.leetcodeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCyberClick}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-warm-white transition-colors"
-                    title="LeetCode"
-                  >
-                    <LeetcodeIcon className="w-4 h-4 text-sun" />
-                  </a>
-                  <a
-                    href={personalInfo.codechefUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCyberClick}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-warm-white transition-colors"
-                    title="CodeChef"
-                  >
-                    <CodechefIcon className="w-4 h-4 text-leaf" />
-                  </a>
-                  <a
-                    href={personalInfo.mediumUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCyberClick}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-warm-white transition-colors"
-                    title="Medium"
-                  >
-                    <MediumIcon className="w-4 h-4 text-sun" />
-                  </a>
-                  <a
-                    href={personalInfo.creatorInstaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCyberClick}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-warm-white transition-colors"
-                    title="Instagram Creator (@yappp.kris)"
-                  >
-                    <InstagramIcon className="w-4 h-4 text-leaf" />
-                  </a>
-                  <a
-                    href={personalInfo.twitterUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCyberClick}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-warm-white transition-colors"
-                    title="X / Twitter"
-                  >
-                    <TwitterIcon className="w-4 h-4 text-warm-white/80" />
-                  </a>
-                </div>
-              </div>
-
             </div>
 
-            {/* Right Column (7 cols): Clean Contact Form */}
-            <div className="lg:col-span-7">
-              <form 
-                onSubmit={handleSubmit}
-                className="rounded-[28px] p-8 sm:p-9 bg-forest-deep dark:bg-dark-cardElevated border border-white/10 shadow-lg space-y-5"
-              >
-                <h3 className="text-xl font-bold text-warm-white tracking-tight">
-                  Send a Direct Message
-                </h3>
+          </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label htmlFor="name" className="text-xs font-mono text-warm-white/70">
-                      Your Name *
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="e.g. Maya Patel"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-sun focus:outline-none text-sm text-warm-white placeholder-warm-white/30 transition-colors"
-                    />
+          {/* Right Column (7 cols): Working Netlify Contact Form */}
+          <div className="lg:col-span-7">
+            <div className="p-8 sm:p-10 rounded-[32px] bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 shadow-soft-card">
+              
+              <h3 className="text-xl font-bold text-charcoal dark:text-warm-white mb-2">
+                Send a Direct Message
+              </h3>
+              <p className="text-xs text-charcoal-muted dark:text-dark-textMuted mb-6">
+                Connected directly to Netlify Forms. Expected response within 24 hours.
+              </p>
+
+              {submitted ? (
+                <div className="p-8 rounded-2xl bg-forest/5 dark:bg-white/5 border border-forest/15 dark:border-sun/30 text-center space-y-4 animate-in fade-in duration-300">
+                  <div className="w-12 h-12 rounded-full bg-forest dark:bg-sun text-warm-white dark:text-forest-dark flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-6 h-6" />
                   </div>
-
-                  <div className="space-y-1.5">
-                    <label htmlFor="email" className="text-xs font-mono text-warm-white/70">
-                      Email Address *
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="maya@company.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-sun focus:outline-none text-sm text-warm-white placeholder-warm-white/30 transition-colors"
-                    />
-                  </div>
+                  <h4 className="text-lg font-bold text-charcoal dark:text-warm-white">
+                    Message Dispatched Successfully
+                  </h4>
+                  <p className="text-xs text-charcoal-muted dark:text-dark-textMuted max-w-sm mx-auto">
+                    Thank you for reaching out, {formData.name}. I'll review your note and respond back to {formData.email} promptly.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({ name: '', email: '', subject: '', message: '' });
+                    }}
+                    className="text-xs font-mono text-forest dark:text-sun underline underline-offset-4"
+                  >
+                    Send another message
+                  </button>
                 </div>
-
-                <div className="space-y-1.5">
-                  <label htmlFor="subject" className="text-xs font-mono text-warm-white/70">
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Project Inquiry / Role Opportunity / General Chat"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-sun focus:outline-none text-sm text-warm-white placeholder-warm-white/30 transition-colors"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label htmlFor="message" className="text-xs font-mono text-warm-white/70">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Hi Krishna, I came across your work on Qlockain & Startup Mentor and would love to connect regarding..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-sun focus:outline-none text-sm text-warm-white placeholder-warm-white/30 transition-colors resize-none font-sans"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  onClick={playCyberClick}
-                  className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-sun hover:bg-sun-light text-forest-dark font-bold text-sm shadow-md transition-all active:scale-98"
+              ) : (
+                <form
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  onSubmit={handleSubmit}
+                  className="space-y-4"
                 >
-                  <Send className="w-4 h-4 text-forest-dark" />
-                  <span>{submitted ? 'Message Prepared' : 'Send Message'}</span>
-                </button>
-              </form>
-            </div>
+                  {/* Netlify Hidden Form Name Field */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  
+                  {/* Netlify Honeypot Field */}
+                  <p className="hidden">
+                    <label>
+                      Don’t fill this out if you're human: <input name="bot-field" />
+                    </label>
+                  </p>
 
+                  {errorMsg && (
+                    <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs font-mono">
+                      {errorMsg}
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="e.g. Alex Mercer"
+                        className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="alex@company.com"
+                        className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
+                      Subject / Topic
+                    </label>
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder="e.g. Engineering Internship / AI System Collaboration"
+                      className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
+                      Message *
+                    </label>
+                    <textarea
+                      name="message"
+                      rows={5}
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell me about your team, problem space, or project timeline..."
+                      className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    onClick={playCyberClick}
+                    className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-xs shadow-md transition-all disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <span>Dispatching message...</span>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <Send className="w-3.5 h-3.5" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+
+            </div>
           </div>
 
         </div>

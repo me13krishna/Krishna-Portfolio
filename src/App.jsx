@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ProofStrip from './components/ProofStrip';
 import Projects from './components/Projects';
-import ProblemSolving from './components/ProblemSolving';
 import About from './components/About';
-import Experience from './components/Experience';
 import Skills from './components/Skills';
-import Certifications from './components/Certifications';
+import Experience from './components/Experience';
+import CurrentlyBuilding from './components/CurrentlyBuilding';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import TerminalModal from './components/TerminalModal';
@@ -23,7 +21,6 @@ export default function App() {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('km_portfolio_theme');
       if (stored === 'dark' || stored === 'light') return stored;
-      // Light mode is the primary experience; only default to dark if the OS explicitly prefers dark
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         return 'dark';
       }
@@ -34,6 +31,7 @@ export default function App() {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Sync theme changes with DOM and localStorage
   useEffect(() => {
@@ -50,7 +48,19 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Initialize Lenis buttery-smooth scrolling
+  // Scroll Progress Calculation
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        setScrollProgress((window.scrollY / totalScroll) * 100);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Initialize Lenis smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -89,6 +99,16 @@ export default function App() {
   return (
     <div className="min-h-screen bg-cream dark:bg-dark-bg text-charcoal dark:text-warm-white relative selection:bg-leaf/25 dark:selection:bg-sun/25 bg-grain transition-colors duration-300 overflow-x-hidden">
       
+      {/* Top Scroll Progress Indicator Bar */}
+      <div 
+        className="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-forest via-leaf to-sun dark:from-sun dark:via-leaf dark:to-forest z-50 transition-all duration-150 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      />
+
       {/* Subtle Natural Grid Pattern */}
       <div className="fixed inset-0 bg-natural-grid pointer-events-none opacity-40 z-0" />
       
@@ -96,10 +116,10 @@ export default function App() {
       <div className="fixed top-0 right-1/4 w-[700px] h-[700px] bg-sunlight-radial pointer-events-none z-0" />
       <div className="fixed bottom-1/4 left-10 w-[600px] h-[600px] bg-canopy-glow pointer-events-none z-0" />
 
-      {/* Smooth Editorial Custom Cursor */}
+      {/* Smooth Custom Cursor on Desktop */}
       <CustomCursor />
 
-      {/* Sticky Translucent Navigation */}
+      {/* a) Sticky Minimal Navbar */}
       <Navbar 
         theme={theme}
         onToggleTheme={toggleTheme}
@@ -108,47 +128,41 @@ export default function App() {
         onOpenResume={() => setResumeOpen(true)}
       />
 
-      {/* Primary Narrative & Content Flow */}
-      <main className="relative z-10">
+      {/* Primary Narrative & Content Flow in Exact Required Order */}
+      <main id="main-content" className="relative z-10">
         
-        {/* 1. Hero Statement & Editorial Portrait of Krishna */}
+        {/* b) Hero: Value proposition, headline options, 2 CTAs, status chip, social bar */}
         <Hero 
           onOpenTerminal={() => setTerminalOpen(true)}
           onOpenResume={() => setResumeOpen(true)}
         />
         
-        {/* 2. Core Pillars of Execution / Proof of Craft */}
-        <ProofStrip />
-
-        {/* 3. Featured Case Studies & Complete Directory (12 Projects) */}
+        {/* c) Selected Work: Flagship case studies with STAR modal & filterable 12 projects */}
         <Projects />
 
-        {/* 4. Problem Solving / Coding Profiles Arena (LeetCode, CodeChef, HackerRank) */}
-        <ProblemSolving />
-
-        {/* 5. Authentic Story & Academic Journey */}
+        {/* d) About: Short human story ~120 words, optimized portrait, 4 quick facts */}
         <About 
           onOpenResume={() => setResumeOpen(true)}
         />
 
-        {/* 6. Experience & Leadership Timeline */}
-        <Experience />
-
-        {/* 7. Categorized Technologies & System Craft */}
+        {/* e) Skills/Stack: Grouped with real application context instead of fake percentage bars */}
         <Skills />
 
-        {/* 8. Credentials & Google Drive Repository */}
-        <Certifications />
+        {/* f) Experience / Education / Achievements: Vertical timeline, quantified impact, drive folder */}
+        <Experience />
 
-        {/* 9. Direct Outreach & Message Channels */}
+        {/* g) Now / Currently Building: Active sprints + Medium notes teaser */}
+        <CurrentlyBuilding />
+
+        {/* h) Contact: Strong headline, copy-to-clipboard email, socials, working Netlify form */}
         <Contact />
 
       </main>
 
-      {/* 10. Minimal Premium Footer */}
+      {/* i) Footer: Minimal, back-to-top, copyright, designed & built by Krishna */}
       <Footer />
 
-      {/* Quiet Floating Quick Navigation Pill (Bottom-Left) */}
+      {/* Floating Quick Navigation Pill (Bottom-Left) */}
       <div className="fixed bottom-6 left-6 z-40 hidden md:flex items-center gap-2 bg-cream-card/90 dark:bg-dark-card/90 p-1.5 rounded-full border border-forest/10 dark:border-white/10 shadow-soft-card backdrop-blur-xl transition-all duration-300 hover:border-leaf/40 dark:hover:border-sun/40">
         <button
           onClick={() => {

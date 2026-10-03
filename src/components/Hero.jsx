@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import { 
   ArrowRight, 
   MapPin, 
-  GraduationCap, 
   Sparkles,
-  ArrowDownRight,
-  FileText,
+  ArrowDown,
+  Download,
+  Mail,
   Copy,
-  Check,
-  Code2
+  Check
 } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { personalInfo, heroHeadlineOptions } from '../data/portfolioData';
 import { playCyberClick } from '../utils/audio';
 import krishnaImg from '../assets/krishna.jpg';
 
 export default function Hero({ onOpenResume }) {
+  const [selectedHeadlineIdx, setSelectedHeadlineIdx] = useState(0);
   const [copied, setCopied] = useState(false);
+
+  const activeHeadline = heroHeadlineOptions[selectedHeadlineIdx] || heroHeadlineOptions[0];
 
   const copyEmail = () => {
     playCyberClick();
@@ -25,185 +28,208 @@ export default function Hero({ onOpenResume }) {
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
+    <section id="home" className="relative min-h-[94vh] flex flex-col justify-between pt-32 pb-16 overflow-hidden">
       
-      {/* Background Ambient Sunlight & Canopy Glows */}
-      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-sunlight-radial pointer-events-none -z-10" />
+      {/* Background Ambient Subtle Gradient Mesh */}
+      <div className="absolute top-1/4 right-1/4 w-[650px] h-[650px] bg-sunlight-radial pointer-events-none -z-10" />
       <div className="absolute bottom-10 left-10 w-[550px] h-[550px] bg-canopy-glow pointer-events-none -z-10" />
+      
+      {/* Delicate floating ambient glow */}
+      <div className="absolute top-24 right-12 w-80 h-80 bg-sun/[0.08] dark:bg-sun/[0.05] rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute bottom-24 left-1/3 w-96 h-96 bg-leaf/[0.09] dark:bg-leaf/[0.05] rounded-full blur-[110px] pointer-events-none -z-10" />
 
-      {/* Floating Organic Soft Ambient Light Orbs */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-sun/[0.12] dark:bg-sun/[0.07] rounded-full blur-[120px] pointer-events-none -z-10" />
-      <div className="absolute bottom-20 left-1/4 w-[420px] h-[420px] bg-leaf/[0.14] dark:bg-leaf/[0.08] rounded-full blur-[130px] pointer-events-none -z-10" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
         
-        {/* Asymmetric Editorial Grid */}
+        {/* 12-Column Responsive Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
-          {/* Left Column (7 cols): Identity, Headline & Philosophy */}
+          {/* Left Column (7 cols): Value Prop, Headline, Bio, CTAs & Socials */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-7 text-left">
             
-            {/* Small Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-xs font-mono text-charcoal-muted dark:text-dark-textMuted shadow-sm backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-leaf dark:bg-sun animate-pulse shadow-[0_0_10px_rgba(127,166,58,0.6)]" />
-              <span className="text-forest dark:text-sun font-semibold tracking-wider text-[11px] uppercase">
-                SOFTWARE ENGINEER &bull; AI BUILDER &bull; CREATOR
+            {/* Status Chip: Open to internships & collaborations */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-xs font-mono shadow-sm backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-leaf dark:bg-sun animate-pulse shadow-[0_0_8px_rgba(127,166,58,0.6)]" />
+              <span className="text-charcoal dark:text-warm-white font-medium text-[11px] tracking-wide">
+                Open to internships &amp; collaborations
               </span>
             </div>
 
-            {/* Large Expressive Headline */}
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-bold text-charcoal dark:text-warm-white tracking-tight leading-[1.08]">
-                Building ideas <br />
-                that turn into{' '}
-                <span className="relative inline-block">
-                  <span className="text-forest dark:text-sun font-editorial italic font-normal">
-                    real products.
-                  </span>
-                  <span className="absolute left-0 right-0 -bottom-1 h-1 bg-sun/40 dark:bg-leaf/40 rounded-full" />
+            {/* Fluid Hero Headline: clamp(2.8rem, 7vw, 6.2rem) with Italic Serif Accent */}
+            <div className="space-y-4 w-full">
+              <h1 className="text-[clamp(2.5rem,6.5vw,5.5rem)] font-bold text-charcoal dark:text-warm-white tracking-[-0.035em] leading-[1.05]">
+                {activeHeadline.primary}{' '}
+                <span className="font-serif italic font-normal text-forest dark:text-sun block sm:inline">
+                  {activeHeadline.accent}
                 </span>
               </h1>
 
-              {/* Concise Supporting Statement */}
-              <p className="text-lg sm:text-xl font-normal text-charcoal-muted dark:text-dark-textMuted tracking-normal leading-relaxed max-w-2xl">
-                I’m <strong className="text-charcoal dark:text-warm-white font-semibold">Krishna Mishra</strong> — an undergraduate engineer at <strong className="text-forest dark:text-sun font-medium">MIT Academy of Engineering, Pune</strong> (CGPA 8.76). I engineer practical, resilient full-stack applications, deploy enterprise AI reasoning pipelines, and explore the frontier where human intuition meets machine intelligence.
+              {/* Short Supporting Sentence */}
+              <p className="text-base sm:text-lg font-normal text-charcoal-muted dark:text-dark-textMuted tracking-normal leading-relaxed max-w-xl">
+                I’m <strong className="text-charcoal dark:text-warm-white font-semibold">{personalInfo.shortName}</strong> — Software Engineer &amp; AI Builder at <strong className="text-charcoal dark:text-warm-white font-semibold">MIT Academy of Engineering, Pune</strong> (CGPA 8.76). Crafting thoughtful software, intelligent systems, and calm digital experiences.
               </p>
             </div>
 
-            {/* Status Indicators (Natural, Clean & Non-Techy) */}
+            {/* Status Indicators */}
             <div className="flex flex-wrap items-center gap-3 text-xs text-charcoal-muted dark:text-dark-textMuted pt-1">
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white font-mono text-[11px]">
                 <MapPin className="w-3.5 h-3.5 text-olive dark:text-leaf" />
-                <span>Pune, Maharashtra, India</span>
+                <span>Pune, India</span>
               </div>
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white">
-                <GraduationCap className="w-3.5 h-3.5 text-gold dark:text-sun" />
-                <span>MITAOE &bull; CGPA 8.76</span>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white font-mono text-[11px]">
+                <span className="text-forest dark:text-sun font-bold">8.76</span>
+                <span>CGPA &bull; MITAOE</span>
               </div>
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white">
-                <span className="w-2 h-2 rounded-full bg-leaf dark:bg-sun" />
-                <span>Open for High-Impact Roles</span>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white font-mono text-[11px]">
+                <Sparkles className="w-3 h-3 text-sun" />
+                <span>Python &bull; React &bull; watsonx</span>
               </div>
             </div>
 
-            {/* Premium CTA Buttons */}
+            {/* 2 Primary CTAs + Direct Resume Download */}
             <div className="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+              {/* CTA 1: View Work */}
               <a
                 href="#projects"
                 onClick={playCyberClick}
-                data-cursor="VIEW"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-sm shadow-soft-lift hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-xs tracking-wide shadow-soft-lift hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group"
               >
-                <span>View My Work</span>
+                <span>View Selected Work</span>
                 <ArrowRight className="w-4 h-4 text-warm-white dark:text-forest-dark group-hover:translate-x-0.5 transition-transform" />
               </a>
 
+              {/* CTA 2: Download / Review Resume */}
               <a
-                href="#contact"
+                href="/resume.pdf"
+                download="Krishna_Mishra_Resume.pdf"
                 onClick={playCyberClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-cream-card dark:bg-dark-card hover:bg-cream-subtle dark:hover:bg-dark-cardElevated text-charcoal dark:text-warm-white font-medium text-sm border border-forest/15 dark:border-white/10 hover:border-forest/30 dark:hover:border-sun/40 transition-all duration-300"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-cream-card dark:bg-dark-card hover:bg-cream-subtle dark:hover:bg-dark-cardElevated text-charcoal dark:text-warm-white font-medium text-xs border border-forest/15 dark:border-white/10 hover:border-forest/30 dark:hover:border-sun/40 transition-all duration-300"
               >
-                <span>Let’s Connect</span>
-                <ArrowDownRight className="w-4 h-4 text-olive dark:text-leaf" />
+                <Download className="w-4 h-4 text-olive dark:text-sun" />
+                <span>Download Resume</span>
               </a>
 
+              {/* View Interactive CV */}
               <button
                 onClick={() => {
                   playCyberClick();
                   onOpenResume();
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-transparent hover:bg-forest/5 dark:hover:bg-white/5 text-charcoal-muted dark:text-dark-textMuted hover:text-forest dark:hover:text-warm-white text-xs font-mono transition-all duration-200"
-                title="Curriculum Vitae"
+                className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted hover:text-forest dark:hover:text-sun underline underline-offset-4 decoration-forest/30 dark:decoration-sun/30 transition-colors py-2 px-1"
               >
-                <FileText className="w-3.5 h-3.5 text-olive dark:text-sun" />
-                <span>Curriculum Vitae</span>
+                or view interactive CV
               </button>
             </div>
 
-            {/* Direct Email Card - Soft & Inviting */}
-            <div className="w-full max-w-lg rounded-2xl bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 p-4 text-xs text-charcoal-muted dark:text-dark-textMuted flex items-center justify-between shadow-soft-card backdrop-blur-md">
-              <div className="flex items-center gap-3 truncate">
-                <span className="w-2 h-2 rounded-full bg-sun flex-shrink-0" />
-                <span className="text-charcoal dark:text-warm-white font-mono truncate">{personalInfo.email}</span>
-              </div>
+            {/* Direct Connect & Social Bar: GitHub, LinkedIn, Email */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
+              <a
+                href={personalInfo.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={playCyberClick}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 hover:border-forest/30 dark:hover:border-sun/30 text-charcoal dark:text-warm-white transition-all"
+                title="GitHub Profile"
+              >
+                <GithubIcon className="w-3.5 h-3.5 text-charcoal dark:text-warm-white" />
+                <span className="font-mono text-[11px]">me13krishna</span>
+              </a>
+
+              <a
+                href={personalInfo.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={playCyberClick}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 hover:border-forest/30 dark:hover:border-sun/30 text-charcoal dark:text-warm-white transition-all"
+                title="LinkedIn Profile"
+              >
+                <LinkedinIcon className="w-3.5 h-3.5 text-olive dark:text-sun" />
+                <span className="font-mono text-[11px]">in/krishnamishra13</span>
+              </a>
+
               <button
                 onClick={copyEmail}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-forest/5 dark:bg-white/5 hover:bg-forest/10 dark:hover:bg-white/10 text-forest dark:text-warm-white transition-colors border border-forest/10 dark:border-white/10 flex-shrink-0 font-sans text-xs"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 hover:border-forest/30 dark:hover:border-sun/30 text-charcoal dark:text-warm-white transition-all"
+                title="Copy Email Address"
               >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-leaf" />
-                    <span className="text-leaf font-medium">Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-olive dark:text-sun" />
-                    <span>Copy Email</span>
-                  </>
-                )}
+                <Mail className="w-3.5 h-3.5 text-gold dark:text-sun" />
+                <span className="font-mono text-[11px] truncate max-w-[170px] sm:max-w-none">{personalInfo.email}</span>
+                {copied ? <Check className="w-3 h-3 text-leaf" /> : <Copy className="w-3 h-3 text-charcoal-muted opacity-60" />}
               </button>
+            </div>
+
+            {/* Subtle Headline Switcher Pill (Delight element for user selection) */}
+            <div className="pt-2 flex items-center gap-2 text-[10px] font-mono text-charcoal-muted dark:text-dark-textMuted">
+              <span className="opacity-70">Headline Style:</span>
+              <div className="inline-flex rounded-lg p-0.5 bg-forest/5 dark:bg-white/5 border border-forest/10 dark:border-white/10">
+                {heroHeadlineOptions.map((opt, i) => (
+                  <button
+                    key={opt.id}
+                    onClick={() => {
+                      playCyberClick();
+                      setSelectedHeadlineIdx(i);
+                    }}
+                    className={`px-2 py-0.5 rounded-md transition-all ${
+                      selectedHeadlineIdx === i
+                        ? 'bg-cream-card dark:bg-dark-cardElevated text-forest dark:text-sun font-semibold shadow-xs'
+                        : 'text-charcoal-muted dark:text-dark-textMuted hover:text-charcoal'
+                    }`}
+                  >
+                    0{i + 1}
+                  </button>
+                ))}
+              </div>
             </div>
 
           </div>
 
-          {/* Right Column (5 cols): Editorial Portrait Composition */}
+          {/* Right Column (5 cols): Professional Portrait of Krishna */}
           <div className="lg:col-span-5 flex justify-center items-center relative">
             
-            {/* Warm Sunlight & Leaf Aura behind photo */}
-            <div className="absolute inset-0 max-w-[390px] max-h-[490px] mx-auto bg-gradient-to-tr from-leaf/30 via-sun/20 to-transparent dark:from-leaf/20 dark:via-sun/15 rounded-[36px] blur-2xl -z-10" />
+            {/* Soft Ambient Light Halo */}
+            <div className="absolute inset-0 max-w-[380px] max-h-[480px] mx-auto bg-gradient-to-tr from-leaf/25 via-sun/20 to-transparent dark:from-leaf/15 dark:via-sun/10 rounded-[36px] blur-2xl -z-10" />
 
-            {/* Asymmetric Organic Decorative Backplate */}
-            <div className="absolute -inset-2 bg-gradient-to-br from-olive/10 via-transparent to-sun/10 rounded-[38px] -rotate-1 pointer-events-none -z-10" />
-
-            {/* Editorial Framed Container */}
-            <div className="relative w-full max-w-[350px] sm:max-w-[400px] rounded-[32px] p-3 bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 shadow-soft-lift dark:shadow-dark-lift transition-all duration-700 hover:scale-[1.01] group">
+            {/* Asymmetric Framing */}
+            <div className="relative w-full max-w-[340px] sm:max-w-[380px] rounded-[30px] p-2.5 bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 shadow-soft-lift dark:shadow-dark-lift transition-all duration-700 hover:scale-[1.01] group">
               
-              {/* Natural Outdoor Image with Warm Natural Light */}
-              <div className="relative rounded-[24px] overflow-hidden aspect-[4/5] bg-cream dark:bg-dark-bg border border-forest/10 dark:border-white/10">
+              <div className="relative rounded-[22px] overflow-hidden aspect-[4/5] bg-cream dark:bg-dark-bg border border-forest/10 dark:border-white/10">
                 <img
                   src={krishnaImg}
                   alt="Krishna Mishra — Software Engineer & AI Builder"
                   className="w-full h-full object-cover object-center filter contrast-[1.02] group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
                 />
 
-                {/* Gentle Sunlight Vignette Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent pointer-events-none" />
+                {/* Gentle Gradient Shadow */}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent pointer-events-none" />
 
-                {/* Subtle Editorial Top Stamp */}
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-cream-card/90 dark:bg-dark-bg/80 backdrop-blur-md border border-forest/15 dark:border-white/15 text-[10px] font-mono tracking-wider text-forest dark:text-sun uppercase font-medium">
+                {/* Top Location Badge */}
+                <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-cream-card/90 dark:bg-dark-bg/85 backdrop-blur-md border border-forest/15 dark:border-white/15 text-[10px] font-mono tracking-wider text-forest dark:text-sun uppercase font-medium">
                   MITAOE &bull; PUNE
                 </div>
 
-                {/* Bottom Identification Card */}
-                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-cream-card/95 dark:bg-dark-card/95 backdrop-blur-xl border border-forest/10 dark:border-white/10 text-left shadow-lg">
+                {/* Bottom Identification */}
+                <div className="absolute bottom-3.5 inset-x-3.5 p-3.5 rounded-xl bg-cream-card/95 dark:bg-dark-card/95 backdrop-blur-xl border border-forest/10 dark:border-white/10 text-left shadow-lg">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-base font-bold text-charcoal dark:text-warm-white tracking-tight">
+                      <h3 className="text-sm font-bold text-charcoal dark:text-warm-white tracking-tight">
                         Krishna Mishra
                       </h3>
-                      <p className="text-xs text-charcoal-muted dark:text-dark-textMuted font-normal mt-0.5">
-                        Software Engineer &amp; AI Builder
+                      <p className="text-[11px] text-charcoal-muted dark:text-dark-textMuted font-mono mt-0.5">
+                        Software &bull; AI Builder
                       </p>
                     </div>
-                    <div className="flex flex-col items-end">
-                      <span className="w-2.5 h-2.5 rounded-full bg-leaf dark:bg-sun shadow-[0_0_8px_rgba(127,166,58,0.6)] mb-1" />
-                      <span className="text-[10px] font-mono text-forest dark:text-sun font-semibold">8.76 CGPA</span>
+                    <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-forest/5 dark:bg-white/5 border border-forest/10 dark:border-white/10">
+                      <span className="w-2 h-2 rounded-full bg-leaf dark:bg-sun animate-pulse" />
+                      <span className="text-[10px] font-mono text-forest dark:text-sun font-semibold">Active</span>
                     </div>
                   </div>
                 </div>
 
               </div>
 
-              {/* Floating Badge (Top-Right: AI Builder) */}
-              <div className="absolute -top-3 -right-3 px-3.5 py-1.5 rounded-full bg-warm-white dark:bg-dark-cardElevated border border-forest/15 dark:border-white/15 shadow-lg flex items-center gap-1.5 text-xs text-charcoal dark:text-warm-white backdrop-blur-md">
+              {/* Floating Badge (Top-Right) */}
+              <div className="absolute -top-3 -right-3 px-3 py-1.5 rounded-full bg-cream-card dark:bg-dark-cardElevated border border-forest/15 dark:border-white/15 shadow-md flex items-center gap-1.5 text-xs text-charcoal dark:text-warm-white backdrop-blur-md">
                 <Sparkles className="w-3.5 h-3.5 text-sun" />
                 <span className="font-sans font-medium text-[11px]">Intelligent Systems</span>
-              </div>
-
-              {/* Floating Badge (Bottom-Left: Shipped Works) */}
-              <div className="absolute -bottom-3 -left-3 px-3.5 py-1.5 rounded-full bg-warm-white dark:bg-dark-cardElevated border border-forest/15 dark:border-white/15 shadow-lg flex items-center gap-2 text-xs text-charcoal dark:text-warm-white backdrop-blur-md">
-                <Code2 className="w-3.5 h-3.5 text-leaf" />
-                <span className="font-mono text-[11px]">12+ Shipped Projects</span>
               </div>
 
             </div>
@@ -213,6 +239,19 @@ export default function Hero({ onOpenResume }) {
         </div>
 
       </div>
+
+      {/* Subtle Scroll Cue at the bottom */}
+      <div className="pt-6 pb-2 flex flex-col items-center justify-center text-charcoal-muted dark:text-dark-textMuted text-[11px] font-mono tracking-wider opacity-70 hover:opacity-100 transition-opacity">
+        <a 
+          href="#projects" 
+          onClick={playCyberClick}
+          className="flex flex-col items-center gap-1.5 group"
+        >
+          <span>Scroll to explore</span>
+          <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-1 transition-transform duration-300 text-forest dark:text-sun" />
+        </a>
+      </div>
+
     </section>
   );
 }

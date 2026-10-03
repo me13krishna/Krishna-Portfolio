@@ -3,71 +3,41 @@ import {
   GraduationCap, 
   Sparkles, 
   ArrowUpRight, 
-  Compass,
-  Cpu,
-  Layers,
+  MapPin, 
+  Compass, 
+  Cpu, 
   Heart,
   Code2,
-  Trophy,
-  Flame,
-  Award
+  BookOpen,
+  ArrowRight
 } from 'lucide-react';
-import { educationList } from '../data/portfolioData';
+import { personalInfo, quickFacts } from '../data/portfolioData';
 import { playCyberClick } from '../utils/audio';
 import krishnaImg from '../assets/krishna.jpg';
 
 export default function About({ onOpenResume }) {
-  const statCards = [
-    {
-      value: "12+",
-      label: "Projects Built & Shipped",
-      sub: "AI platforms, blockchain vault, systems",
-      icon: <Code2 className="w-5 h-5 text-leaf dark:text-sun" />,
-      tag: "Engineering"
-    },
-    {
-      value: "8.76",
-      label: "B.Tech CGPA",
-      sub: "MIT Academy of Engineering, Pune",
-      icon: <GraduationCap className="w-5 h-5 text-gold dark:text-sun" />,
-      tag: "Academic"
-    },
-    {
-      value: "SIH '24",
-      label: "National Hackathons",
-      sub: "Smart India Hackathon & Prakrushti",
-      icon: <Trophy className="w-5 h-5 text-olive dark:text-leaf" />,
-      tag: "Competition"
-    },
-    {
-      value: "3 Arenas",
-      label: "Coding Problem Solving",
-      sub: "LeetCode, CodeChef, HackerRank",
-      icon: <Flame className="w-5 h-5 text-sun dark:text-gold" />,
-      tag: "Algorithms"
-    }
+  const facts = [
+    { label: "Location", value: "Pune, Maharashtra, India", icon: <MapPin className="w-4 h-4 text-olive dark:text-leaf" /> },
+    { label: "College", value: "MIT Academy of Engineering (8.76 CGPA)", icon: <GraduationCap className="w-4 h-4 text-gold dark:text-sun" /> },
+    { label: "Focus Areas", value: "Distributed Systems, AI Reasoning & Full-Stack", icon: <Cpu className="w-4 h-4 text-forest dark:text-leaf" /> },
+    { label: "Current Interests", value: "Edge Vision, Agentic Workflows, System Call Internals", icon: <Sparkles className="w-4 h-4 text-sun" /> }
   ];
 
-  const philosophies = [
+  const tenets = [
     {
-      title: "First-Principles Thinking",
-      desc: "Deconstructing complex technical problems down to fundamental logical truths before touching code.",
-      icon: <Compass className="w-4 h-4 text-leaf dark:text-sun" />
+      title: "First-Principles Logic",
+      desc: "Deconstructing ambiguous problems to mathematical axioms before writing code.",
+      icon: <Compass className="w-3.5 h-3.5 text-forest dark:text-sun" />
     },
     {
       title: "Algorithmic Stamina",
-      desc: "Deep respect for asymptotic time and space limits. Clean engineering is deterministic, fast, and scalable.",
-      icon: <Cpu className="w-4 h-4 text-olive dark:text-leaf" />
+      desc: "Relentless attention to Big-O bounds, space efficiency, and memory allocations.",
+      icon: <Cpu className="w-3.5 h-3.5 text-olive dark:text-leaf" />
     },
     {
-      title: "End-to-End Craftsmanship",
-      desc: "Caring about every layer — from database schemas and backend APIs to typography, padding, and subtle micro-delights.",
-      icon: <Layers className="w-4 h-4 text-gold dark:text-sun" />
-    },
-    {
-      title: "Human Quietude",
-      desc: "Great software doesn't need to shout. It solves human problems with calm precision and disappears into the background.",
-      icon: <Heart className="w-4 h-4 text-forest dark:text-leaf" />
+      title: "Calm Craftsmanship",
+      desc: "Software should feel like well-built hardware: fast, quiet, and unobtrusive.",
+      icon: <Heart className="w-3.5 h-3.5 text-gold dark:text-sun" />
     }
   ];
 
@@ -82,184 +52,135 @@ export default function About({ onOpenResume }) {
         {/* Section Header */}
         <div className="max-w-3xl mb-16 space-y-3 text-left">
           <span className="text-xs font-mono uppercase tracking-widest text-forest dark:text-sun font-semibold block">
-            ABOUT ME &bull; PHILOSOPHY &bull; JOURNEY
+            ABOUT &bull; PERSPECTIVE &bull; INTENTION
           </span>
           <h2 className="text-4xl sm:text-6xl font-bold text-charcoal dark:text-warm-white tracking-tight">
             Curious by default.{' '}
-            <span className="text-forest dark:text-sun font-editorial italic font-normal">
+            <span className="text-forest dark:text-sun font-serif italic font-normal">
               Building with quiet intention.
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-charcoal-muted dark:text-dark-textMuted leading-relaxed pt-1">
-            I believe that software, much like architecture or nature, is at its finest when it is balanced, resilient, and deeply respectful of the person interacting with it.
-          </p>
         </div>
 
-        {/* Visual Stat Cards Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16 text-left">
-          {statCards.map((stat, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-[24px] bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 shadow-soft-card hover:border-leaf/40 dark:hover:border-sun/40 transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 rounded-xl bg-forest/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-105 transition-transform">
-                  {stat.icon}
+        {/* 12-Column Asymmetric About Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
+          
+          {/* Left Column (5 cols): Optimized Photo + Verified Credentials Card */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="rounded-[30px] p-3 bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 shadow-soft-card group">
+              <div className="relative rounded-[22px] overflow-hidden aspect-[4/5] bg-cream dark:bg-dark-bg border border-forest/10 dark:border-white/10">
+                <img
+                  src={krishnaImg}
+                  alt="Krishna Rameshwar Mishra"
+                  className="w-full h-full object-cover object-center filter contrast-[1.02] group-hover:scale-[1.02] transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-xl bg-cream-card/95 dark:bg-dark-card/95 backdrop-blur-xl border border-forest/10 dark:border-white/10 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="text-sm font-bold text-charcoal dark:text-warm-white">Krishna Rameshwar Mishra</h4>
+                      <p className="text-[11px] font-mono text-forest dark:text-sun">MITAOE Pune &bull; Batch 2025–2029</p>
+                    </div>
+                    <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-forest/5 dark:bg-sun/10 text-forest dark:text-sun font-bold">
+                      8.76 CGPA
+                    </span>
+                  </div>
                 </div>
-                <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-forest/5 dark:bg-white/5 text-forest dark:text-sun border border-forest/10 dark:border-white/10 font-medium">
-                  {stat.tag}
-                </span>
-              </div>
-              <div className="text-3xl sm:text-4xl font-bold text-charcoal dark:text-warm-white tracking-tight">
-                {stat.value}
-              </div>
-              <div className="text-xs font-semibold text-charcoal dark:text-warm-white mt-1.5">
-                {stat.label}
-              </div>
-              <div className="text-[11px] text-charcoal-muted dark:text-dark-textMuted font-mono mt-0.5">
-                {stat.sub}
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* 2-Column Editorial Story Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start text-left">
-          
-          {/* Left Column (7 cols): Narrative & Tenets */}
-          <div className="lg:col-span-7 space-y-8">
-            
-            <div className="rounded-[32px] p-8 sm:p-10 bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-6 text-sm sm:text-base text-charcoal-muted dark:text-dark-textMuted leading-relaxed shadow-soft-card">
-              
-              {/* Profile Snippet Header */}
-              <div className="flex items-center gap-4 pb-6 border-b border-forest/10 dark:border-white/10">
-                <img 
-                  src={krishnaImg} 
-                  alt="Krishna Mishra" 
-                  className="w-16 h-16 rounded-2xl object-cover border border-forest/15 dark:border-white/15 shadow-md"
-                />
-                <div>
-                  <h3 className="text-xl font-bold text-charcoal dark:text-warm-white">Krishna Rameshwar Mishra</h3>
-                  <p className="text-xs font-mono text-forest dark:text-sun mt-0.5 font-medium">
-                    Software Engineering &bull; MIT Academy of Engineering, Pune
-                  </p>
-                </div>
+            {/* Quick Link to Master Credentials Drive */}
+            <a
+              href={personalInfo.certificatesDriveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playCyberClick}
+              className="p-5 rounded-2xl bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 hover:border-forest/30 dark:hover:border-sun/30 flex items-center justify-between text-xs transition-all shadow-soft-card group block"
+            >
+              <div className="space-y-0.5">
+                <span className="font-mono text-forest dark:text-sun uppercase tracking-wider text-[10px] font-semibold block">
+                  Credential Verification Archive
+                </span>
+                <span className="font-semibold text-charcoal dark:text-warm-white text-xs">
+                  Official Google Drive Repository
+                </span>
               </div>
+              <ArrowUpRight className="w-4 h-4 text-forest dark:text-sun group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
 
-              <p>
-                I didn’t fall in love with software development because of industry buzzwords. I fell in love with that quiet, deeply satisfying moment when an idea on a notepad turns into a working, deterministic system that genuinely solves a real person's problem.
+          {/* Right Column (7 cols): Human Story (~120 words) + 4 Quick Facts + Engineering Tenets */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Short, Human First-Person Story (max ~120 words) */}
+            <div className="p-8 sm:p-9 rounded-[30px] bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-4 shadow-soft-card">
+              <span className="text-xs font-mono uppercase tracking-widest text-forest dark:text-sun font-semibold block">
+                The Narrative
+              </span>
+              <p className="text-base sm:text-lg text-charcoal dark:text-warm-white font-normal leading-relaxed">
+                I didn’t enter computer science for the trend cycles. I fell in love with that quiet moment when an idea sketched on paper turns into a deterministic, dependable system that genuinely helps someone.
               </p>
-
-              <p>
-                Currently, I am pursuing my B.Tech in Software Engineering at <strong className="text-charcoal dark:text-warm-white font-semibold">MIT Academy of Engineering, Pune</strong>, maintaining a <strong className="text-forest dark:text-sun font-semibold">CGPA of 8.76</strong>. My journey blends deep foundational rigor in C and Linux POSIX systems with modern production work: building AI orchestrations with <strong className="text-charcoal dark:text-warm-white font-semibold">IBM watsonx</strong>, developing cryptographic vaults with Flask and SHA-256, and co-founding <strong className="text-charcoal dark:text-warm-white font-semibold">Indian Pixel</strong>.
+              <p className="text-sm text-charcoal-muted dark:text-dark-textMuted leading-relaxed">
+                As a software engineering student at MITAOE Pune (8.76 CGPA), I treat software as an exacting craft. Whether architecting SHA-256 cryptographic vaults in Python, orchestrating enterprise reasoning models with IBM watsonx, or co-founding Indian Pixel, I balance clean algorithmic Big-O complexity with calm, human-centered interfaces.
               </p>
-
-              <p>
-                I care as much about clean algorithmic Big-O complexity as I do about visual hierarchy, typography, and micro-interactions. The best software feels effortless because every detail was thought through.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-3">
+              
+              <div className="pt-2 flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => {
                     playCyberClick();
                     onOpenResume();
                   }}
-                  className="inline-flex items-center gap-2 text-xs font-semibold px-6 py-3 rounded-full bg-forest dark:bg-sun text-warm-white dark:text-forest-dark hover:bg-forest-deep dark:hover:bg-sun-light transition-all shadow-sm active:scale-98"
+                  className="inline-flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-full bg-forest dark:bg-sun text-warm-white dark:text-forest-dark hover:bg-forest-deep dark:hover:bg-sun-light transition-all shadow-sm"
                 >
-                  <span>Review Official Resume</span>
+                  <span>Review Curriculum Vitae</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
                 <a
                   href="#contact"
                   onClick={playCyberClick}
-                  className="inline-flex items-center gap-2 text-xs font-medium px-6 py-3 rounded-full bg-cream-card dark:bg-dark-cardElevated hover:bg-cream-subtle dark:hover:bg-dark-card text-charcoal dark:text-warm-white border border-forest/15 dark:border-white/10 transition-all"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-5 py-2.5 rounded-full bg-forest/5 dark:bg-white/5 hover:bg-forest/10 dark:hover:bg-white/10 text-charcoal dark:text-warm-white border border-forest/10 dark:border-white/10 transition-all"
                 >
-                  <span>Start a Conversation</span>
+                  <span>Get in Touch</span>
                 </a>
               </div>
-
             </div>
 
-            {/* Core Tenets & Approaches */}
-            <div className="rounded-[32px] p-8 bg-cream-card/70 dark:bg-dark-card/60 border border-forest/10 dark:border-white/10 space-y-6">
-              <h4 className="text-xs uppercase font-mono tracking-wider text-forest dark:text-sun font-semibold flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-leaf dark:text-sun" />
-                <span>How I Approach Engineering</span>
-              </h4>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                {philosophies.map((phil) => (
-                  <div key={phil.title} className="p-4 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 space-y-1.5 shadow-sm">
-                    <div className="flex items-center gap-2">
-                      {phil.icon}
-                      <strong className="text-charcoal dark:text-warm-white text-xs font-sans">{phil.title}</strong>
-                    </div>
-                    <p className="text-charcoal-muted dark:text-dark-textMuted leading-relaxed font-normal">
-                      {phil.desc}
-                    </p>
+            {/* 4 Quick Facts Bento */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {facts.map((f, i) => (
+                <div 
+                  key={i} 
+                  className="p-5 rounded-2xl bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-1 shadow-sm"
+                >
+                  <div className="flex items-center gap-2 text-[11px] font-mono text-charcoal-muted dark:text-dark-textMuted uppercase tracking-wider">
+                    {f.icon}
+                    <span>{f.label}</span>
                   </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column (5 cols): Academic Milestones & Tenet */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            <div className="rounded-[32px] p-8 sm:p-9 bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-6 shadow-soft-card">
-              <div className="flex items-center justify-between pb-4 border-b border-forest/10 dark:border-white/10">
-                <div className="flex items-center gap-2.5">
-                  <GraduationCap className="w-5 h-5 text-forest dark:text-sun" />
-                  <h4 className="text-lg font-bold text-charcoal dark:text-warm-white tracking-tight">Academic Journey</h4>
+                  <p className="text-xs font-semibold text-charcoal dark:text-warm-white pt-1">
+                    {f.value}
+                  </p>
                 </div>
-                <span className="text-[11px] font-mono px-3 py-0.5 rounded-full bg-forest/5 dark:bg-white/5 text-forest dark:text-sun border border-forest/10 dark:border-white/10 font-medium">
-                  Verified
-                </span>
-              </div>
+              ))}
+            </div>
 
-              {/* Education Cards */}
-              <div className="space-y-4">
-                {educationList.map((edu, idx) => (
-                  <div 
-                    key={idx}
-                    className="p-5 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 hover:border-leaf/40 dark:hover:border-sun/40 transition-colors space-y-2 text-left shadow-sm"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <h5 className="text-sm font-bold text-charcoal dark:text-warm-white">{edu.institution}</h5>
-                      <span className="text-xs font-mono font-bold text-forest dark:text-sun px-2.5 py-0.5 rounded-full bg-forest/5 dark:bg-sun/10 border border-forest/15 dark:border-sun/20 flex-shrink-0">
-                        {edu.score}
-                      </span>
+            {/* Engineering Tenets */}
+            <div className="p-6 sm:p-7 rounded-[28px] bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 space-y-4 shadow-sm">
+              <span className="text-xs font-mono uppercase tracking-wider text-forest dark:text-sun font-semibold block">
+                How I Think About Engineering
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {tenets.map((t, idx) => (
+                  <div key={idx} className="p-3.5 rounded-xl bg-forest/[0.02] dark:bg-white/[0.02] border border-forest/5 dark:border-white/5 space-y-1">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-charcoal dark:text-warm-white">
+                      {t.icon}
+                      <span className="text-[11px]">{t.title}</span>
                     </div>
-
-                    <div className="text-xs text-olive dark:text-leaf font-mono font-medium">
-                      {edu.degree}
-                    </div>
-
-                    <div className="text-[11px] text-charcoal-muted dark:text-dark-textMuted font-mono">
-                      {edu.period}
-                    </div>
-
-                    <p className="text-xs text-charcoal-muted dark:text-dark-textMuted pt-1 leading-relaxed font-normal">
-                      {edu.description}
+                    <p className="text-[11px] text-charcoal-muted dark:text-dark-textMuted leading-relaxed">
+                      {t.desc}
                     </p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Quiet Quote */}
-            <div className="rounded-[32px] p-7 bg-gradient-to-br from-leaf/10 via-cream-card to-cream-card dark:from-leaf/10 dark:via-dark-card dark:to-dark-card border border-forest/15 dark:border-white/10 text-left space-y-3 shadow-soft-card">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-forest dark:text-sun font-medium">
-                Personal North Star
-              </span>
-              <p className="text-sm text-charcoal dark:text-warm-white font-editorial italic leading-relaxed">
-                “Quiet craft always outlasts loud noise. Build things with deep attention, measure your work against reality, and never compromise on character.”
-              </p>
-              <span className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block text-right">
-                — Krishna Mishra
-              </span>
             </div>
 
           </div>

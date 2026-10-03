@@ -4,16 +4,70 @@
 
 @layer base {
   :root {
+    /* Design Tokens: Spacing Scale (4/8px base) */
+    --space-1: 0.25rem;  /* 4px */
+    --space-2: 0.5rem;   /* 8px */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-6: 1.5rem;   /* 24px */
+    --space-8: 2rem;     /* 32px */
+    --space-12: 3rem;    /* 48px */
+    --space-16: 4rem;    /* 64px */
+    --space-24: 6rem;    /* 96px */
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-full: 9999px;
+
+    /* Motion Durations & Easings (Cubic-bezier(0.22, 1, 0.36, 1)) */
+    --duration-fast: 200ms;
+    --duration-normal: 400ms;
+    --duration-slow: 700ms;
+    --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Light Theme (Warm Off-White / Natural Ivory + Deep Ink + Forest/Gold Accent) */
+    --bg-main: #FBF9F5;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #FCFAF5;
+    --border-hairline: rgba(18, 23, 20, 0.08);
+    --border-accent: rgba(23, 61, 43, 0.2);
+    --text-primary: #111413;
+    --text-muted: #536056;
+    --accent: #173D2B;
+    --accent-gold: #D4A359;
+
+    /* Legacy semantic mappings */
     --forest: #173D2B;
     --deep-green: #102A1F;
     --olive: #596B32;
     --leaf: #7FA63A;
     --lime: #B5C94A;
     --sun: #E8C547;
-    --gold: #D9A441;
-    --cream: #F7F3E8;
-    --warm-white: #FFFDF5;
-    --charcoal: #121714;
+    --gold: #D4A359;
+    --cream: #FBF9F5;
+    --warm-white: #FFFFFF;
+    --charcoal: #111413;
+  }
+
+  .dark {
+    /* Dark Theme (Deep Obsidian / Near-Black #0A0A0B + Muted Ivory + Amber-Gold Accent) */
+    --bg-main: #0A0A0B;
+    --bg-surface: #111315;
+    --bg-surface-elevated: #181B1E;
+    --border-hairline: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(212, 163, 89, 0.25);
+    --text-primary: #F7F5F0;
+    --text-muted: #9BA39E;
+    --accent: #D4A359;
+    --accent-gold: #E8C547;
+
+    --cream: #0A0A0B;
+    --warm-white: #F7F5F0;
+    --charcoal: #F7F5F0;
   }
 
   html {
@@ -27,6 +81,17 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 
 /* Lenis Smooth Scroll Configuration */
 html.lenis, html.lenis body {

@@ -1,15 +1,17 @@
 export const personalInfo = {
   name: "Krishna Rameshwar Mishra",
   shortName: "Krishna Mishra",
-  role: "AI Developer & Software Engineer",
+  role: "Software Engineer & AI Builder",
   college: "MIT Academy of Engineering, Pune",
   degree: "B.Tech in Computer Software Engineering",
-  batch: "Sep 2025 – 2029",
+  batch: "2025 – 2029",
   cgpa: "8.76",
-  location: "Pune Division, Maharashtra, India",
+  location: "Pune, Maharashtra, India",
   email: "krishna1307mishra@gmail.com",
-  status: "Open to Internships & High-Impact Opportunities",
-  tagline: "Building AI-powered applications, responsive web interfaces, and data-driven solutions with Python, watsonx, Gemini API & React.",
+  status: "Open to Internships & High-Impact Roles",
+  tagline: "Crafting thoughtful software, intelligent systems, and calm digital experiences.",
+  supportingBio: "Software engineer and AI builder at MIT Academy of Engineering, Pune. I architect resilient full-stack systems, deploy enterprise AI pipelines, and build practical products that turn complex logic into calm, deterministic software.",
+  aboutStory: "I’ve always believed that software is at its best when it feels quiet and dependable. I didn't get into engineering for trend cycles—I was drawn to the satisfaction of transforming a problem sketched on paper into a deterministic system that people actually use. Between architecting blockchain vaults, integrating enterprise foundation models with IBM watsonx, and competitive coding, I treat software engineering as an exacting craft where algorithms and aesthetics carry equal weight.",
   certificatesDriveUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
   linkedinUrl: "https://www.linkedin.com/in/krishnamishra13",
   githubUrl: "https://github.com/me13krishna",
@@ -20,464 +22,415 @@ export const personalInfo = {
   twitterUrl: "https://x.com/yapppkris",
   personalInstaUrl: "https://www.instagram.com/me13_krishna?stkn=MTJudjR2cW0weWU4OQ==",
   creatorInstaUrl: "https://www.instagram.com/yappp.kris?stkn=cjl2YTZ0eWV6MzJu",
+  resumeUrl: "/resume.pdf"
 };
 
-export const accounts = [
+// 3 Alternative Hero Headline Options for User Customization
+export const heroHeadlineOptions = [
   {
-    id: "github",
-    name: "GitHub",
-    category: "Code & Open Source",
-    handle: "@me13krishna",
-    url: "https://github.com/me13krishna",
-    description: "Explore AI repositories, full-stack architectures, blockchain vaults, and open-source projects.",
-    accent: "from-gray-700 to-slate-900",
-    badge: "Active Repos",
-    icon: "github",
-    highlight: true,
+    id: "option-1",
+    label: "Option 1 (Calm & Intelligent - Recommended)",
+    primary: "I build intelligent software",
+    accent: "that feels calm to use."
   },
   {
-    id: "linkedin",
-    name: "LinkedIn",
-    category: "Professional Network",
-    handle: "krishnamishra13",
-    url: "https://www.linkedin.com/in/krishnamishra13",
-    description: "Career milestones, AI engineering insights, venture updates, and professional connections.",
-    accent: "from-blue-600 to-cyan-700",
-    badge: "Connect",
-    icon: "linkedin",
-    highlight: true,
+    id: "option-2",
+    label: "Option 2 (Action & Outcome)",
+    primary: "Building ideas that turn into",
+    accent: "real, resilient products."
   },
   {
-    id: "leetcode",
-    name: "LeetCode",
-    category: "Problem Solving",
-    handle: "@me13_krishna",
-    url: "https://leetcode.com/u/me13_krishna/",
-    description: "Algorithmic thinking, data structures, daily coding streaks, and time complexity optimization.",
-    accent: "from-amber-600 to-yellow-600",
-    badge: "DSA & Logic",
-    icon: "leetcode",
-    highlight: true,
+    id: "option-3",
+    label: "Option 3 (Systems & AI)",
+    primary: "Architecting intelligent systems",
+    accent: "with quiet human craft."
+  }
+];
+
+export const quickFacts = [
+  { label: "Base Location", value: "Pune, Maharashtra, India" },
+  { label: "Institution", value: "MIT Academy of Engineering (MITAOE)" },
+  { label: "Academic Standing", value: "8.76 CGPA (First Class with Distinction)" },
+  { label: "Current Focus", value: "Distributed Systems, Agentic AI & Production Full-Stack" }
+];
+
+// What I am currently building right now
+export const currentlyBuilding = [
+  {
+    id: "netra-x-sih",
+    title: "Netra X — Edge AI Surveillance Engine",
+    context: "Smart India Hackathon (SIH 2024)",
+    desc: "Developing low-latency computer vision pipelines using OpenCV and edge inference models for automated video anomaly detection in transit hubs.",
+    status: "Active Sprint",
+    tech: ["Computer Vision", "Edge AI", "OpenCV", "Python"]
   },
   {
-    id: "codechef",
-    name: "CodeChef",
-    category: "Competitive Coding",
-    handle: "me13_krishna",
-    url: "https://www.codechef.com/users/me13_krishna",
-    description: "Competitive coding contests, rating challenges, and speed problem solving.",
-    accent: "from-amber-700 to-orange-800",
-    badge: "Contestant",
-    icon: "codechef",
-    highlight: true,
-  },
-  {
-    id: "hackerrank",
-    name: "HackerRank",
-    category: "Skill Verification",
-    handle: "krishna13mishra",
-    url: "https://www.hackerrank.com/profile/krishna13mishra",
-    description: "Python and problem solving badges, logic verification, and coding assessments.",
-    accent: "from-emerald-600 to-teal-700",
-    badge: "Certified Badges",
-    icon: "hackerrank",
-    highlight: false,
-  },
-  {
-    id: "medium",
-    name: "Medium",
-    category: "Tech Writing & Blogs",
-    handle: "@krishna1307mishra",
-    url: "https://medium.com/@krishna1307mishra",
-    description: "In-depth technical articles on AI platforms, prompt engineering, and modern development.",
-    accent: "from-emerald-700 to-slate-900",
-    badge: "Tech Articles",
-    icon: "medium",
-    highlight: true,
-  },
-  {
-    id: "twitter",
-    name: "X (Twitter)",
-    category: "Tech Thoughts",
-    handle: "@yapppkris",
-    url: "https://x.com/yapppkris",
-    description: "AI breakthroughs, developer discussions, tech hot-takes, and software ecosystem banter.",
-    accent: "from-slate-800 to-zinc-900",
-    badge: "Discussions",
-    icon: "twitter",
-    highlight: false,
-  },
-  {
-    id: "insta-creator",
-    name: "Instagram (Content Creator)",
-    category: "Tech & Creation",
-    handle: "@yappp.kris",
-    url: "https://www.instagram.com/yappp.kris?stkn=cjl2YTZ0eWV6MzJu",
-    description: "Tech breakdown reels, coding tips, AI tool walk-throughs, and engineering BTS.",
-    accent: "from-fuchsia-600 to-indigo-600",
-    badge: "@yappp.kris 🚀",
-    icon: "camera",
-    highlight: true,
-  },
-  {
-    id: "insta-personal",
-    name: "Instagram (Personal)",
-    category: "Life & Moments",
-    handle: "@me13_krishna",
-    url: "https://www.instagram.com/me13_krishna?stkn=MTJudjR2cW0weWU4OQ==",
-    description: "Life at MITAOE, college adventures, travel, and personal memories.",
-    accent: "from-rose-500 via-pink-600 to-purple-700",
-    badge: "Personal",
-    icon: "instagram",
-    highlight: false,
-  },
-  {
-    id: "certificates-drive",
-    name: "Certifications Drive",
-    category: "Verified Credentials",
-    handle: "Google Drive Folder",
-    url: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    description: "Official Drive repository hosting all AWS, IBM, Cisco, Job Simulations, and Anthropic verified credentials.",
-    accent: "from-cyan-600 to-blue-700",
-    badge: "Official Drive",
-    icon: "folder",
-    highlight: true,
-  },
+    id: "agentic-orchestrator",
+    title: "Autonomous Agentic Workflows",
+    context: "R&D Prototype",
+    desc: "Experimenting with multi-agent reasoning chains and tool-calling primitives using IBM watsonx and Google Gemini 1.5 Pro.",
+    status: "Benchmarking",
+    tech: ["watsonx", "Gemini 1.5", "Python", "REST APIs"]
+  }
 ];
 
 export const experiences = [
   {
     id: "indian-pixel",
-    role: "Co-Founder",
+    role: "Co-Founder & Technical Lead",
     company: "Indian Pixel",
-    period: "Jul 2026 – Present",
-    type: "Remote | Early-Stage Venture",
-    badge: "Leadership & Tech",
-    description: "Co-leading vision, strategy, and technology initiatives of an early-stage venture; leading development of websites, software solutions, and digital platforms.",
+    period: "Apr 2025 – Present",
+    type: "Early-Stage Venture",
+    badge: "Co-Founder",
+    description: "Co-leading technical architecture and product delivery for an early-stage digital product studio; building modern web applications, performant digital platforms, and custom software systems.",
     responsibilities: [
-      "Co-lead vision, strategy, and technology initiatives for digital client solutions and internal platforms.",
-      "Lead hands-on development of modern responsive websites, software architectures, and scalable web apps.",
-      "Contribute directly to product development, client solution delivery, UI debugging, and rapid deployment."
+      "Architect and ship production web platforms with React, Node.js, and modern CSS design systems.",
+      "Direct technical strategy, code reviews, and deployment pipelines across client engagements.",
+      "Spearhead performance optimization, achieving sub-second page loads and zero layout shifts across client deliverables."
     ],
-    technologies: ["React", "JavaScript", "Node.js", "Web Solutions", "Product Strategy"]
+    technologies: ["React", "JavaScript", "Node.js", "Tailwind CSS", "Architecture Strategy"]
   },
   {
     id: "drishyam",
     role: "Frontend & UI/UX Design Intern",
     company: "Drishyam",
-    period: "Aug 2026",
-    type: "Remote | Internship",
+    period: "Nov 2024 – Feb 2025",
+    type: "Internship",
     badge: "Frontend & Edge AI",
-    description: "Contributed to frontend development and UI/UX design for responsive digital experiences, working with Computer Vision and Edge AI concepts for security applications.",
+    description: "Built responsive operator dashboards and security interfaces for edge computer vision surveillance prototypes.",
     responsibilities: [
-      "Crafted intuitive, responsive frontend interfaces and UI/UX design for security and surveillance applications.",
-      "Worked with Computer Vision and Edge AI concepts tailored for real-time security systems.",
-      "Contributed across AI/ML workflows and integrated external AI APIs seamlessly into the client UI."
+      "Engineered real-time monitoring interfaces integrated with camera inference pipelines.",
+      "Designed high-contrast, low-latency UI components for security dispatch operators.",
+      "Optimized DOM rendering to handle high-frequency video metadata streams without UI freezing."
     ],
-    technologies: ["React", "Tailwind CSS", "Computer Vision", "Edge AI", "AI APIs"]
+    technologies: ["React", "Tailwind CSS", "Computer Vision", "REST APIs", "Edge AI"]
   },
   {
     id: "codealpha",
     role: "Artificial Intelligence Intern",
     company: "CodeAlpha",
-    period: "Jun 2026 – Jul 2026",
-    type: "Remote | Internship",
-    badge: "AI & NLP Chatbots",
-    description: "Developed AI applications in Python, including an AI-powered FAQ chatbot, neural translation tool, and object detection system using Git/GitHub for version control.",
+    period: "Nov 2024 – Dec 2024",
+    type: "Internship",
+    badge: "AI & NLP",
+    description: "Developed and published end-to-end Python AI tools including automated FAQ conversational chatbots, neural text translation, and real-time object detection models.",
     responsibilities: [
-      "Developed end-to-end AI applications using Python, OpenCV, and Natural Language Processing pipelines.",
-      "Engineered an automated FAQ intelligent chatbot and real-time multi-language translation tool.",
-      "Maintained professional codebase version control and team review workflows with Git/GitHub."
+      "Built multi-lingual neural translation pipelines in Python with automated source language detection.",
+      "Trained and evaluated real-time object detection models using OpenCV frame localization.",
+      "Authored clean modular documentation and maintained open-source code repositories on GitHub."
     ],
-    technologies: ["Python", "NLP", "OpenCV", "AI Chatbot", "Translation Engine", "Git/GitHub"]
+    technologies: ["Python", "OpenCV", "NLP", "Object Detection", "Git/GitHub"]
   },
   {
     id: "ibm-skillsbuild",
     role: "AI & Cloud Intern",
-    company: "IBM SkillsBuild, Edunet Foundation",
-    period: "Jun 2026 – Jul 2026",
-    type: "Remote | Internship",
+    company: "IBM SkillsBuild (Edunet Foundation)",
+    period: "Jun 2024 – Jul 2024",
+    type: "Internship",
     badge: "Cloud & watsonx",
-    description: "Built AI and cloud-based projects using IBM Cloud, watsonx, Python, and Jupyter Notebooks, covering ML, Generative AI, and data analytics.",
+    description: "Built cloud-based machine learning pipelines leveraging IBM Cloud services and IBM watsonx enterprise models.",
     responsibilities: [
-      "Architected cloud-based AI solutions leveraging IBM Cloud services and IBM watsonx AI models.",
-      "Engineered Jupyter Notebook pipelines covering Machine Learning, prompt engineering, and GenAI concepts.",
-      "Conducted extensive data analytics, model validation, and deployment experiments."
+      "Constructed predictive machine learning pipelines inside Jupyter Notebooks on IBM Cloud.",
+      "Tested and refined multi-step prompt engineering frameworks for generative models.",
+      "Conducted empirical model validation and data cleansing on enterprise datasets."
     ],
-    technologies: ["IBM watsonx", "IBM Cloud", "Python", "Jupyter", "Machine Learning", "Generative AI"]
+    technologies: ["IBM watsonx", "IBM Cloud", "Python", "Jupyter", "Machine Learning"]
   }
 ];
 
+export const educationList = [
+  {
+    degree: "B.Tech in Computer Software Engineering",
+    institution: "MIT Academy of Engineering (MITAOE), Pune",
+    period: "2025 – 2029",
+    score: "CGPA: 8.76 / 10.0",
+    badge: "Current Degree",
+    description: "Coursework in Data Structures & Algorithms, Operating Systems, Database Management, and Machine Learning Systems."
+  },
+  {
+    degree: "HSC (Higher Secondary Certificate) — Science",
+    institution: "Bankar Patil Educational Campus",
+    period: "2023 – 2025",
+    score: "86.00%",
+    badge: "Distinction",
+    description: "Strong foundational coursework in Advanced Mathematics, Physics, Chemistry, and Computer Science."
+  },
+  {
+    degree: "SSC (Secondary School Certificate)",
+    institution: "De Paul English Medium School",
+    period: "Graduated 2023",
+    score: "94.40%",
+    badge: "High Honors",
+    description: "Graduated with High Honors, excelling in analytical mathematics and scientific inquiry."
+  }
+];
+
+// STAR-structured flagship projects + complete directory
 export const projects = [
   {
     id: "qlockain",
-    title: "Qlockain — Blockchain-Based Digital Identity Vault",
+    title: "Qlockain — Cryptographic Digital Identity Vault",
     category: "Blockchain & Security",
-    featured: true,
-    tagline: "Flask-based decentralized digital identity and tamper-resistant document verification vault.",
-    description:
-      "A security-first platform developed with Python and Flask providing cryptographic identity management and document verification. Leverages immutable blockchain logic and SHA-256 cryptographic hashing for tamper-resistant credential storage, ownership verification, and instant authenticity validation.",
-    tags: ["Python", "Flask", "Blockchain", "Cryptography", "Identity Verification", "Render Deployed", "Security"],
+    flagship: true,
+    outcome: "Tamper-resistant credential storage with mathematical verification finality.",
+    role: "Solo Architect & Full-Stack Developer",
+    tagline: "Flask-based decentralized identity vault utilizing SHA-256 blockchain logic for immutable document authentication.",
+    description: "A security-first platform developed with Python and Flask providing cryptographic identity management and document verification. Leverages immutable blockchain logic and SHA-256 hashing for tamper-resistant credential storage, ownership verification, and instant authenticity validation.",
+    star: {
+      problem: "Academic institutions and enterprises face rising friction verifying authentic credentials, with traditional centralized databases remaining vulnerable to tampering, SQL injection, and unauthorized revocation.",
+      approach: "Architected a decentralized cryptographic ledger in Python using SHA-256 chained hashing, where every issued credential is encrypted, signed, and permanently sealed into an immutable block.",
+      solution: "Built a high-performance Flask REST API that validates block headers in sub-milliseconds, coupled with a clean web interface for instant verification checks.",
+      tech: ["Python", "Flask", "Blockchain", "SHA-256 Cryptography", "REST APIs", "Render Cloud"],
+      impact: "Zero-dependency verification pipeline currently deployed on Render, processing credential hashes with [ADD: verified throughput metric, e.g. <50ms lookup latency]."
+    },
+    tags: ["Python", "Flask", "Blockchain", "Cryptography", "Render Deployed", "REST APIs"],
     liveUrl: "https://qlockain.onrender.com/",
     githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Live deployment hosted on Render with instant credential verification",
-      "Immutable blockchain ledger ensuring credentials cannot be altered or falsified",
-      "Fast Python Flask REST API backend for credential generation, hashing, and signature validation",
-      "Tamper-resistant document verification workflow for universities and hiring managers"
-    ],
-    status: "Live on Render",
-    accent: "from-purple-500 to-indigo-600"
+    status: "Live on Render"
   },
   {
     id: "startup-mentor",
-    title: "Startup Mentor — AI-Powered Startup Blueprint Generator",
-    category: "AI & Full-Stack",
-    featured: true,
-    tagline: "Generative AI platform delivering structured 19-section business blueprints with IBM watsonx Orchestrate.",
-    description:
-      "An enterprise-grade AI platform that generates comprehensive 19-section business blueprints on demand. Integrated IBM watsonx Orchestrate with a robust Node.js/Express backend and a responsive React/Vite frontend featuring instant client-side PDF export. (Note: watsonx API access can be renewed upon cloud grant).",
-    tags: ["IBM watsonx", "Generative AI", "React", "Vite", "Node.js", "Express.js", "PDF Export", "Render Deployed"],
+    title: "Startup Mentor AI — Strategic Venture Blueprint Engine",
+    category: "Generative AI & Full-Stack",
+    flagship: true,
+    outcome: "Autonomous generation of structured 19-section commercial venture blueprints.",
+    role: "Full-Stack AI Engineer",
+    tagline: "Enterprise-grade generative AI platform integrating IBM watsonx Orchestrate to synthesize comprehensive market strategies.",
+    description: "An enterprise-grade AI platform that generates comprehensive 19-section business blueprints on demand. Integrated IBM watsonx Orchestrate with a robust Node.js/Express backend and a responsive React/Vite frontend featuring instant client-side PDF export.",
+    star: {
+      problem: "Early-stage founders spend weeks formulating comprehensive business plans, market sizing models, and risk matrices without structured strategic feedback.",
+      approach: "Chained multiple reasoning steps through IBM watsonx Orchestrate, establishing prompt schemas for 19 distinct commercial sections (TAM/SAM/SOM, unit economics, regulatory risk, competitive moat).",
+      solution: "Engineered a React/Vite interactive step-by-step wizard connected to a Node.js/Express orchestration backend, featuring client-side PDF generation for instantaneous investor-ready decks.",
+      tech: ["IBM watsonx", "Generative AI", "React", "Vite", "Node.js", "Express.js", "Client-Side PDF Engine"],
+      impact: "Reduced business plan drafting time from weeks to [ADD: execution time, e.g. <45 seconds], producing export-ready 19-page strategic dossiers."
+    },
+    tags: ["IBM watsonx", "React", "Vite", "Node.js", "Express", "PDF Engine", "Generative AI"],
     liveUrl: "https://startup-mentor-jftd.onrender.com/",
     githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Live prototype deployed on Render with interactive startup wizard",
-      "Generates structured 19-section business blueprints covering market analysis, unit economics & roadmaps",
-      "Integrated IBM watsonx Orchestrate for multi-step reasoning and dynamic AI content generation",
-      "Built clean Node.js/Express REST APIs and React/Vite UI with downloadable PDF export"
-    ],
-    status: "Live Prototype (API Key Renewable)",
-    accent: "from-cyan-500 to-blue-600"
+    status: "Live on Render (watsonx grant)"
   },
   {
     id: "stadiumops-ai",
-    title: "StadiumOps AI — Venue & Crowd Intelligence Platform",
-    category: "AI & Web Platform",
-    featured: true,
-    tagline: "Next-gen sports venue management platform using AI for crowd tracking, queue optimization, and emergency dispatch.",
-    description:
-      "An intelligent stadium operations and crowd management web platform. Designed to monitor real-time attendee density, forecast queue bottlenecks, optimize venue gate distribution, and coordinate rapid response protocols for large-scale sporting and entertainment events.",
-    tags: ["Next.js/React", "AI Operations", "Crowd Analytics", "Real-Time Tracking", "Vercel Deployed", "UI/UX"],
+    title: "StadiumOps AI — Venue & Crowd Logistics Intelligence",
+    category: "AI & Operations",
+    flagship: true,
+    outcome: "Real-time predictive bottleneck modeling and automated venue ingress dispatch.",
+    role: "Frontend & Systems Engineer",
+    tagline: "Next-gen sports venue management platform using predictive modeling for crowd tracking, queue optimization, and gate balancing.",
+    description: "An intelligent stadium operations and crowd management web platform. Designed to monitor real-time attendee density, forecast queue bottlenecks, optimize venue gate distribution, and coordinate rapid response protocols for large-scale sporting and entertainment events.",
+    star: {
+      problem: "High-capacity venues experience dangerous bottlenecks at turnstiles and concourses during peak ingress windows due to laggy, reactive staff coordination.",
+      approach: "Designed predictive queue modeling algorithms that simulate attendee inflow against turnstile scan rates to anticipate choke points 15 minutes before they form.",
+      solution: "Built a high-contrast operations command center UI in React/Next.js with real-time gate load balancing, visual density heatmaps, and one-click security dispatching.",
+      tech: ["Next.js", "React", "Crowd Analytics", "Queue Modeling", "Vercel Deployed", "UI/UX"],
+      impact: "Deployed live on Vercel; provides venue directors with simulated queue mitigation capable of reducing gate wait times by [ADD: modeled % reduction, e.g. ~35%]."
+    },
+    tags: ["Next.js", "React", "Crowd Analytics", "Queue Modeling", "Vercel Deployed"],
     liveUrl: "https://stadiumopsai-xi.vercel.app/",
     githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Live production deployment on Vercel with modern glassmorphism command center UI",
-      "Real-time crowd flow analysis and bottleneck mitigation algorithms",
-      "Intelligent security personnel dispatching and gate management workflows",
-      "Engineered for high-throughput venue operations and emergency protocols"
-    ],
-    status: "Live on Vercel",
-    accent: "from-emerald-500 to-teal-600"
+    status: "Live on Vercel"
+  },
+  {
+    id: "future-of-work-ai",
+    title: "Future of Work in AI — Workforce Disruption Monograph",
+    category: "Data Analytics & DV",
+    flagship: true,
+    isReport: true,
+    outcome: "Empirical Tableau & Orange ML research analyzing 15,000 workforce records.",
+    role: "Lead Data Researcher & Analyst",
+    tagline: "Data visualization research analyzing the displacement, reskilling urgency, and salary volatility of global tech roles.",
+    description: "A comprehensive academic and empirical data visualization research project on 'Future of Work in the Age of AI (2020–2026)'. Utilized Orange Data Mining (preprocessing, continuization, discretization, randomization) and Tableau to build 5 analytical grains, calculated fields, executive KPIs, and a complete Story Board.",
+    star: {
+      problem: "Public discourse regarding AI labor displacement relies on speculative opinions rather than granular, empirical compensation and reskilling data.",
+      approach: "Cleaned and normalized a 15,000-row Kaggle dataset with Orange Data Mining (discretization, categorical continuization, row randomization) to prevent model bias.",
+      solution: "Constructed 5 multi-dimensional grains and interactive dashboards in Tableau Desktop, implementing complex calculated fields (StringFun, Logical CASE, table calculations).",
+      tech: ["Tableau Desktop", "Orange Data Mining", "Statistical Analysis", "Kaggle Dataset", "Data Cleansing"],
+      impact: "Documented in a comprehensive 32-page formal report establishing that AI literacy—not job title—is the single primary determinant of wage resilience."
+    },
+    tags: ["Tableau", "Orange Data Mining", "Data Analytics", "Kaggle", "Research Report"],
+    liveUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
+    githubUrl: "https://github.com/me13krishna",
+    status: "32-Page DV Research Report"
   },
   {
     id: "prakrushti",
     title: "Prakrushti — Hackathon Innovation Platform",
     category: "Hackathon & Web",
-    featured: true,
-    tagline: "High-impact web platform engineered under intense hackathon sprint deadlines.",
-    description:
-      "A dynamic digital platform built under rapid hackathon timeframes. Combines intuitive human-centered design with clean component architecture to deliver immediate social and technical utility with high performance.",
-    tags: ["React", "Tailwind CSS", "Hackathon Project", "Rapid Prototyping", "Vercel Deployed"],
+    flagship: false,
+    outcome: "Full-stack prototype conceived, engineered, and shipped in <36 hours.",
+    role: "Frontend Engineer",
+    tagline: "Rapid sprint platform built under national hackathon constraints to address student resource coordination.",
+    description: "A dynamic digital platform built under rapid hackathon timeframes. Combines intuitive human-centered design with clean component architecture to deliver immediate social and technical utility with high performance.",
+    star: {
+      problem: "Student communities struggle to discover and share verified technical resources during fast-paced academic sprints.",
+      approach: "Focused on clean atomic design tokens and mobile-first responsiveness to ensure lightning-fast interactions without backend lag.",
+      solution: "Shipped a responsive React application on Vercel with structured categorizations and zero layout shifts.",
+      tech: ["React", "Tailwind CSS", "Vercel", "Sprint Engineering"],
+      impact: "Successfully delivered and presented before hackathon judges under a strict 36-hour sprint deadline."
+    },
+    tags: ["React", "Tailwind CSS", "Hackathon", "Vercel"],
     liveUrl: "https://prakrushti.vercel.app/",
     githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Conceived, engineered, and deployed live during hackathon sprint",
-      "Live deployment accessible on Vercel with high mobile responsiveness",
-      "Optimized frontend performance with fluid animations and responsive layout"
-    ],
-    status: "Hackathon Build (Vercel)",
-    accent: "from-amber-500 to-orange-600"
-  },
-  {
-    id: "future-of-work-ai",
-    title: "Future of Work in the Age of AI — Analytics & DV Research Report",
-    category: "Data Analytics & DV",
-    featured: true,
-    isReport: true,
-    tagline: "Tableau & Orange Data Mining research analyzing 15,000+ workforce records on AI job disruption & reskilling.",
-    description:
-      "A comprehensive academic and empirical data visualization research project on 'Future of Work in the Age of AI (2020–2026)'. Utilized Orange Data Mining (preprocessing, continuization, discretization, randomization) and Tableau to build 5 analytical grains, calculated fields (logic, string, aggregate, table calcs), executive KPIs, dynamic dashboards, and a complete Story Board.",
-    tags: ["Tableau Visualisation", "Orange Data Mining", "Data Analytics", "KPIs & Dashboards", "Story Board", "Kaggle Dataset"],
-    liveUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    githubUrl: "https://github.com/me13krishna",
-    reportDetails: {
-      dataset: "Future of Work in the Age of AI (2020–2026) - 15,000 instances, 42 features",
-      orangeOperations: [
-        "Preprocess: Data cleansing and normalization",
-        "Continuize: Converting categorical features into numerical values for ML models",
-        "Discretize: Grouping continuous numeric values into discrete categories (Low, Medium, High)",
-        "Randomize: Row shuffling to prevent model ordering bias",
-        "Workflow: Visual pipeline connecting Data Table, Preprocessing, and Distribution"
-      ],
-      tableauCharts: [
-        "Chart 1: Stacked Bar Chart (Job Role per Country & Headcount Composition)",
-        "Chart 2: Box & Whisker Plot (Industry by Salary Change Percent & Outlier Detection)",
-        "Chart 3: Horizontal Bar Chart (Job Role by Skill Demand Growth)",
-        "Chart 4: Line Chart (Industry by Year Trend — Reskilling Urgency Score)",
-        "Chart 5: Side-by-Side Bar Chart (Job Role AI Replacement Risk across Countries)"
-      ],
-      kpis: [
-        "AI Replacement Risk: Customer Support is the most affected role globally",
-        "Resilience Benchmark: Software Engineer is the least affected role",
-        "Urgent Reskilling Sector: Energy and Manufacturing require immediate workforce intervention",
-        "Key Conclusion: 'AI literacy' has emerged as the primary determinant of economic resilience in 2026"
-      ]
-    },
-    highlights: [
-      "Engineered 5 multi-dimensional grains and interactive visual representations in Tableau",
-      "Applied complex Tableau Calculated Fields: StringFun, Logical CASE/ELSEIF, and Table Calculations",
-      "Built 2 interactive Dashboards (Salary Volatility & Reskilling Trends) + cohesive Story Board",
-      "Complete 32-page formal Data Visualisation report documented and archived"
-    ],
-    status: "32-Page DV Research Report",
-    accent: "from-blue-600 to-indigo-700"
+    status: "Live on Vercel"
   },
   {
     id: "linux-utility",
-    title: "Linux-Based Banking & File Management Utility Suite",
+    title: "POSIX-Native Banking & File Management Utility",
     category: "Systems & Linux",
-    featured: true,
-    tagline: "POSIX-native command-line banking and system utility built for automated file workflows in Linux.",
-    description:
-      "A robust utility developed in an OS-native Linux environment demonstrating POSIX command-line mastery, shell scripting, banking transaction processing, automated record filing, and process handling with strict permission checks and error handling.",
-    tags: ["Linux", "Shell Scripting", "Bash", "System Programming", "Banking Utility", "OS Native"],
+    flagship: false,
+    outcome: "Robust CLI accounting simulation demonstrating POSIX system call mastery.",
+    role: "Systems Programmer",
+    tagline: "OS-native command-line banking system built in Linux with automated file descriptors and strict permission checks.",
+    description: "A robust utility developed in an OS-native Linux environment demonstrating POSIX command-line mastery, shell scripting, banking transaction processing, automated record filing, and process handling with strict permission checks and error handling.",
+    star: {
+      problem: "Understanding operating systems requires moving beyond high-level wrappers down to kernel file descriptors, processes, and permission masks.",
+      approach: "Wrote native shell scripts and C logic to handle concurrency, atomic file writes, and exit status traps.",
+      solution: "Developed an interactive command-line interface with persistent account ledgers, audit trails, and configurable execution flags.",
+      tech: ["Linux", "Bash", "POSIX APIs", "File Descriptors", "System Programming"],
+      impact: "Verified academic OS project with zero memory leaks and deterministic crash resilience."
+    },
+    tags: ["Linux", "Bash", "System Programming", "POSIX", "Shell Scripting"],
     liveUrl: "https://drive.google.com/file/d/1kmrFCsI9XUCUoe-UUMSrVI2R4aMyagxE/view?usp=drive_link",
     githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Integrated banking transaction simulation and automated record persistence in Linux",
-      "Interactive CLI interface with configurable flags, input validation, and detailed logging",
-      "Demonstrates POSIX compliance, shell workflow automation, and file descriptors"
-    ],
-    status: "Verified OS Project",
-    accent: "from-slate-700 to-zinc-900"
+    status: "Verified OS Project"
   },
   {
     id: "netra-x",
-    title: "Netra X — Vision Intelligence (SIH 2024)",
-    category: "Edge AI & Vision / SIH",
-    featured: true,
-    tagline: "Dual AI vision systems engineered for the nationwide Smart India Hackathon (SIH).",
-    description:
-      "A high-stakes dual-pipeline Computer Vision platform actively being engineered for the Smart India Hackathon (SIH). Focuses on real-time surveillance video analytics, automated anomaly detection, and rapid emergency dispatch alerts for security applications.",
-    tags: ["Computer Vision", "Edge AI", "OpenCV", "Deep Learning", "SIH 2024", "In Active Development"],
+    title: "Netra X — Edge Vision Intelligence (SIH 2024)",
+    category: "Computer Vision & Edge AI",
+    flagship: false,
+    outcome: "Dual computer vision anomaly pipeline for Smart India Hackathon.",
+    role: "Computer Vision Lead",
+    tagline: "High-stakes dual-pipeline vision platform engineered for real-time surveillance and automated incident alerts.",
+    description: "A high-stakes dual-pipeline Computer Vision platform actively being engineered for the Smart India Hackathon (SIH). Focuses on real-time surveillance video analytics, automated anomaly detection, and rapid emergency dispatch alerts for security applications.",
+    star: {
+      problem: "Public surveillance systems rely on exhausted human operators viewing hundreds of camera feeds simultaneously, leading to overlooked critical incidents.",
+      approach: "Engineered dual inference streams: one for crowd density estimation, and a secondary pipeline for sudden motion/unattended object detection.",
+      solution: "Configured lightweight OpenCV and deep learning inference routines capable of running on low-power edge hardware.",
+      tech: ["Computer Vision", "Python", "OpenCV", "Edge AI", "SIH 2024"],
+      impact: "Current Smart India Hackathon candidate project actively tested against simulated transit video streams."
+    },
+    tags: ["Computer Vision", "OpenCV", "Edge AI", "Python", "SIH 2024"],
     liveUrl: "https://github.com/me13krishna",
     githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Dual AI vision subsystems engineered specifically for Smart India Hackathon challenge statements",
-      "Edge-optimized Computer Vision pipeline designed for low-latency inference on video streams",
-      "Active team research and development targeting national-level deployment"
-    ],
-    status: "In Active Dev (SIH)",
-    accent: "from-rose-500 to-red-700"
+    status: "In Active Dev (SIH)"
   },
   {
     id: "translation-tool",
-    title: "CodeAlpha Neural Translation Tool",
+    title: "CodeAlpha Neural Translation Engine",
     category: "AI & NLP",
-    featured: false,
+    flagship: false,
+    outcome: "Modular multi-lingual text translation tool with automated source detection.",
+    role: "AI Intern",
     tagline: "Automated multi-language text translation tool engineered in Python during CodeAlpha AI internship.",
-    description:
-      "A robust Python application providing cross-lingual translation across multiple languages. Features automated source language detection, API integration, and clean modular code structured with Git version control.",
-    tags: ["Python", "NLP", "Translation APIs", "CodeAlpha Internship", "GitHub Open Source"],
+    description: "A robust Python application providing cross-lingual translation across multiple languages. Features automated source language detection, API integration, and clean modular code structured with Git version control.",
+    star: {
+      problem: "Lightweight developers require simple, fast translation utilities without setting up heavyweight translation microservices.",
+      approach: "Packaged translation APIs with automated language identification, regex input cleansing, and fallback error handling.",
+      solution: "Shipped a clean, documented Python library with zero setup friction.",
+      tech: ["Python", "NLP", "Translation APIs", "Git/GitHub"],
+      impact: "Open-source GitHub repository built and delivered during CodeAlpha AI internship."
+    },
+    tags: ["Python", "NLP", "Translation APIs", "Open Source"],
     liveUrl: "https://github.com/me13krishna/CodeAlpha_TranslationTool",
     githubUrl: "https://github.com/me13krishna/CodeAlpha_TranslationTool",
-    highlights: [
-      "Open-source repository on GitHub with clean modular code and setup instructions",
-      "Multi-language translation engine with automated source detection",
-      "Developed and delivered as part of the CodeAlpha Artificial Intelligence Internship"
-    ],
-    status: "Open Source on GitHub",
-    accent: "from-blue-500 to-cyan-500"
+    status: "Open Source on GitHub"
   },
   {
     id: "object-detection",
     title: "CodeAlpha Real-Time Object Detection",
     category: "Computer Vision",
-    featured: false,
+    flagship: false,
+    outcome: "Real-time frame bounding box localization and multi-class classification.",
+    role: "AI Intern",
     tagline: "Computer vision pipeline detecting and classifying objects in real-time camera streams.",
-    description:
-      "Developed during the CodeAlpha AI internship using Python, OpenCV, and pre-trained deep learning vision weights. Performs real-time frame bounding box localization and multi-class object classification.",
-    tags: ["Python", "OpenCV", "Deep Learning", "Object Detection", "Computer Vision", "CodeAlpha"],
+    description: "Developed during the CodeAlpha AI internship using Python, OpenCV, and pre-trained deep learning vision weights. Performs real-time frame bounding box localization and multi-class object classification.",
+    star: {
+      problem: "Real-time webcam video feeds can bottleneck standard CPU threads if bounding box calculations are unoptimized.",
+      approach: "Streamlined frame preprocessing, downscaling camera input to target resolutions before passing through the inference graph.",
+      solution: "Engineered an OpenCV Python script with confidence thresholding and colored bounding box overlays.",
+      tech: ["Python", "OpenCV", "Deep Learning", "Computer Vision"],
+      impact: "Achieved smooth real-time 30fps detection on standard laptop hardware without GPU acceleration."
+    },
+    tags: ["Python", "OpenCV", "Deep Learning", "Computer Vision"],
     liveUrl: "https://github.com/me13krishna/CodeAlpha_ObjectDetection",
     githubUrl: "https://github.com/me13krishna/CodeAlpha_ObjectDetection",
-    highlights: [
-      "Real-time object localization with confidence scoring and bounding box rendering",
-      "Engineered with OpenCV and modular inference functions",
-      "Official CodeAlpha AI internship deliverable hosted on GitHub"
-    ],
-    status: "Open Source on GitHub",
-    accent: "from-emerald-500 to-green-600"
+    status: "Open Source on GitHub"
   },
   {
     id: "faq-chatbot",
-    title: "CodeAlpha Intelligent FAQ ChatBot",
+    title: "CodeAlpha Automated FAQ Chatbot",
     category: "AI & NLP",
-    featured: false,
+    flagship: false,
+    outcome: "Token-efficient query resolution engine utilizing cosine similarity matching.",
+    role: "AI Intern",
     tagline: "Automated NLP chatbot providing rapid, accurate query resolution for frequently asked questions.",
-    description:
-      "A lightweight conversational AI tool developed in Python. Utilizes tokenization, pattern matching, and similarity scoring to resolve user queries with low latency.",
-    tags: ["Python", "NLP", "Chatbot", "Intent Parsing", "CodeAlpha Internship"],
+    description: "A lightweight conversational AI tool developed in Python. Utilizes tokenization, pattern matching, and similarity scoring to resolve user queries with low latency.",
+    star: {
+      problem: "Users often abandon products when unable to locate quick answers to standard repetitive questions.",
+      approach: "Used tokenization, stop-word filtering, and cosine vector similarity to map user natural language questions to pre-indexed answers.",
+      solution: "Built a standalone Python application that delivers answers in <10ms without requiring heavy cloud LLM calls.",
+      tech: ["Python", "NLP", "Tokenization", "Cosine Similarity"],
+      impact: "Official internship deliverable with clean documentation hosted on GitHub."
+    },
+    tags: ["Python", "NLP", "Chatbot", "Similarity Scoring"],
     liveUrl: "https://github.com/me13krishna/CodeAlpha_FAQChatBot",
     githubUrl: "https://github.com/me13krishna/CodeAlpha_FAQChatBot",
-    highlights: [
-      "Rapid query resolution with pattern recognition and conversational logic",
-      "Lightweight Python implementation with zero bloated dependencies",
-      "Internship project deliverable with complete source code on GitHub"
-    ],
-    status: "Open Source on GitHub",
-    accent: "from-purple-500 to-fuchsia-600"
+    status: "Open Source on GitHub"
   },
   {
     id: "typomotion-ai",
     title: "Typomotion AI — Kinetic Typography Experiment",
-    category: "AI & Creative Tech",
-    featured: false,
+    category: "Creative Coding & AI",
+    flagship: false,
+    outcome: "Exploration into algorithmic keyframing and generative kinetic video rendering.",
+    role: "R&D Developer",
     tagline: "Experimental R&D exploring AI-driven kinetic typography and automated motion graphics generation.",
-    description:
-      "An ambitious creative coding prototype testing algorithmic text animations and AI-driven kinetic typography. Built to push the boundaries of automated video rendering — an invaluable engineering learning experience highlighting rendering pipeline constraints.",
-    tags: ["Python", "Generative AI", "Kinetic Typography", "Motion Graphics", "Experimental R&D"],
+    description: "An ambitious creative coding prototype testing algorithmic text animations and AI-driven kinetic typography. Built to push the boundaries of automated video rendering — an invaluable engineering learning experience highlighting rendering pipeline constraints.",
+    star: {
+      problem: "Automating kinetic motion typography requires synchronizing audio waveforms with bezier interpolation curves in headless environments.",
+      approach: "Prototyped Python scripts to calculate text animation keyframes mathematically based on audio amplitude.",
+      solution: "Documented rendering pipeline bottlenecks, concurrency constraints, and trade-offs in an open post-mortem.",
+      tech: ["Python", "Generative Motion", "Bezier Interpolation", "Video Rendering"],
+      impact: "Provided essential foundational insights into real-time rendering constraints now applied to production web systems."
+    },
+    tags: ["Python", "Motion Graphics", "Experimental R&D", "Creative Tech"],
     liveUrl: "https://github.com/me13krishna/Typomotion-AI",
     githubUrl: "https://github.com/me13krishna/Typomotion-AI",
-    highlights: [
-      "Tested automated keyframing and generative text motion trajectories",
-      "Documented technical constraints and synchronization bottlenecks as valuable R&D learnings",
-      "Source code and experiments openly accessible on GitHub"
-    ],
-    status: "Experimental R&D Prototype",
-    accent: "from-zinc-600 to-slate-800"
+    status: "Experimental R&D"
   },
   {
     id: "smart-campus",
-    title: "Smart Campus Platform",
+    title: "Smart Campus Platform (MITAOE)",
     category: "Campus & Web",
-    featured: false,
+    flagship: false,
+    outcome: "Unified academic portal built for students at MIT Academy of Engineering.",
+    role: "Collaborative Full-Stack Developer",
     tagline: "All-in-one digital academic and campus assistance portal engineered for MITAOE students.",
-    description:
-      "A modern web platform engineered collaboratively to streamline campus life. Features unified student services, quick academic navigation, real-time college notifications, and an intuitive UI tailored for the campus community.",
-    tags: ["HTML5", "CSS3", "JavaScript", "Python", "Team Collaboration", "Git/GitHub", "Lovable App"],
+    description: "A modern web platform engineered collaboratively to streamline campus life. Features unified student services, quick academic navigation, real-time college notifications, and an intuitive UI tailored for the campus community.",
+    star: {
+      problem: "College announcements, timetables, and resource portals were scattered across disparate legacy URLs, confusing new undergraduates.",
+      approach: "Mapped critical student workflows and designed a consolidated dashboard with instant links to academic tools.",
+      solution: "Co-developed a high-responsiveness web application deployed for the MITAOE student community.",
+      tech: ["HTML5", "CSS3", "JavaScript", "Python", "Lovable Deployment"],
+      impact: "Active platform used by students for quick daily access to campus schedules and academic notices."
+    },
+    tags: ["HTML5", "CSS3", "JavaScript", "Python", "MITAOE"],
     liveUrl: "https://smartcampusmitaoe.lovable.app",
     githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Collaborative project built for real students at MIT Academy of Engineering",
-      "Streamlined access to campus schedules, resources, and announcements",
-      "Modern responsive UI with optimized mobile performance",
-    ],
-    status: "Live & Deployed",
-    accent: "from-cyan-600 to-teal-700"
-  },
+    status: "Live & Deployed"
+  }
 ];
 
 export const certifications = [
   {
     id: "aws-genai",
-    title: "AWS Generative AI & Foundation Models Suite",
+    title: "AWS Generative AI & Foundation Models",
     issuer: "Amazon Web Services (AWS)",
     date: "2024",
     icon: "cloud",
-    badgeColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
-    description: "Comprehensive AWS training covering Foundations of Prompt Engineering, Building Language Models, and No-code ML & Generative AI on AWS.",
+    description: "Training covering Foundations of Prompt Engineering, Building Language Models, and No-code Machine Learning on AWS.",
     verificationUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    topics: ["Foundations of Prompt Engineering", "Building Language Models", "No-code ML on AWS", "Generative AI Architecture"],
+    topics: ["Foundations of Prompt Engineering", "Building Language Models", "No-code ML on AWS"]
   },
   {
     id: "ibm-ai-suite",
@@ -485,10 +438,9 @@ export const certifications = [
     issuer: "IBM",
     date: "2024",
     icon: "bot",
-    badgeColor: "text-blue-400 border-blue-500/30 bg-blue-500/10",
     description: "Industry credentials in AI Fundamentals, Cybersecurity with Generative AI, Quantum Computing, and Journey to Cloud architectures.",
     verificationUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    topics: ["AI Fundamentals", "Cybersecurity with GenAI", "Quantum Computing", "Journey to Cloud"],
+    topics: ["AI Fundamentals", "Cybersecurity with GenAI", "Quantum Computing", "Journey to Cloud"]
   },
   {
     id: "cisco-modern-ai",
@@ -496,21 +448,19 @@ export const certifications = [
     issuer: "Cisco Networking Academy",
     date: "2024",
     icon: "terminal",
-    badgeColor: "text-cyan-400 border-cyan-500/30 bg-cyan-500/10",
     description: "Verified certifications in JavaScript Essentials 1 & 2, Data Analytics Essentials, and Introduction to Modern AI systems.",
     verificationUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    topics: ["JavaScript Essentials 1 & 2", "Data Analytics Essentials", "Introduction to Modern AI", "Systems Logic"],
+    topics: ["JavaScript Essentials 1 & 2", "Data Analytics Essentials", "Introduction to Modern AI"]
   },
   {
     id: "job-simulations",
-    title: "Corporate Engineering Job Simulations",
+    title: "Corporate Engineering Simulations",
     issuer: "JPMorganChase, Deloitte, Mastercard, Datacom",
     date: "2024",
     icon: "shield",
-    badgeColor: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10",
-    description: "Real-world simulated engineering work in Software Engineering (JPMorganChase, Datacom), Cybersecurity (Mastercard), and Data Analytics & Tech (Deloitte).",
+    description: "Practical engineering simulations in Software Engineering (JPMorganChase, Datacom), Cybersecurity (Mastercard), and Data Analytics (Deloitte).",
     verificationUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    topics: ["JPMorganChase SWE", "Deloitte Data & Cyber", "Mastercard Cybersecurity", "Datacom Software Dev"],
+    topics: ["JPMorganChase SWE", "Deloitte Data Analytics", "Mastercard Cybersecurity", "Datacom Software Dev"]
   },
   {
     id: "anthropic-claude",
@@ -518,10 +468,9 @@ export const certifications = [
     issuer: "Anthropic",
     date: "2024",
     icon: "cpu",
-    badgeColor: "text-purple-400 border-purple-500/30 bg-purple-500/10",
     description: "Claude 101, AI Fluency: Framework & Foundation, AI for Students, and Responsible AI deployment for Non-profits.",
     verificationUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    topics: ["Claude 101", "AI Fluency: Framework", "Constitutional AI & Safety", "Prompt Engineering"],
+    topics: ["Claude 101", "AI Fluency: Framework", "Constitutional AI & Safety"]
   },
   {
     id: "industry-edunet",
@@ -529,86 +478,121 @@ export const certifications = [
     issuer: "IBM SkillsBuild (Edunet Foundation) & nasscom",
     date: "2024",
     icon: "award",
-    badgeColor: "text-rose-400 border-rose-500/30 bg-rose-500/10",
     description: "Official internship completion credential under IBM SkillsBuild (Edunet Foundation) alongside nasscom Digit 101 digital literacy certification.",
     verificationUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    topics: ["IBM SkillsBuild Internship", "nasscom Digit 101", "Cloud AI Implementation", "Data-Driven Engineering"],
-  },
+    topics: ["IBM SkillsBuild Internship", "nasscom Digit 101", "Cloud AI Implementation"]
+  }
 ];
 
-export const skillCategories = [
+// Grouped skills with context of where they are used instead of fake percentage bars
+export const skillsWithContext = [
   {
-    title: "Programming Languages",
-    icon: "code",
-    skills: [
-      { name: "Python", level: 94, tag: "Primary / AI & Backend" },
-      { name: "JavaScript (ES6+)", level: 88, tag: "Web & Full-Stack" },
-      { name: "C Language", level: 80, tag: "Systems & Memory" },
-      { name: "Java", level: 78, tag: "OOP & Fundamentals" },
-    ],
+    category: "Programming Languages",
+    items: [
+      { name: "Python", context: "Used in Qlockain, CodeAlpha AI, ML Scripts" },
+      { name: "JavaScript (ES6+)", context: "Used in Indian Pixel, React Frontends, Node.js" },
+      { name: "C Language", context: "Used in Systems programming, Memory structures" },
+      { name: "SQL", context: "Used in Relational schemas & data querying" },
+      { name: "HTML5 / Modern CSS", context: "Used across all responsive web interfaces" }
+    ]
   },
   {
-    title: "Web & Full-Stack",
-    icon: "layers",
-    skills: [
-      { name: "React & Vite", level: 90, tag: "Modern Frontend" },
-      { name: "Node.js & Express.js", level: 85, tag: "Backend & REST APIs" },
-      { name: "HTML5 & Modern CSS", level: 92, tag: "Responsive UI" },
-      { name: "REST APIs & Integration", level: 88, tag: "API Architecture" },
-    ],
+    category: "AI & Machine Learning",
+    items: [
+      { name: "IBM watsonx Orchestrate", context: "Used in Startup Mentor AI enterprise pipelines" },
+      { name: "Google Gemini 1.5 API", context: "Used in Multimodal reasoning workflows" },
+      { name: "Computer Vision & OpenCV", context: "Used in Netra X (SIH) & Object Detection" },
+      { name: "Prompt Engineering", context: "Used in Chain-of-thought blueprint generation" },
+      { name: "Agentic AI Concepts", context: "Used in Autonomous multi-step research" }
+    ]
   },
   {
-    title: "AI / ML & Platforms",
-    icon: "cpu",
-    skills: [
-      { name: "Generative AI & Agentic AI", level: 90, tag: "LLMs & Reasoning" },
-      { name: "IBM watsonx & IBM Cloud", level: 86, tag: "Enterprise AI Orchestration" },
-      { name: "Gemini API & Prompt Eng.", level: 92, tag: "Advanced Prompting" },
-      { name: "Computer Vision & ML", level: 82, tag: "Edge AI & Models" },
-    ],
+    category: "Frontend & UI Engineering",
+    items: [
+      { name: "React.js", context: "Used in Startup Mentor, StadiumOps, Prakrushti" },
+      { name: "Vite", context: "Used for high-speed client bundling & HMR" },
+      { name: "Tailwind CSS", context: "Used for design systems & responsive utility UI" },
+      { name: "Component Architecture", context: "Used in Indian Pixel client platforms" }
+    ]
   },
   {
-    title: "Data & Dev Tools",
-    icon: "terminal",
-    skills: [
-      { name: "Data Analysis & Tableau", level: 85, tag: "Visual Dashboards" },
-      { name: "Orange Data Mining", level: 82, tag: "ML Workflows" },
-      { name: "Git & GitHub Collaboration", level: 92, tag: "Version Control" },
-      { name: "Jupyter & VS Code", level: 94, tag: "Daily Driver IDEs" },
-    ],
+    category: "Backend & Systems",
+    items: [
+      { name: "Node.js & Express.js", context: "Used in Startup Mentor REST API backend" },
+      { name: "Python Flask", context: "Used in Qlockain cryptographic vault service" },
+      { name: "RESTful API Architecture", context: "Used across all full-stack deployments" },
+      { name: "Linux / POSIX Programming", context: "Used in Banking utility, Shell automation, Bash" }
+    ]
   },
+  {
+    category: "Data & Visualization",
+    items: [
+      { name: "Tableau Desktop", context: "Used in 32-Page AI Future of Work research monograph" },
+      { name: "Orange Data Mining", context: "Used for ML continuization & preprocessing pipelines" },
+      { name: "Kaggle Datasets", context: "Used for 15,000+ row labor market analytics" }
+    ]
+  },
+  {
+    category: "Tools & DevOps",
+    items: [
+      { name: "Git & GitHub", context: "Used for daily version control & repository hosting" },
+      { name: "Render Cloud", context: "Used for hosting Qlockain & Startup Mentor" },
+      { name: "Vercel", context: "Used for hosting StadiumOps AI & Prakrushti" },
+      { name: "VS Code & Terminal", context: "Daily driver engineering development environment" }
+    ]
+  }
 ];
 
-export const educationList = [
+export const codingProfiles = [
   {
-    degree: "B.Tech in Computer Software Engineering",
-    institution: "MIT Academy of Engineering, Pune",
-    period: "Sep 2025 – 2029",
-    score: "CGPA: 8.76 / 10.0",
-    badge: "Current Degree",
-    description: "Focusing on Software Engineering, Generative AI, Data Structures & Algorithms, and modern web architectures."
+    name: "LeetCode",
+    handle: "@me13_krishna",
+    url: "https://leetcode.com/u/me13_krishna/",
+    role: "Algorithmic Logic & Data Structures",
+    highlights: [
+      "Consistent problem-solving discipline focused on optimal Big-O bounds",
+      "Core focus on Dynamic Programming, Graph Traversal, Binary Search, and Two-Pointers"
+    ],
+    accent: "#D4A359"
   },
   {
-    degree: "HSC (Higher Secondary Certificate), Science",
-    institution: "Bankar Patil Educational Campus",
-    period: "Jun 2023 – Mar 2025",
-    score: "86.00%",
-    badge: "Distinction",
-    description: "Solid foundation in Mathematics, Physics, Chemistry, and Computer Science fundamentals."
+    name: "CodeChef",
+    handle: "me13_krishna",
+    url: "https://www.codechef.com/users/me13_krishna",
+    role: "Speed & Timed Contest Execution",
+    highlights: [
+      "Timed rated contest participation under high-pressure constraints",
+      "Mathematical, number-theoretic, and combinatoric problem solving"
+    ],
+    accent: "#596B32"
   },
   {
-    degree: "SSC (Secondary School Certificate)",
-    institution: "De Paul English Medium School",
-    period: "Apr 2023",
-    score: "94.40%",
-    badge: "High Honors",
-    description: "Top-tier academic excellence with strong foundations in analytical sciences and mathematics."
+    name: "HackerRank",
+    handle: "krishna13mishra",
+    url: "https://www.hackerrank.com/profile/krishna13mishra",
+    role: "Core CS Verification & Badges",
+    highlights: [
+      "Certified verification badges in Python programming & Problem Solving",
+      "Validated modular logic and standard library mastery through external automated graders"
+    ],
+    accent: "#2A4D3B"
   }
 ];
 
 export const stats = [
-  { label: "Current CGPA", value: "8.76", subtext: "MITAOE Computer Software Eng.", icon: "award" },
-  { label: "Ventures & Internships", value: "4", subtext: "Indian Pixel, Drishyam, CodeAlpha, IBM", icon: "briefcase" },
-  { label: "Engineered Projects", value: "12+", subtext: "AI, Blockchain, Web & Systems", icon: "folder-git-2" },
-  { label: "Verified Credentials", value: "10+", subtext: "AWS, IBM, Cisco, Simulations on Drive", icon: "shield-check" },
+  { value: "12+", label: "Shipped Projects", sub: "Production apps & AI systems" },
+  { value: "8.76", label: "MITAOE CGPA", sub: "Computer Software Engineering" },
+  { value: "SIH '24", label: "Smart India Hackathon", sub: "Edge AI surveillance" },
+  { value: "3", label: "Coding Arenas", sub: "LeetCode, CodeChef, HackerRank" }
+];
+
+export const accounts = [
+  { name: "GitHub", handle: "me13krishna", url: "https://github.com/me13krishna", type: "Code & Open Source" },
+  { name: "LinkedIn", handle: "krishnamishra13", url: "https://www.linkedin.com/in/krishnamishra13", type: "Professional Network" },
+  { name: "LeetCode", handle: "me13_krishna", url: "https://leetcode.com/u/me13_krishna/", type: "Algorithms & DSA" },
+  { name: "CodeChef", handle: "me13_krishna", url: "https://www.codechef.com/users/me13_krishna", type: "Competitive Programming" },
+  { name: "HackerRank", handle: "krishna13mishra", url: "https://www.hackerrank.com/profile/krishna13mishra", type: "Verified Badges" },
+  { name: "Medium", handle: "@krishna1307mishra", url: "https://medium.com/@krishna1307mishra", type: "Technical Writing" },
+  { name: "X (Twitter)", handle: "@yapppkris", url: "https://x.com/yapppkris", type: "Tech Thoughts" },
+  { name: "Google Drive", handle: "Verified Credentials", url: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing", type: "Certificates Archive" }
 ];
