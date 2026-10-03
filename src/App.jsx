@@ -1,84 +1,96 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ProofStrip from './components/ProofStrip';
+import Projects from './components/Projects';
+import ProblemSolving from './components/ProblemSolving';
 import About from './components/About';
-import AccountsHub from './components/AccountsHub';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import TerminalModal from './components/TerminalModal';
 import CommandPalette from './components/CommandPalette';
 import ResumeModal from './components/ResumeModal';
-import MatrixRain from './components/MatrixRain';
-import { Terminal, Search, Sparkles } from 'lucide-react';
+import CustomCursor from './components/CustomCursor';
+import { Terminal, Search } from 'lucide-react';
 import { playCyberClick } from './utils/audio';
 
 export default function App() {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
-  const [matrixActive, setMatrixActive] = useState(false);
 
   return (
-    <div className="min-h-screen bg-void text-slate-100 relative selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-void text-ivory relative selection:bg-ember/30 selection:text-white bg-grain">
       
-      {/* Background Cyber Grid */}
-      <div className="fixed inset-0 bg-cyber-grid pointer-events-none opacity-40 z-0" />
+      {/* Subtle Architectural Grid Lines */}
+      <div className="fixed inset-0 bg-architect-grid pointer-events-none opacity-40 z-0" />
       
-      {/* Matrix Rain Easter Egg */}
-      <MatrixRain active={matrixActive} onClose={() => setMatrixActive(false)} />
+      {/* Smooth Editorial Custom Cursor */}
+      <CustomCursor />
 
-      {/* Main Top Navigation */}
+      {/* Main Top Sticky Navigation */}
       <Navbar 
         onOpenTerminal={() => setTerminalOpen(true)}
         onOpenPalette={() => setPaletteOpen(true)}
         onOpenResume={() => setResumeOpen(true)}
       />
 
-      {/* Content Flow */}
+      {/* Primary Editorial Content Flow */}
       <main className="relative z-10">
+        
+        {/* 1. Hero Statement & Art-Directed Portrait */}
         <Hero 
           onOpenTerminal={() => setTerminalOpen(true)}
-          onOpenAccounts={() => {}}
           onOpenResume={() => setResumeOpen(true)}
         />
         
+        {/* 2. Core Pillars of Execution / Proof of Craft */}
+        <ProofStrip />
+
+        {/* 3. Featured Editorial Projects Showcase & Directory (All 12) */}
+        <Projects />
+
+        {/* 4. Problem Solving Arena: Think -> Solve -> Ship */}
+        <ProblemSolving />
+
+        {/* 5. Authentic Story & Academic Journey */}
         <About 
           onOpenResume={() => setResumeOpen(true)}
         />
 
-        <AccountsHub />
-
+        {/* 6. Experience & Leadership Timeline */}
         <Experience />
 
+        {/* 7. Categorized Technologies & Systems */}
         <Skills />
 
-        <Projects />
-
+        {/* 8. Verified Credentials & Google Drive Repository */}
         <Certifications />
 
+        {/* 9. Direct Outreach & Message Channels */}
         <Contact />
+
       </main>
 
-      {/* Footer */}
+      {/* 10. Massive CTA Footer */}
       <Footer 
         onOpenTerminal={() => setTerminalOpen(true)}
       />
 
       {/* Floating Quick Action Widget (Bottom-Left) */}
-      <div className="fixed bottom-6 left-6 z-40 hidden md:flex items-center gap-2 glass-panel p-1.5 rounded-2xl border-white/10 shadow-2xl backdrop-blur-xl">
+      <div className="fixed bottom-6 left-6 z-40 hidden md:flex items-center gap-2 bg-surface/90 p-1.5 rounded-full border border-borderMuted shadow-2xl backdrop-blur-xl">
         <button
           onClick={() => {
             playCyberClick();
             setTerminalOpen(true);
           }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-950/60 hover:bg-cyan-900/80 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-semibold transition-all hover:shadow-lg hover:shadow-cyan-950/50"
-          title="Open Cyber Terminal"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-void text-ivory-dim hover:text-white border border-borderMuted text-xs font-mono font-medium transition-all"
+          title="Open CLI Terminal"
         >
-          <Terminal className="w-3.5 h-3.5" />
+          <Terminal className="w-3.5 h-3.5 text-ember" />
           <span>CLI</span>
         </button>
 
@@ -87,10 +99,10 @@ export default function App() {
             playCyberClick();
             setPaletteOpen(true);
           }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white text-xs font-mono transition-all"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/5 text-ivory-muted hover:text-white text-xs font-mono transition-all"
           title="Open Command Palette"
         >
-          <Search className="w-3.5 h-3.5 text-purple-400" />
+          <Search className="w-3.5 h-3.5 text-amberGold" />
           <span>⌘K</span>
         </button>
       </div>
@@ -103,7 +115,6 @@ export default function App() {
           setTerminalOpen(false);
           setResumeOpen(true);
         }}
-        onToggleMatrix={() => setMatrixActive(!matrixActive)}
       />
 
       <CommandPalette 

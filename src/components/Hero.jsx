@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   ArrowRight, 
   Terminal, 
-  Sparkles, 
   MapPin, 
   GraduationCap, 
-  Code2,
-  Cpu,
-  Layers,
-  Copy,
-  Check,
-  Award
+  Cpu, 
+  Copy, 
+  Check, 
+  Sparkles,
+  ArrowDownRight,
+  Code2
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { playCyberClick, playCyberBeep } from '../utils/audio';
 import krishnaImg from '../assets/krishna.jpg';
 
-export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
-  const [copied, setCopied] = React.useState(false);
+export default function Hero({ onOpenTerminal, onOpenResume }) {
+  const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
     playCyberBeep();
@@ -27,80 +26,83 @@ export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
+    <section id="home" className="relative min-h-[94vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
       
-      {/* Dynamic Background Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-purple-600/15 rounded-full blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute -top-10 -right-20 w-[450px] h-[450px] bg-purple-600/15 rounded-full blur-[130px] pointer-events-none -z-10" />
-      <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[130px] pointer-events-none -z-10" />
+      {/* Subtle Warm Ambient Backlight (Ember & Charcoal) */}
+      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-ember/10 rounded-full blur-[160px] pointer-events-none -z-10" />
+      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-amberGold/5 rounded-full blur-[150px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
-        {/* Responsive Grid: Left Text & CTA, Right Photo */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Asymmetric Editorial Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column (7 cols): Intro & CTAs */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+          {/* Left Column (7 cols): Massive Typography & Editorial Statement */}
+          <div className="lg:col-span-7 flex flex-col items-start space-y-7 text-left">
             
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-mono tracking-wide shadow-lg shadow-cyan-950/50 backdrop-blur-md animate-pulse-slow">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="w-2 h-2 rounded-full bg-emerald-400 -ml-4" />
-              <span>Open to Software &amp; AI Internships</span>
-              <span className="text-slate-500">|</span>
-              <span className="text-slate-300 font-bold">CGPA 8.76</span>
+            {/* Status Pill */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surface border border-borderMuted text-xs font-mono text-ivory-dim tracking-wide shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-ember animate-pulse shadow-[0_0_8px_#FF5500]" />
+              <span className="text-white font-medium">Founder @ Indian Pixel</span>
+              <span className="text-borderMuted">/</span>
+              <span className="text-ivory-muted">Open to Summer '25 Roles</span>
             </div>
 
-            {/* Name & Title */}
+            {/* Monumental Headline */}
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight font-display">
-                <span className="text-slate-100 block mb-1">Hi, I'm</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 drop-shadow-[0_0_35px_rgba(0,240,255,0.3)]">
-                  Krishna Mishra
+              <h1 className="headline-editorial text-5xl sm:text-7xl lg:text-[5.4rem] font-extrabold text-white tracking-tighter uppercase">
+                Building Ideas <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ember via-amberGold to-white">
+                  Into Reality.
                 </span>
               </h1>
 
-              <p className="text-lg sm:text-xl font-medium text-slate-300 leading-relaxed max-w-xl">
-                B.Tech in <span className="text-cyan-300 font-semibold">Computer Software Engineering</span> at{' '}
-                <span className="text-purple-300 font-semibold">MIT Academy of Engineering, Pune</span>.
+              {/* Subheading Statement */}
+              <p className="text-lg sm:text-2xl font-light text-ivory-dim tracking-tight">
+                Software Engineer <span className="text-ember font-normal">&bull;</span> AI Builder <span className="text-ember font-normal">&bull;</span> Problem Solver
               </p>
             </div>
 
-            {/* Tagline */}
-            <p className="text-slate-400 text-sm sm:text-base font-normal leading-relaxed max-w-xl">
-              Building AI-powered applications, responsive web interfaces, and data-driven solutions with Python, watsonx Orchestrate, Gemini API, and React.
+            {/* Narrative Paragraph */}
+            <p className="text-sm sm:text-base text-ivory-muted leading-relaxed max-w-xl font-normal">
+              B.Tech Software Engineering student at <strong className="text-white font-medium">MIT Academy of Engineering, Pune</strong> (CGPA 8.76). Architecting production AI platforms with IBM watsonx & Gemini, blockchain vaults, and performant web products with obsessive engineering craftsmanship.
             </p>
 
-            {/* Location & Institution Tags */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-mono text-slate-400 pt-1">
-              <div className="flex items-center gap-1.5 bg-surface/80 px-3 py-1.5 rounded-md border border-white/5">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Pune Division, Maharashtra, India</span>
+            {/* Editorial Metadata Tags */}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-ivory-muted pt-1">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface/80 border border-borderMuted">
+                <MapPin className="w-3.5 h-3.5 text-ember" />
+                <span>Pune Division, India</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-surface/80 px-3 py-1.5 rounded-md border border-white/5">
-                <GraduationCap className="w-3.5 h-3.5 text-purple-400" />
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface/80 border border-borderMuted">
+                <GraduationCap className="w-3.5 h-3.5 text-amberGold" />
                 <span>MITAOE (2025–2029)</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface/80 border border-borderMuted">
+                <Code2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>12+ Shipped Projects</span>
               </div>
             </div>
 
-            {/* Primary Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2 w-full sm:w-auto">
+            {/* Primary Action Row */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-2 w-full sm:w-auto">
               <a
                 href="#projects"
                 onClick={playCyberClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-semibold text-sm shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                data-cursor="EXPLORE"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-ember hover:bg-ember-light text-white font-semibold text-sm shadow-xl shadow-ember/20 hover:shadow-ember/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
-                <span>Explore Projects</span>
+                <span>Explore Works</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
               <a
-                href="#experience"
+                href="#contact"
                 onClick={playCyberClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface/80 hover:bg-surface text-slate-200 hover:text-white font-semibold text-sm border border-cyan-500/30 hover:border-cyan-400 transition-all shadow-lg hover:shadow-cyan-950/30"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-surface hover:bg-surfaceHover text-white font-medium text-sm border border-borderMuted hover:border-white/20 transition-all duration-200"
               >
-                <Sparkles className="w-4 h-4 text-cyan-400" />
-                <span>Experience</span>
+                <span>Let's Connect</span>
+                <ArrowDownRight className="w-4 h-4 text-ivory-muted" />
               </a>
 
               <button
@@ -108,85 +110,88 @@ export default function Hero({ onOpenTerminal, onOpenAccounts, onOpenResume }) {
                   playCyberClick();
                   onOpenTerminal();
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900/90 text-cyan-300 font-mono text-sm border border-cyan-500/20 hover:border-cyan-400/60 hover:bg-slate-900 transition-all shadow-md hover:shadow-cyan-500/10"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-full bg-surface/50 hover:bg-surface text-ivory-muted hover:text-white font-mono text-xs border border-borderMuted transition-all duration-200"
+                title="Launch Interactive Terminal"
               >
-                <Terminal className="w-4 h-4 text-cyan-400" />
-                <span>Launch CLI</span>
+                <Terminal className="w-3.5 h-3.5 text-ember" />
+                <span>CLI Terminal</span>
               </button>
             </div>
 
-            {/* Quick Interactive Terminal Box */}
-            <div className="w-full max-w-xl mt-4 rounded-2xl glass-panel p-3 border border-white/10 text-left font-mono text-xs shadow-2xl relative group">
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                  <span className="text-[11px] text-slate-400 ml-1">krishna@portfolio:~</span>
+            {/* Quick Interactive Terminal Prompt */}
+            <div className="w-full max-w-lg rounded-xl bg-surface/90 border border-borderMuted p-3 font-mono text-xs shadow-lg">
+              <div className="flex items-center justify-between pb-2 mb-2 border-b border-borderMuted">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                  <span className="text-[11px] text-ivory-muted ml-2">krishna@workstation:~$</span>
                 </div>
                 <button
                   onClick={copyEmail}
-                  className="flex items-center gap-1 text-[11px] text-slate-400 hover:text-cyan-300 transition-colors bg-white/5 px-2 py-0.5 rounded"
-                  title="Copy Email"
+                  className="flex items-center gap-1 text-[11px] text-ivory-muted hover:text-white transition-colors bg-white/5 px-2 py-0.5 rounded"
+                  title="Copy direct email"
                 >
                   {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                  <span>{copied ? 'Copied!' : 'Copy Email'}</span>
+                  <span>{copied ? 'Copied' : 'Copy Email'}</span>
                 </button>
               </div>
-
-              <div className="text-slate-300 space-y-1">
-                <p>
-                  <span className="text-purple-400">$</span> <span className="text-cyan-300">krishna</span> --status
-                </p>
-                <p className="text-slate-400 text-[11px]">
-                  &gt; [READY] B.Tech Software Engineering @ MITAOE | CGPA: <span className="text-emerald-400 font-bold">8.76</span> | Co-Founder @ Indian Pixel
+              <div className="text-ivory-dim">
+                <span className="text-ember">$</span> status --summary
+                <p className="text-[11px] text-ivory-muted mt-0.5">
+                  &gt; [READY] B.Tech Software Eng @ MITAOE | CGPA: <strong className="text-white">8.76</strong> | 12+ Projects | 4 Internships/Ventures
                 </p>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column (5 cols): Krishna's Image with Cyber Frame */}
+          {/* Right Column (5 cols): Art-Directed Portrait of Krishna */}
           <div className="lg:col-span-5 flex justify-center items-center relative">
             
-            {/* Ambient Background Rotating Glow Ring */}
-            <div className="absolute inset-0 max-w-[380px] max-h-[460px] mx-auto bg-gradient-to-tr from-cyan-500/30 via-blue-600/20 to-purple-600/30 rounded-3xl blur-2xl -z-10 animate-pulse-slow" />
+            {/* Ambient Warm Silhouette Glow */}
+            <div className="absolute inset-0 max-w-[380px] max-h-[480px] mx-auto bg-gradient-to-tr from-ember/25 via-amberGold/15 to-transparent rounded-3xl blur-2xl -z-10" />
 
-            {/* Profile Card Container with Holographic Border */}
-            <div className="relative group max-w-[340px] sm:max-w-[380px] w-full rounded-3xl p-2 bg-gradient-to-b from-white/15 via-cyan-500/20 to-purple-500/30 border border-white/20 shadow-2xl backdrop-blur-xl transition-transform duration-500 hover:scale-[1.02]">
+            {/* Editorial Framed Container */}
+            <div className="relative w-full max-w-[340px] sm:max-w-[390px] rounded-3xl p-2.5 bg-gradient-to-b from-white/10 via-surface to-surface border border-white/15 shadow-2xl transition-transform duration-500 hover:scale-[1.01] group">
               
               {/* Image Frame */}
-              <div className="relative rounded-[22px] overflow-hidden aspect-[4/5] bg-deep/90 border border-white/10">
+              <div className="relative rounded-[22px] overflow-hidden aspect-[4/5] bg-surface border border-white/10">
                 <img
                   src={krishnaImg}
                   alt="Krishna Rameshwar Mishra"
-                  className="w-full h-full object-cover object-center filter brightness-95 contrast-105 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-center filter contrast-105 group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
 
-                {/* Subtle bottom gradient overlay for readability */}
-                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-void via-void/50 to-transparent pointer-events-none" />
+                {/* Subtle Cinematic Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-transparent opacity-80 pointer-events-none" />
 
-                {/* Bottom Identity Overlay */}
-                <div className="absolute bottom-3 inset-x-3 p-3 rounded-xl glass-panel border border-white/15 backdrop-blur-md text-left">
+                {/* Corner Editorial Stamp */}
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-void/80 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest text-ivory-dim uppercase">
+                  ARCHIVE // 01
+                </div>
+
+                {/* Bottom Identity Block */}
+                <div className="absolute bottom-3 inset-x-3 p-3.5 rounded-2xl bg-surface/90 backdrop-blur-md border border-white/10 text-left">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-sm font-bold text-white font-display">Krishna Mishra</h3>
-                      <p className="text-[11px] font-mono text-cyan-400">AI Developer &bull; Software Engineer</p>
+                      <h3 className="text-sm font-bold text-white font-display uppercase tracking-tight">Krishna Mishra</h3>
+                      <p className="text-[11px] font-mono text-ember font-medium">Software Engineer &bull; AI Builder</p>
                     </div>
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
                   </div>
                 </div>
               </div>
 
-              {/* Floating Badge Top-Right */}
-              <div className="absolute -top-3 -right-3 px-3 py-1.5 rounded-xl glass-panel-glow bg-deep/90 border border-cyan-400/50 shadow-xl flex items-center gap-1.5 text-xs font-mono text-cyan-300">
-                <Cpu className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-                <span>AI Builder</span>
+              {/* Floating Editorial Badge (Top-Right) */}
+              <div className="absolute -top-3 -right-3 px-3 py-1.5 rounded-xl bg-surface/95 border border-ember/40 shadow-xl flex items-center gap-1.5 text-xs font-mono text-ivory">
+                <Cpu className="w-3.5 h-3.5 text-ember" />
+                <span>AI Platforms</span>
               </div>
 
-              {/* Floating Badge Bottom-Left */}
-              <div className="absolute -bottom-3 -left-3 px-3 py-1.5 rounded-xl glass-panel-glow bg-deep/90 border border-purple-400/50 shadow-xl flex items-center gap-1.5 text-xs font-mono text-purple-300">
-                <Award className="w-3.5 h-3.5 text-purple-400" />
+              {/* Floating Editorial Badge (Bottom-Left) */}
+              <div className="absolute -bottom-3 -left-3 px-3.5 py-1.5 rounded-xl bg-surface/95 border border-amberGold/40 shadow-xl flex items-center gap-1.5 text-xs font-mono text-ivory">
+                <span className="w-2 h-2 rounded-full bg-amberGold" />
                 <span>CGPA 8.76</span>
               </div>
 

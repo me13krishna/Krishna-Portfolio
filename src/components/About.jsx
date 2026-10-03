@@ -3,126 +3,159 @@ import {
   GraduationCap, 
   Award, 
   Sparkles, 
-  Compass, 
   Target, 
-  Zap, 
-  CheckCircle, 
-  ArrowUpRight,
-  School,
-  BookOpen
+  ArrowUpRight, 
+  CheckCircle,
+  Lightbulb,
+  Compass
 } from 'lucide-react';
-import { personalInfo, stats, educationList } from '../data/portfolioData';
+import { personalInfo, educationList } from '../data/portfolioData';
 import { playCyberClick } from '../utils/audio';
-
 import krishnaImg from '../assets/krishna.jpg';
 
 export default function About({ onOpenResume }) {
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-24 relative border-t border-borderMuted">
+      
+      {/* Background Subtle Warmth */}
+      <div className="absolute top-1/3 left-0 w-[450px] h-[450px] bg-ember/5 rounded-full blur-[150px] pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono tracking-widest uppercase">
-            <span>01 — Identity &amp; Vision</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">
-            Engineering with <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Curiosity &amp; Purpose</span>
+        <div className="max-w-3xl mb-16 space-y-3">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-ember font-semibold block">
+            Philosophy &bull; Identity &bull; Education
+          </span>
+          <h2 className="headline-editorial text-4xl sm:text-6xl font-extrabold text-white uppercase tracking-tighter">
+            Curious By Default. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-ember via-amberGold to-white">
+              Building By Choice.
+            </span>
           </h2>
-          
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            From foundational algorithms to generative AI architectures, here is a snapshot of my academic milestones and engineering philosophy.
-          </p>
         </div>
 
-        {/* Content Layout: Left Bio + Right Stats & Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* 2-Column Editorial Story Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Bio & Education (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column (7 cols): The Narrative */}
+          <div className="lg:col-span-7 space-y-6 text-left">
             
-            <div className="glass-panel rounded-2xl p-7 border border-white/10 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base shadow-xl">
-              <div className="flex items-center gap-3.5 mb-2">
+            <div className="rounded-3xl p-7 sm:p-9 bg-surface/80 border border-borderMuted space-y-5 text-sm sm:text-base text-ivory-dim leading-relaxed shadow-xl">
+              
+              <div className="flex items-center gap-4 pb-4 border-b border-borderMuted">
                 <img 
                   src={krishnaImg} 
                   alt="Krishna Mishra" 
-                  className="w-12 h-12 rounded-xl object-cover border border-cyan-400/40 shadow-lg shadow-cyan-950/50" 
+                  className="w-14 h-14 rounded-2xl object-cover border border-white/20 shadow-md"
                 />
                 <div>
-                  <h3 className="text-xl font-bold text-white font-display">
-                    Who I Am
-                  </h3>
-                  <span className="text-xs font-mono text-cyan-400">AI Developer &bull; Software Engineer &bull; MITAOE</span>
+                  <h3 className="text-xl font-bold font-display text-white">Krishna Rameshwar Mishra</h3>
+                  <p className="text-xs font-mono text-ember font-medium">Undergraduate Software Engineer &bull; MITAOE Pune</p>
                 </div>
               </div>
-              
+
               <p>
-                I am <strong className="text-white font-semibold">Krishna Rameshwar Mishra</strong>, a Computer Software Engineering undergraduate at <strong className="text-cyan-300">MIT Academy of Engineering, Pune</strong>, focused on Artificial Intelligence, Generative AI, and modern software development.
+                I am driven by the thrill of turning abstract technical concepts into production software that real humans actually use. Whether designing scalable full-stack web platforms at <strong className="text-white">Indian Pixel</strong>, integrating LLM reasoning chains via <strong className="text-white">IBM watsonx</strong>, or analyzing global AI disruption patterns on Kaggle datasets, I treat software engineering as an exacting craft.
               </p>
 
               <p>
-                With hands-on experience through entrepreneurship at <strong className="text-purple-300">Indian Pixel</strong>, alongside technical internships at <strong className="text-cyan-300">Drishyam</strong>, <strong className="text-pink-300">CodeAlpha</strong>, and <strong className="text-blue-300">IBM SkillsBuild</strong>, I build AI-powered applications, responsive web interfaces, and data-driven solutions with Python, JavaScript, React, Node.js, IBM watsonx, Gemini API, and Tableau.
+                My foundation was forged through intense competitive coding and POSIX system programming in Linux. I believe true engineering credibility isn’t about buzzwords—it’s about writing clean, maintainable logic, measuring algorithmic time and space complexities, and having the stamina to debug deep into the night until the system works flawlessly.
               </p>
 
               <p>
-                I actively follow the end-to-end <strong className="text-white">Software Development Lifecycle (SDLC)</strong> — researching system architecture, implementing robust logic, and deploying secure, production-grade applications.
+                Currently, I am diving deep into <strong className="text-white">Agentic AI architectures</strong>, Computer Vision pipelines for surveillance (Netra X for SIH), and building software platforms that merge speed with exceptional user experience.
               </p>
 
-              {/* Action row inside bio */}
-              <div className="pt-2 flex flex-wrap gap-3">
+              {/* Action Buttons */}
+              <div className="pt-3 flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => {
                     playCyberClick();
                     onOpenResume();
                   }}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-white/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-all"
+                  className="inline-flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-full bg-white text-void hover:bg-ember hover:text-white transition-all shadow-md"
                 >
-                  <span>Read Full Resume</span>
+                  <span>Review Official Resume</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
                 <a
                   href="#contact"
                   onClick={playCyberClick}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-transparent hover:bg-white/5 text-slate-300 border border-white/10 transition-all"
+                  className="inline-flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-full bg-surface hover:bg-surfaceHover text-ivory-dim border border-borderMuted transition-all"
                 >
-                  <span>Discuss Opportunities</span>
+                  <span>Start a Conversation</span>
                 </a>
+              </div>
+
+            </div>
+
+            {/* Approach to Problem Solving */}
+            <div className="rounded-3xl p-6 sm:p-8 bg-surface/50 border border-borderMuted space-y-4">
+              <h4 className="text-sm font-bold font-mono uppercase tracking-wider text-white flex items-center gap-2">
+                <Lightbulb className="w-4 h-4 text-amberGold" />
+                <span>How I Approach Engineering</span>
+              </h4>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-ivory-muted pt-1">
+                <div className="p-3.5 rounded-xl bg-void/50 border border-white/5 space-y-1">
+                  <strong className="text-white block font-sans">First-Principles Logic</strong>
+                  <span>Break complex requirements down into atomic components before writing a single line of code.</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-void/50 border border-white/5 space-y-1">
+                  <strong className="text-white block font-sans">Time &amp; Space Rigor</strong>
+                  <span>Always analyze big-O bounds. Elegant code is fast, deterministic, and predictable.</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-void/50 border border-white/5 space-y-1">
+                  <strong className="text-white block font-sans">End-to-End Ownership</strong>
+                  <span>From system architecture and UI prototyping to deployment scripts and automated testing.</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-void/50 border border-white/5 space-y-1">
+                  <strong className="text-white block font-sans">Continuous Curiosity</strong>
+                  <span>Constantly exploring new tools: watsonx Orchestrate, Gemini 1.5, Orange ML, and Next.js.</span>
+                </div>
               </div>
             </div>
 
-            {/* Academic Qualifications Timeline Box */}
-            <div className="glass-panel rounded-2xl p-6 sm:p-7 border border-cyan-500/30 bg-gradient-to-br from-surface to-deep shadow-xl space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300">
-                  <GraduationCap className="w-5 h-5" />
+          </div>
+
+          {/* Right Column (5 cols): Academic Journey */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            <div className="rounded-3xl p-7 sm:p-8 bg-surface/90 border border-borderMuted space-y-5 shadow-xl">
+              <div className="flex items-center justify-between pb-3 border-b border-borderMuted">
+                <div className="flex items-center gap-2.5">
+                  <GraduationCap className="w-5 h-5 text-ember" />
+                  <h4 className="text-lg font-bold font-display text-white uppercase tracking-tight">Academic Path</h4>
                 </div>
-                <div>
-                  <h4 className="text-base font-bold text-white font-display">Academic Education</h4>
-                  <p className="text-xs text-slate-400 font-mono">Formal academic milestones &amp; scores</p>
-                </div>
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-ivory-dim border border-white/10">
+                  Verified
+                </span>
               </div>
 
-              <div className="space-y-4 pt-2">
+              {/* Education Cards */}
+              <div className="space-y-4">
                 {educationList.map((edu, idx) => (
                   <div 
-                    key={idx} 
-                    className="p-4 rounded-xl bg-void/50 border border-white/5 space-y-1.5 hover:border-cyan-500/30 transition-colors"
+                    key={idx}
+                    className="p-4 rounded-2xl bg-void/60 border border-white/5 hover:border-ember/30 transition-colors text-left space-y-1.5"
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-start justify-between gap-2">
                       <h5 className="text-sm font-bold text-white">{edu.institution}</h5>
-                      <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-bold">
+                      <span className="text-xs font-mono font-bold text-amberGold px-2 py-0.5 rounded bg-amberGold/10 border border-amberGold/30 flex-shrink-0">
                         {edu.score}
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-2 text-xs text-slate-300">
-                      <span className="text-cyan-300 font-medium">{edu.degree}</span>
-                      <span className="text-slate-500">&bull;</span>
-                      <span className="text-slate-400 font-mono text-[11px]">{edu.period}</span>
+                    <div className="text-xs text-ember font-medium font-mono">
+                      {edu.degree}
                     </div>
 
-                    <p className="text-xs text-slate-400 leading-relaxed pt-1">
+                    <div className="text-[11px] text-ivory-muted font-mono">
+                      {edu.period}
+                    </div>
+
+                    <p className="text-xs text-ivory-muted pt-1 leading-relaxed">
                       {edu.description}
                     </p>
                   </div>
@@ -130,56 +163,17 @@ export default function About({ onOpenResume }) {
               </div>
             </div>
 
-          </div>
-
-          {/* Right Column: Key Stats & Principles (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* 4 Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, idx) => (
-                <div 
-                  key={idx}
-                  className="glass-panel p-5 rounded-2xl border border-white/10 hover:border-cyan-500/40 transition-all hover:-translate-y-1 shadow-lg"
-                >
-                  <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 font-display">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs font-bold text-slate-200 mt-1">
-                    {stat.label}
-                  </div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">
-                    {stat.subtext}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Engineering Principles Card */}
-            <div className="glass-panel rounded-2xl p-6 border border-white/10 space-y-3">
-              <h4 className="text-sm font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
-                <Target className="w-4 h-4 text-cyan-400" />
-                <span>Core Engineering Tenets</span>
-              </h4>
-
-              <div className="space-y-2.5 text-xs text-slate-300">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span><strong>AI &amp; Full-Stack Synergy:</strong> Combining Generative AI (watsonx, Gemini) with responsive, production React architectures.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                  <span><strong>Consistent Problem Solving:</strong> Active problem-solving across LeetCode, CodeChef, and HackerRank to refine time/space complexity.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle className="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" />
-                  <span><strong>Product-Driven Entrepreneurship:</strong> Building actual products at Indian Pixel and campus apps for genuine user adoption.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span><strong>Tech Communication:</strong> Sharing knowledge via Medium articles, creator content on Instagram (@yappp.kris), and team mentorship.</span>
-                </div>
-              </div>
+            {/* Quick Quote / Tenet */}
+            <div className="rounded-3xl p-6 bg-gradient-to-br from-ember/15 via-surface to-surface border border-ember/30 text-left space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-ember font-bold">
+                Builder Tenet
+              </span>
+              <p className="text-xs sm:text-sm text-ivory font-serif italic leading-relaxed">
+                "Great software is never accidental. It is the result of continuous curiosity, rigorous attention to detail, and the courage to build and iterate in public."
+              </p>
+              <span className="text-[11px] font-mono text-ivory-muted block text-right">
+                — Krishna Mishra
+              </span>
             </div>
 
           </div>

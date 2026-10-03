@@ -195,24 +195,24 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 p-4 bg-void/80 backdrop-blur-md animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 p-4 bg-void/90 backdrop-blur-md animate-in fade-in duration-150">
       
       <div 
-        className="w-full max-w-xl rounded-2xl glass-panel-glow bg-deep/95 border border-cyan-500/30 shadow-2xl overflow-hidden"
+        className="w-full max-w-xl rounded-3xl bg-surface border border-borderMuted shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-white/10 gap-3">
-          <Search className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+        <div className="flex items-center px-4 py-3.5 border-b border-borderMuted gap-3">
+          <Search className="w-5 h-5 text-ember flex-shrink-0" />
           <input
             autoFocus
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Type a command or jump to profile / project..."
-            className="flex-1 bg-transparent border-none outline-none text-white text-sm font-sans placeholder-slate-500 focus:ring-0"
+            className="flex-1 bg-transparent border-none outline-none text-white text-sm font-sans placeholder-ivory-muted/40 focus:ring-0"
           />
-          <kbd className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-slate-400 font-mono">
+          <kbd className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-ivory-muted font-mono">
             ESC
           </kbd>
         </div>
@@ -220,7 +220,7 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
         {/* Action Results */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
           {filtered.length === 0 ? (
-            <div className="p-6 text-center text-xs text-slate-500 font-mono">
+            <div className="p-6 text-center text-xs text-ivory-muted font-mono">
               No matching commands or actions found.
             </div>
           ) : (
@@ -234,29 +234,29 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
                 className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all text-left group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 rounded-lg bg-surface border border-white/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <div>
-                    <h5 className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                    <h5 className="text-xs font-semibold text-white group-hover:text-ember transition-colors">
                       {item.title}
                     </h5>
-                    <p className="text-[11px] text-slate-400 truncate max-w-sm">
+                    <p className="text-[11px] text-ivory-muted truncate max-w-sm">
                       {item.sub}
                     </p>
                   </div>
                 </div>
 
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-ivory-muted group-hover:text-ember group-hover:translate-x-1 transition-all" />
               </button>
             ))
           )}
         </div>
 
         {/* Footer shortcuts */}
-        <div className="px-4 py-2 bg-surface/50 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-500">
+        <div className="px-4 py-2 bg-void/60 border-t border-borderMuted flex items-center justify-between text-[11px] font-mono text-ivory-muted">
           <span>Use ⌘K / Ctrl+K anytime</span>
-          <span>KM-Command-Palette</span>
+          <span className="text-ember font-semibold">Krishna Mishra</span>
         </div>
 
       </div>
