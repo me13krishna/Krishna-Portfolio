@@ -183,13 +183,13 @@ export const experiences = [
     period: "Jun 2026 – Jul 2026",
     type: "Remote | Internship",
     badge: "AI & NLP Chatbots",
-    description: "Developed AI applications in Python, including an AI-powered FAQ chatbot and language translation solution, using Git/GitHub for version control.",
+    description: "Developed AI applications in Python, including an AI-powered FAQ chatbot, neural translation tool, and object detection system using Git/GitHub for version control.",
     responsibilities: [
-      "Developed end-to-end AI applications using Python and Natural Language Processing pipelines.",
+      "Developed end-to-end AI applications using Python, OpenCV, and Natural Language Processing pipelines.",
       "Engineered an automated FAQ intelligent chatbot and real-time multi-language translation tool.",
       "Maintained professional codebase version control and team review workflows with Git/GitHub."
     ],
-    technologies: ["Python", "NLP", "AI Chatbot", "Translation Engine", "Git/GitHub"]
+    technologies: ["Python", "NLP", "OpenCV", "AI Chatbot", "Translation Engine", "Git/GitHub"]
   },
   {
     id: "ibm-skillsbuild",
@@ -210,71 +210,251 @@ export const experiences = [
 
 export const projects = [
   {
-    id: "startup-mentor",
-    title: "Startup Mentor — AI-Powered Startup Blueprint Generator",
-    category: "AI & Full-Stack",
-    featured: true,
-    tagline: "Generative AI platform delivering structured 19-section business blueprints with IBM watsonx Orchestrate.",
-    description:
-      "An enterprise-grade AI platform that generates comprehensive 19-section business blueprints on demand. Integrated IBM watsonx Orchestrate with a robust Node.js/Express backend and a responsive React/Vite frontend featuring instant client-side PDF export.",
-    tags: ["IBM watsonx", "Generative AI", "React", "Vite", "Node.js", "Express.js", "PDF Export", "Prompt Engineering"],
-    liveUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
-    githubUrl: "https://github.com/me13krishna",
-    highlights: [
-      "Generates structured 19-section business blueprints covering market analysis, unit economics & roadmaps",
-      "Integrated IBM watsonx Orchestrate for multi-step reasoning and dynamic AI content generation",
-      "Built clean Node.js/Express REST APIs and responsive React/Vite UI with downloadable PDF export",
-      "Designed for startup founders, accelerators, and business strategists seeking rapid validation"
-    ],
-    status: "Featured AI Project",
-  },
-  {
     id: "qlockain",
     title: "Qlockain — Blockchain-Based Digital Identity Vault",
     category: "Blockchain & Security",
     featured: true,
     tagline: "Flask-based decentralized digital identity and tamper-resistant document verification vault.",
     description:
-      "A security-first platform developed with Python and Flask providing cryptographic identity management and document verification. Leverages immutable blockchain logic and SHA-256 cryptographic hashing for tamper-resistant credential storage and validation.",
-    tags: ["Python", "Flask", "Blockchain", "Cryptography", "Identity Verification", "REST APIs", "Security"],
-    liveUrl: "https://github.com/me13krishna",
+      "A security-first platform developed with Python and Flask providing cryptographic identity management and document verification. Leverages immutable blockchain logic and SHA-256 cryptographic hashing for tamper-resistant credential storage, ownership verification, and instant authenticity validation.",
+    tags: ["Python", "Flask", "Blockchain", "Cryptography", "Identity Verification", "Render Deployed", "Security"],
+    liveUrl: "https://qlockain.onrender.com/",
     githubUrl: "https://github.com/me13krishna",
     highlights: [
+      "Live deployment hosted on Render with instant credential verification",
       "Immutable blockchain ledger ensuring credentials cannot be altered or falsified",
       "Fast Python Flask REST API backend for credential generation, hashing, and signature validation",
-      "Built tamper-resistant document verification workflow for universities and hiring managers",
-      "Zero-knowledge proof concepts integrated for privacy-preserving verification"
+      "Tamper-resistant document verification workflow for universities and hiring managers"
     ],
-    status: "Completed",
+    status: "Live on Render",
+    accent: "from-purple-500 to-indigo-600"
+  },
+  {
+    id: "startup-mentor",
+    title: "Startup Mentor — AI-Powered Startup Blueprint Generator",
+    category: "AI & Full-Stack",
+    featured: true,
+    tagline: "Generative AI platform delivering structured 19-section business blueprints with IBM watsonx Orchestrate.",
+    description:
+      "An enterprise-grade AI platform that generates comprehensive 19-section business blueprints on demand. Integrated IBM watsonx Orchestrate with a robust Node.js/Express backend and a responsive React/Vite frontend featuring instant client-side PDF export. (Note: watsonx API access can be renewed upon cloud grant).",
+    tags: ["IBM watsonx", "Generative AI", "React", "Vite", "Node.js", "Express.js", "PDF Export", "Render Deployed"],
+    liveUrl: "https://startup-mentor-jftd.onrender.com/",
+    githubUrl: "https://github.com/me13krishna",
+    highlights: [
+      "Live prototype deployed on Render with interactive startup wizard",
+      "Generates structured 19-section business blueprints covering market analysis, unit economics & roadmaps",
+      "Integrated IBM watsonx Orchestrate for multi-step reasoning and dynamic AI content generation",
+      "Built clean Node.js/Express REST APIs and React/Vite UI with downloadable PDF export"
+    ],
+    status: "Live Prototype (API Key Renewable)",
+    accent: "from-cyan-500 to-blue-600"
+  },
+  {
+    id: "stadiumops-ai",
+    title: "StadiumOps AI — Venue & Crowd Intelligence Platform",
+    category: "AI & Web Platform",
+    featured: true,
+    tagline: "Next-gen sports venue management platform using AI for crowd tracking, queue optimization, and emergency dispatch.",
+    description:
+      "An intelligent stadium operations and crowd management web platform. Designed to monitor real-time attendee density, forecast queue bottlenecks, optimize venue gate distribution, and coordinate rapid response protocols for large-scale sporting and entertainment events.",
+    tags: ["Next.js/React", "AI Operations", "Crowd Analytics", "Real-Time Tracking", "Vercel Deployed", "UI/UX"],
+    liveUrl: "https://stadiumopsai-xi.vercel.app/",
+    githubUrl: "https://github.com/me13krishna",
+    highlights: [
+      "Live production deployment on Vercel with modern glassmorphism command center UI",
+      "Real-time crowd flow analysis and bottleneck mitigation algorithms",
+      "Intelligent security personnel dispatching and gate management workflows",
+      "Engineered for high-throughput venue operations and emergency protocols"
+    ],
+    status: "Live on Vercel",
+    accent: "from-emerald-500 to-teal-600"
+  },
+  {
+    id: "prakrushti",
+    title: "Prakrushti — Hackathon Innovation Platform",
+    category: "Hackathon & Web",
+    featured: true,
+    tagline: "High-impact web platform engineered under intense hackathon sprint deadlines.",
+    description:
+      "A dynamic digital platform built under rapid hackathon timeframes. Combines intuitive human-centered design with clean component architecture to deliver immediate social and technical utility with high performance.",
+    tags: ["React", "Tailwind CSS", "Hackathon Project", "Rapid Prototyping", "Vercel Deployed"],
+    liveUrl: "https://prakrushti.vercel.app/",
+    githubUrl: "https://github.com/me13krishna",
+    highlights: [
+      "Conceived, engineered, and deployed live during hackathon sprint",
+      "Live deployment accessible on Vercel with high mobile responsiveness",
+      "Optimized frontend performance with fluid animations and responsive layout"
+    ],
+    status: "Hackathon Build (Vercel)",
+    accent: "from-amber-500 to-orange-600"
   },
   {
     id: "future-of-work-ai",
-    title: "Future of Work in the Age of AI — Data Analytics & Visualization",
-    category: "Data Analytics & ML",
+    title: "Future of Work in the Age of AI — Analytics & DV Research Report",
+    category: "Data Analytics & DV",
     featured: true,
-    tagline: "Tableau & Orange Data Mining dashboards analyzing Kaggle workforce datasets to track AI job market disruption.",
+    isReport: true,
+    tagline: "Tableau & Orange Data Mining research analyzing 15,000+ workforce records on AI job disruption & reskilling.",
     description:
-      "A deep-dive data analytics project investigating global AI-driven workforce transitions. Analyzed an extensive Kaggle dataset to build interactive Tableau and Orange Data Mining dashboards uncovering emerging technical skill demands and job-market trends.",
-    tags: ["Data Analytics", "Tableau", "Orange Data Mining", "Python", "Kaggle", "Workforce Insights", "Dashboards"],
+      "A comprehensive academic and empirical data visualization research project on 'Future of Work in the Age of AI (2020–2026)'. Utilized Orange Data Mining (preprocessing, continuization, discretization, randomization) and Tableau to build 5 analytical grains, calculated fields (logic, string, aggregate, table calcs), executive KPIs, dynamic dashboards, and a complete Story Board.",
+    tags: ["Tableau Visualisation", "Orange Data Mining", "Data Analytics", "KPIs & Dashboards", "Story Board", "Kaggle Dataset"],
     liveUrl: "https://drive.google.com/drive/folders/1NKwxkUenx96V4z1RFbSDW1DSQdEX--cM?usp=sharing",
     githubUrl: "https://github.com/me13krishna",
+    reportDetails: {
+      dataset: "Future of Work in the Age of AI (2020–2026) - 15,000 instances, 42 features",
+      orangeOperations: [
+        "Preprocess: Data cleansing and normalization",
+        "Continuize: Converting categorical features into numerical values for ML models",
+        "Discretize: Grouping continuous numeric values into discrete categories (Low, Medium, High)",
+        "Randomize: Row shuffling to prevent model ordering bias",
+        "Workflow: Visual pipeline connecting Data Table, Preprocessing, and Distribution"
+      ],
+      tableauCharts: [
+        "Chart 1: Stacked Bar Chart (Job Role per Country & Headcount Composition)",
+        "Chart 2: Box & Whisker Plot (Industry by Salary Change Percent & Outlier Detection)",
+        "Chart 3: Horizontal Bar Chart (Job Role by Skill Demand Growth)",
+        "Chart 4: Line Chart (Industry by Year Trend — Reskilling Urgency Score)",
+        "Chart 5: Side-by-Side Bar Chart (Job Role AI Replacement Risk across Countries)"
+      ],
+      kpis: [
+        "AI Replacement Risk: Customer Support is the most affected role globally",
+        "Resilience Benchmark: Software Engineer is the least affected role",
+        "Urgent Reskilling Sector: Energy and Manufacturing require immediate workforce intervention",
+        "Key Conclusion: 'AI literacy' has emerged as the primary determinant of economic resilience in 2026"
+      ]
+    },
     highlights: [
-      "Processed and cleansed extensive Kaggle employment and AI automation datasets using Python",
-      "Created interactive executive Tableau dashboards tracking high-demand AI competencies",
-      "Employed Orange Data Mining workflows for cluster analysis and career trajectory forecasting",
-      "Identified critical skill shifts across software, data engineering, and automation sectors"
+      "Engineered 5 multi-dimensional grains and interactive visual representations in Tableau",
+      "Applied complex Tableau Calculated Fields: StringFun, Logical CASE/ELSEIF, and Table Calculations",
+      "Built 2 interactive Dashboards (Salary Volatility & Reskilling Trends) + cohesive Story Board",
+      "Complete 32-page formal Data Visualisation report documented and archived"
     ],
-    status: "Data Analytics",
+    status: "32-Page DV Research Report",
+    accent: "from-blue-600 to-indigo-700"
+  },
+  {
+    id: "linux-utility",
+    title: "Linux-Based Banking & File Management Utility Suite",
+    category: "Systems & Linux",
+    featured: true,
+    tagline: "POSIX-native command-line banking and system utility built for automated file workflows in Linux.",
+    description:
+      "A robust utility developed in an OS-native Linux environment demonstrating POSIX command-line mastery, shell scripting, banking transaction processing, automated record filing, and process handling with strict permission checks and error handling.",
+    tags: ["Linux", "Shell Scripting", "Bash", "System Programming", "Banking Utility", "OS Native"],
+    liveUrl: "https://drive.google.com/file/d/1kmrFCsI9XUCUoe-UUMSrVI2R4aMyagxE/view?usp=drive_link",
+    githubUrl: "https://github.com/me13krishna",
+    highlights: [
+      "Integrated banking transaction simulation and automated record persistence in Linux",
+      "Interactive CLI interface with configurable flags, input validation, and detailed logging",
+      "Demonstrates POSIX compliance, shell workflow automation, and file descriptors"
+    ],
+    status: "Verified OS Project",
+    accent: "from-slate-700 to-zinc-900"
+  },
+  {
+    id: "netra-x",
+    title: "Netra X — Vision Intelligence (SIH 2024)",
+    category: "Edge AI & Vision / SIH",
+    featured: true,
+    tagline: "Dual AI vision systems engineered for the nationwide Smart India Hackathon (SIH).",
+    description:
+      "A high-stakes dual-pipeline Computer Vision platform actively being engineered for the Smart India Hackathon (SIH). Focuses on real-time surveillance video analytics, automated anomaly detection, and rapid emergency dispatch alerts for security applications.",
+    tags: ["Computer Vision", "Edge AI", "OpenCV", "Deep Learning", "SIH 2024", "In Active Development"],
+    liveUrl: "https://github.com/me13krishna",
+    githubUrl: "https://github.com/me13krishna",
+    highlights: [
+      "Dual AI vision subsystems engineered specifically for Smart India Hackathon challenge statements",
+      "Edge-optimized Computer Vision pipeline designed for low-latency inference on video streams",
+      "Active team research and development targeting national-level deployment"
+    ],
+    status: "In Active Dev (SIH)",
+    accent: "from-rose-500 to-red-700"
+  },
+  {
+    id: "translation-tool",
+    title: "CodeAlpha Neural Translation Tool",
+    category: "AI & NLP",
+    featured: false,
+    tagline: "Automated multi-language text translation tool engineered in Python during CodeAlpha AI internship.",
+    description:
+      "A robust Python application providing cross-lingual translation across multiple languages. Features automated source language detection, API integration, and clean modular code structured with Git version control.",
+    tags: ["Python", "NLP", "Translation APIs", "CodeAlpha Internship", "GitHub Open Source"],
+    liveUrl: "https://github.com/me13krishna/CodeAlpha_TranslationTool",
+    githubUrl: "https://github.com/me13krishna/CodeAlpha_TranslationTool",
+    highlights: [
+      "Open-source repository on GitHub with clean modular code and setup instructions",
+      "Multi-language translation engine with automated source detection",
+      "Developed and delivered as part of the CodeAlpha Artificial Intelligence Internship"
+    ],
+    status: "Open Source on GitHub",
+    accent: "from-blue-500 to-cyan-500"
+  },
+  {
+    id: "object-detection",
+    title: "CodeAlpha Real-Time Object Detection",
+    category: "Computer Vision",
+    featured: false,
+    tagline: "Computer vision pipeline detecting and classifying objects in real-time camera streams.",
+    description:
+      "Developed during the CodeAlpha AI internship using Python, OpenCV, and pre-trained deep learning vision weights. Performs real-time frame bounding box localization and multi-class object classification.",
+    tags: ["Python", "OpenCV", "Deep Learning", "Object Detection", "Computer Vision", "CodeAlpha"],
+    liveUrl: "https://github.com/me13krishna/CodeAlpha_ObjectDetection",
+    githubUrl: "https://github.com/me13krishna/CodeAlpha_ObjectDetection",
+    highlights: [
+      "Real-time object localization with confidence scoring and bounding box rendering",
+      "Engineered with OpenCV and modular inference functions",
+      "Official CodeAlpha AI internship deliverable hosted on GitHub"
+    ],
+    status: "Open Source on GitHub",
+    accent: "from-emerald-500 to-green-600"
+  },
+  {
+    id: "faq-chatbot",
+    title: "CodeAlpha Intelligent FAQ ChatBot",
+    category: "AI & NLP",
+    featured: false,
+    tagline: "Automated NLP chatbot providing rapid, accurate query resolution for frequently asked questions.",
+    description:
+      "A lightweight conversational AI tool developed in Python. Utilizes tokenization, pattern matching, and similarity scoring to resolve user queries with low latency.",
+    tags: ["Python", "NLP", "Chatbot", "Intent Parsing", "CodeAlpha Internship"],
+    liveUrl: "https://github.com/me13krishna/CodeAlpha_FAQChatBot",
+    githubUrl: "https://github.com/me13krishna/CodeAlpha_FAQChatBot",
+    highlights: [
+      "Rapid query resolution with pattern recognition and conversational logic",
+      "Lightweight Python implementation with zero bloated dependencies",
+      "Internship project deliverable with complete source code on GitHub"
+    ],
+    status: "Open Source on GitHub",
+    accent: "from-purple-500 to-fuchsia-600"
+  },
+  {
+    id: "typomotion-ai",
+    title: "Typomotion AI — Kinetic Typography Experiment",
+    category: "AI & Creative Tech",
+    featured: false,
+    tagline: "Experimental R&D exploring AI-driven kinetic typography and automated motion graphics generation.",
+    description:
+      "An ambitious creative coding prototype testing algorithmic text animations and AI-driven kinetic typography. Built to push the boundaries of automated video rendering — an invaluable engineering learning experience highlighting rendering pipeline constraints.",
+    tags: ["Python", "Generative AI", "Kinetic Typography", "Motion Graphics", "Experimental R&D"],
+    liveUrl: "https://github.com/me13krishna/Typomotion-AI",
+    githubUrl: "https://github.com/me13krishna/Typomotion-AI",
+    highlights: [
+      "Tested automated keyframing and generative text motion trajectories",
+      "Documented technical constraints and synchronization bottlenecks as valuable R&D learnings",
+      "Source code and experiments openly accessible on GitHub"
+    ],
+    status: "Experimental R&D Prototype",
+    accent: "from-zinc-600 to-slate-800"
   },
   {
     id: "smart-campus",
     title: "Smart Campus Platform",
-    category: "Web & Campus Product",
-    featured: true,
+    category: "Campus & Web",
+    featured: false,
     tagline: "All-in-one digital academic and campus assistance portal engineered for MITAOE students.",
     description:
       "A modern web platform engineered collaboratively to streamline campus life. Features unified student services, quick academic navigation, real-time college notifications, and an intuitive UI tailored for the campus community.",
-    tags: ["HTML5", "CSS3", "JavaScript", "Python", "Team Collaboration", "Git/GitHub"],
+    tags: ["HTML5", "CSS3", "JavaScript", "Python", "Team Collaboration", "Git/GitHub", "Lovable App"],
     liveUrl: "https://smartcampusmitaoe.lovable.app",
     githubUrl: "https://github.com/me13krishna",
     highlights: [
@@ -283,6 +463,7 @@ export const projects = [
       "Modern responsive UI with optimized mobile performance",
     ],
     status: "Live & Deployed",
+    accent: "from-cyan-600 to-teal-700"
   },
 ];
 
@@ -428,6 +609,6 @@ export const educationList = [
 export const stats = [
   { label: "Current CGPA", value: "8.76", subtext: "MITAOE Computer Software Eng.", icon: "award" },
   { label: "Ventures & Internships", value: "4", subtext: "Indian Pixel, Drishyam, CodeAlpha, IBM", icon: "briefcase" },
-  { label: "Flagship Projects", value: "4+", subtext: "watsonx, Blockchain, Data & Web", icon: "folder-git-2" },
+  { label: "Engineered Projects", value: "12+", subtext: "AI, Blockchain, Web & Systems", icon: "folder-git-2" },
   { label: "Verified Credentials", value: "10+", subtext: "AWS, IBM, Cisco, Simulations on Drive", icon: "shield-check" },
 ];

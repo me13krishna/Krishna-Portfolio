@@ -50,9 +50,37 @@ export default function CommandPalette({ isOpen, onClose, onOpenTerminal, onOpen
     {
       id: 'proj',
       title: 'Explore Technical Projects',
-      sub: 'watsonx AI Startup Mentor, Qlockain Blockchain, Future of Work',
+      sub: 'watsonx AI Startup Mentor, Qlockain Blockchain, Future of Work, StadiumOps',
       icon: <Sparkles className="w-4 h-4 text-cyan-400" />,
       action: () => { window.location.href = '#projects'; onClose(); }
+    },
+    {
+      id: 'qlockain-live',
+      title: 'Launch Qlockain (Live on Render)',
+      sub: 'qlockain.onrender.com — Blockchain Identity Vault',
+      icon: <ExternalLink className="w-4 h-4 text-purple-400" />,
+      action: () => { window.open('https://qlockain.onrender.com/', '_blank'); onClose(); }
+    },
+    {
+      id: 'startup-mentor-live',
+      title: 'Launch Startup Mentor (Live on Render)',
+      sub: 'startup-mentor-jftd.onrender.com — AI Blueprint Generator',
+      icon: <ExternalLink className="w-4 h-4 text-cyan-400" />,
+      action: () => { window.open('https://startup-mentor-jftd.onrender.com/', '_blank'); onClose(); }
+    },
+    {
+      id: 'stadiumops-live',
+      title: 'Launch StadiumOps AI (Live on Vercel)',
+      sub: 'stadiumopsai-xi.vercel.app — Venue & Crowd Operations',
+      icon: <ExternalLink className="w-4 h-4 text-emerald-400" />,
+      action: () => { window.open('https://stadiumopsai-xi.vercel.app/', '_blank'); onClose(); }
+    },
+    {
+      id: 'prakrushti-live',
+      title: 'Launch Prakrushti (Live on Vercel)',
+      sub: 'prakrushti.vercel.app — Hackathon Build',
+      icon: <ExternalLink className="w-4 h-4 text-amber-400" />,
+      action: () => { window.open('https://prakrushti.vercel.app/', '_blank'); onClose(); }
     },
     {
       id: 'exp',
