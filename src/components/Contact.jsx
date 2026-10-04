@@ -7,6 +7,7 @@ import {
   CheckCircle2, 
   Mail, 
   ArrowUpRight,
+  ExternalLink,
   Sparkles,
   MessageSquare
 } from 'lucide-react';
@@ -57,6 +58,15 @@ export default function Contact() {
       .join('&');
   };
 
+  const openInMailClient = () => {
+    playCyberClick();
+    const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name || 'Portfolio Visitor'}`);
+    const body = encodeURIComponent(
+      `Hello Krishna,\n\nName: ${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}\n\nMessage:\n${formData.message || ''}\n\nSent from Portfolio Contact Section`
+    );
+    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
@@ -86,25 +96,21 @@ export default function Contact() {
         } catch (err) {}
       })
       .catch((error) => {
-        // Fallback for local testing: open mailto
+        // Fallback: open user's mail client directly
         setIsSubmitting(false);
         setSubmitted(true);
-        const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name}`);
-        const body = encodeURIComponent(
-          `Hello Krishna,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        );
-        window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+        openInMailClient();
       });
   };
 
   return (
-    <section id="contact" className="py-28 relative border-t border-forest/10 dark:border-white/10">
+    <section id="contact" className="py-28 lg:py-36 relative border-t border-forest/10 dark:border-white/10">
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-8 right-8 z-50 bg-forest dark:bg-dark-card border border-sun/30 text-warm-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 backdrop-blur-xl animate-in fade-in duration-200">
+        <div className="fixed bottom-8 right-8 z-50 bg-forest dark:bg-[#14231B] border border-sun/40 text-warm-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 backdrop-blur-xl animate-in fade-in duration-200">
           <CheckCircle2 className="w-4 h-4 text-sun" />
-          <span className="text-xs font-mono">{toastMessage}</span>
+          <span className="text-xs font-mono tracking-wide">{toastMessage}</span>
         </div>
       )}
 
@@ -124,36 +130,42 @@ export default function Contact() {
               thoughtful together.
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-charcoal-muted dark:text-dark-textMuted leading-relaxed font-normal">
-            Whether you have an internship opening, a distributed systems challenge, an AI reasoning pipeline, or an ambitious product in mind — my inbox is always open.
+          <p className="text-sm sm:text-base text-charcoal-muted dark:text-stone-300 leading-relaxed font-normal">
+            Whether you have an internship opening, an ambitious AI system to build, or a software challenge to solve — my inbox is always open.
           </p>
         </div>
 
         {/* 12-Column Responsive Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 text-left items-start">
           
           {/* Left Column (5 cols): Direct Channels, Socials & Location */}
           <div className="lg:col-span-5 space-y-6">
             
             {/* Direct Email Card */}
-            <div className="p-7 rounded-[28px] bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-4 shadow-soft-card">
-              <span className="text-xs font-mono uppercase tracking-wider text-forest dark:text-sun font-semibold block">
-                Direct Electronic Mail
-              </span>
+            <div className="p-7 rounded-[28px] bg-cream-card dark:bg-[#0E1712] border border-forest/15 dark:border-emerald-500/25 space-y-4 shadow-soft-card dark:shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono uppercase tracking-wider text-forest dark:text-sun font-semibold block">
+                  Direct Electronic Mail
+                </span>
+                <span className="w-2 h-2 rounded-full bg-leaf dark:bg-sun animate-pulse" />
+              </div>
 
-              <div className="p-4 rounded-2xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center justify-between gap-3">
+              <div className="p-4 rounded-2xl bg-white dark:bg-[#14231B] border border-forest/10 dark:border-emerald-500/25 flex items-center justify-between gap-3 shadow-xs">
                 <div className="flex items-center gap-2.5 truncate">
                   <Mail className="w-4 h-4 text-forest dark:text-sun flex-shrink-0" />
-                  <span className="text-xs font-mono text-charcoal dark:text-warm-white truncate">{personalInfo.email}</span>
+                  <span className="text-xs sm:text-sm font-mono text-charcoal dark:text-white font-medium truncate">
+                    {personalInfo.email}
+                  </span>
                 </div>
                 <button
                   onClick={copyEmail}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-forest/5 dark:bg-white/5 hover:bg-forest/10 dark:hover:bg-white/10 text-xs font-sans text-forest dark:text-warm-white transition-all flex-shrink-0"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-forest/8 dark:bg-white/10 hover:bg-forest/15 dark:hover:bg-white/15 text-xs font-sans text-forest dark:text-warm-white transition-all flex-shrink-0"
+                  title="Copy email to clipboard"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-leaf" />
-                      <span className="text-leaf font-medium">Copied</span>
+                      <Check className="w-3.5 h-3.5 text-leaf dark:text-sun" />
+                      <span className="text-leaf dark:text-sun font-medium">Copied</span>
                     </>
                   ) : (
                     <>
@@ -164,16 +176,16 @@ export default function Contact() {
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 text-xs font-mono text-charcoal-muted dark:text-dark-textMuted pt-1">
-                <MapPin className="w-3.5 h-3.5 text-olive dark:text-leaf" />
+              <div className="flex items-center gap-2 text-xs font-mono text-charcoal-muted dark:text-stone-300 pt-1">
+                <MapPin className="w-3.5 h-3.5 text-olive dark:text-sun" />
                 <span>Pune, Maharashtra, India (IST / UTC+5:30)</span>
               </div>
             </div>
 
             {/* Social Network Ecosystem */}
-            <div className="p-7 rounded-[28px] bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 space-y-4 shadow-soft-card">
+            <div className="p-7 rounded-[28px] bg-cream-card dark:bg-[#0E1712] border border-forest/15 dark:border-emerald-500/25 space-y-4 shadow-soft-card dark:shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
               <span className="text-xs font-mono uppercase tracking-wider text-forest dark:text-sun font-semibold block">
-                Online Presence &amp; Profiles
+                Online Profiles &amp; Code
               </span>
 
               <div className="grid grid-cols-2 gap-2.5">
@@ -182,10 +194,10 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                  className="p-3.5 rounded-xl bg-white dark:bg-[#14231B] border border-forest/10 dark:border-white/10 flex items-center gap-2.5 text-xs text-charcoal dark:text-stone-100 hover:border-forest/30 dark:hover:border-sun/40 hover:bg-forest/5 dark:hover:bg-[#1a2e24] transition-all"
                 >
-                  <GithubIcon className="w-4 h-4" />
-                  <span className="font-mono text-[11px]">GitHub</span>
+                  <GithubIcon className="w-4 h-4 text-charcoal dark:text-warm-white" />
+                  <span className="font-mono text-[11px] font-medium">GitHub</span>
                 </a>
 
                 <a
@@ -193,10 +205,10 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                  className="p-3.5 rounded-xl bg-white dark:bg-[#14231B] border border-forest/10 dark:border-white/10 flex items-center gap-2.5 text-xs text-charcoal dark:text-stone-100 hover:border-forest/30 dark:hover:border-sun/40 hover:bg-forest/5 dark:hover:bg-[#1a2e24] transition-all"
                 >
                   <LinkedinIcon className="w-4 h-4 text-olive dark:text-sun" />
-                  <span className="font-mono text-[11px]">LinkedIn</span>
+                  <span className="font-mono text-[11px] font-medium">LinkedIn</span>
                 </a>
 
                 <a
@@ -204,10 +216,10 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                  className="p-3.5 rounded-xl bg-white dark:bg-[#14231B] border border-forest/10 dark:border-white/10 flex items-center gap-2.5 text-xs text-charcoal dark:text-stone-100 hover:border-forest/30 dark:hover:border-sun/40 hover:bg-forest/5 dark:hover:bg-[#1a2e24] transition-all"
                 >
                   <LeetcodeIcon className="w-4 h-4 text-sun" />
-                  <span className="font-mono text-[11px]">LeetCode</span>
+                  <span className="font-mono text-[11px] font-medium">LeetCode</span>
                 </a>
 
                 <a
@@ -215,10 +227,10 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                  className="p-3.5 rounded-xl bg-white dark:bg-[#14231B] border border-forest/10 dark:border-white/10 flex items-center gap-2.5 text-xs text-charcoal dark:text-stone-100 hover:border-forest/30 dark:hover:border-sun/40 hover:bg-forest/5 dark:hover:bg-[#1a2e24] transition-all"
                 >
-                  <CodechefIcon className="w-4 h-4 text-leaf" />
-                  <span className="font-mono text-[11px]">CodeChef</span>
+                  <CodechefIcon className="w-4 h-4 text-leaf dark:text-sun" />
+                  <span className="font-mono text-[11px] font-medium">CodeChef</span>
                 </a>
 
                 <a
@@ -226,10 +238,10 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                  className="p-3.5 rounded-xl bg-white dark:bg-[#14231B] border border-forest/10 dark:border-white/10 flex items-center gap-2.5 text-xs text-charcoal dark:text-stone-100 hover:border-forest/30 dark:hover:border-sun/40 hover:bg-forest/5 dark:hover:bg-[#1a2e24] transition-all"
                 >
                   <MediumIcon className="w-4 h-4 text-forest dark:text-sun" />
-                  <span className="font-mono text-[11px]">Medium</span>
+                  <span className="font-mono text-[11px] font-medium">Medium</span>
                 </a>
 
                 <a
@@ -237,47 +249,68 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={playCyberClick}
-                  className="p-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/5 flex items-center gap-2.5 text-xs text-charcoal dark:text-warm-white hover:border-forest/30 dark:hover:border-sun/30 transition-all"
+                  className="p-3.5 rounded-xl bg-white dark:bg-[#14231B] border border-forest/10 dark:border-white/10 flex items-center gap-2.5 text-xs text-charcoal dark:text-stone-100 hover:border-forest/30 dark:hover:border-sun/40 hover:bg-forest/5 dark:hover:bg-[#1a2e24] transition-all"
                 >
                   <TwitterIcon className="w-4 h-4 text-charcoal dark:text-warm-white" />
-                  <span className="font-mono text-[11px]">X / Twitter</span>
+                  <span className="font-mono text-[11px] font-medium">X (Twitter)</span>
                 </a>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column (7 cols): Working Netlify Contact Form */}
+          {/* Right Column (7 cols): High-Contrast, Night-Mode Optimized Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-[32px] bg-cream-card dark:bg-dark-card border border-forest/15 dark:border-white/10 shadow-soft-card">
+            <div className="p-8 sm:p-10 rounded-[32px] bg-white dark:bg-[#0E1712] border border-forest/15 dark:border-emerald-500/25 shadow-soft-card dark:shadow-[0_12px_45px_rgba(0,0,0,0.65)]">
               
-              <h3 className="text-xl font-bold text-charcoal dark:text-warm-white mb-2">
-                Send a Direct Message
-              </h3>
-              <p className="text-xs text-charcoal-muted dark:text-dark-textMuted mb-6">
-                Connected directly to Netlify Forms. Expected response within 24 hours.
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-5 border-b border-forest/10 dark:border-white/10">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-charcoal dark:text-warm-white tracking-tight">
+                    Send a Direct Note
+                  </h3>
+                  <p className="text-xs sm:text-sm text-charcoal-muted dark:text-stone-300 mt-1">
+                    Delivered directly to Krishna’s inbox with instant confirmation.
+                  </p>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest/5 dark:bg-sun/10 border border-forest/10 dark:border-sun/20 text-[11px] font-mono text-forest dark:text-sun font-medium self-start sm:self-auto">
+                  <span className="w-1.5 h-1.5 rounded-full bg-leaf dark:bg-sun animate-pulse" />
+                  <span>Netlify &bull; Active</span>
+                </div>
+              </div>
 
               {submitted ? (
-                <div className="p-8 rounded-2xl bg-forest/5 dark:bg-white/5 border border-forest/15 dark:border-sun/30 text-center space-y-4 animate-in fade-in duration-300">
-                  <div className="w-12 h-12 rounded-full bg-forest dark:bg-sun text-warm-white dark:text-forest-dark flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
+                <div className="p-8 sm:p-10 rounded-2xl bg-forest/5 dark:bg-[#14231B] border border-forest/15 dark:border-sun/30 text-center space-y-5 animate-in fade-in duration-300">
+                  <div className="w-14 h-14 rounded-full bg-forest dark:bg-sun text-warm-white dark:text-forest-dark flex items-center justify-center mx-auto shadow-md">
+                    <CheckCircle2 className="w-7 h-7" />
                   </div>
-                  <h4 className="text-lg font-bold text-charcoal dark:text-warm-white">
-                    Message Dispatched Successfully
-                  </h4>
-                  <p className="text-xs text-charcoal-muted dark:text-dark-textMuted max-w-sm mx-auto">
-                    Thank you for reaching out, {formData.name}. I'll review your note and respond back to {formData.email} promptly.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      setFormData({ name: '', email: '', subject: '', message: '' });
-                    }}
-                    className="text-xs font-mono text-forest dark:text-sun underline underline-offset-4"
-                  >
-                    Send another message
-                  </button>
+                  <div className="space-y-2">
+                    <h4 className="text-xl sm:text-2xl font-bold text-charcoal dark:text-warm-white">
+                      Message Dispatched Successfully!
+                    </h4>
+                    <p className="text-xs sm:text-sm text-charcoal-muted dark:text-stone-300 max-w-md mx-auto leading-relaxed">
+                      Thank you, <strong className="text-charcoal dark:text-warm-white">{formData.name}</strong>. Your note has been submitted. I’ll review it and reply back to <strong className="text-charcoal dark:text-warm-white font-mono">{formData.email}</strong> promptly.
+                    </p>
+                  </div>
+
+                  <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
+                    <button
+                      onClick={openInMailClient}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-xs transition-all shadow-sm"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Also Open in Gmail / Mail App</span>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setSubmitted(false);
+                        setFormData({ name: '', email: '', subject: '', message: '' });
+                      }}
+                      className="px-5 py-2.5 rounded-full border border-forest/15 dark:border-white/15 text-charcoal dark:text-stone-200 text-xs font-mono hover:bg-forest/5 dark:hover:bg-white/5 transition-all"
+                    >
+                      Send another message
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form
@@ -286,9 +319,9 @@ export default function Contact() {
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
                   onSubmit={handleSubmit}
-                  className="space-y-4"
+                  className="space-y-5"
                 >
-                  {/* Netlify Hidden Form Name Field */}
+                  {/* Netlify Form Identifier */}
                   <input type="hidden" name="form-name" value="contact" />
                   
                   {/* Netlify Honeypot Field */}
@@ -299,15 +332,17 @@ export default function Contact() {
                   </p>
 
                   {errorMsg && (
-                    <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs font-mono">
+                    <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs font-mono font-medium">
                       {errorMsg}
                     </div>
                   )}
 
+                  {/* Name & Email Fields */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
-                        Your Name *
+                    <div className="space-y-2">
+                      <label className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal/80 dark:text-sun/90 flex items-center justify-between">
+                        <span>Your Name</span>
+                        <span className="text-sun font-bold">*</span>
                       </label>
                       <input
                         type="text"
@@ -316,13 +351,14 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Alex Mercer"
-                        className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors"
+                        className="w-full px-4 py-3.5 rounded-xl bg-stone-50 dark:bg-[#14231B] border border-stone-300 dark:border-emerald-500/30 text-sm font-sans text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-400 focus:outline-none focus:border-forest dark:focus:border-sun focus:ring-2 focus:ring-forest/15 dark:focus:ring-sun/20 transition-all shadow-xs"
                       />
                     </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
-                        Email Address *
+                    <div className="space-y-2">
+                      <label className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal/80 dark:text-sun/90 flex items-center justify-between">
+                        <span>Email Address</span>
+                        <span className="text-sun font-bold">*</span>
                       </label>
                       <input
                         type="email"
@@ -331,13 +367,14 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="alex@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors"
+                        className="w-full px-4 py-3.5 rounded-xl bg-stone-50 dark:bg-[#14231B] border border-stone-300 dark:border-emerald-500/30 text-sm font-sans text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-400 focus:outline-none focus:border-forest dark:focus:border-sun focus:ring-2 focus:ring-forest/15 dark:focus:ring-sun/20 transition-all shadow-xs"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
+                  {/* Subject Field */}
+                  <div className="space-y-2">
+                    <label className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal/80 dark:text-sun/90 block">
                       Subject / Topic
                     </label>
                     <input
@@ -345,14 +382,16 @@ export default function Contact() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      placeholder="e.g. Engineering Internship / AI System Collaboration"
-                      className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors"
+                      placeholder="e.g. Software Internship / AI Project Inquiry"
+                      className="w-full px-4 py-3.5 rounded-xl bg-stone-50 dark:bg-[#14231B] border border-stone-300 dark:border-emerald-500/30 text-sm font-sans text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-400 focus:outline-none focus:border-forest dark:focus:border-sun focus:ring-2 focus:ring-forest/15 dark:focus:ring-sun/20 transition-all shadow-xs"
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-charcoal-muted dark:text-dark-textMuted block">
-                      Message *
+                  {/* Message Field */}
+                  <div className="space-y-2">
+                    <label className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal/80 dark:text-sun/90 flex items-center justify-between">
+                      <span>Message Note</span>
+                      <span className="text-sun font-bold">*</span>
                     </label>
                     <textarea
                       name="message"
@@ -360,26 +399,46 @@ export default function Contact() {
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell me about your team, problem space, or project timeline..."
-                      className="w-full px-4 py-3 rounded-xl bg-warm-white dark:bg-dark-cardElevated border border-forest/10 dark:border-white/10 text-xs text-charcoal dark:text-warm-white placeholder:text-charcoal-muted/40 focus:outline-none focus:border-forest dark:focus:border-sun transition-colors resize-none"
+                      placeholder="Tell me about your team, problem space, internship opportunity, or project timeline..."
+                      className="w-full px-4 py-3.5 rounded-xl bg-stone-50 dark:bg-[#14231B] border border-stone-300 dark:border-emerald-500/30 text-sm font-sans text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-400 focus:outline-none focus:border-forest dark:focus:border-sun focus:ring-2 focus:ring-forest/15 dark:focus:ring-sun/20 transition-all shadow-xs resize-none"
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    onClick={playCyberClick}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-xs shadow-md transition-all disabled:opacity-50"
-                  >
-                    {isSubmitting ? (
-                      <span>Dispatching message...</span>
-                    ) : (
-                      <>
-                        <span>Send Message</span>
-                        <Send className="w-3.5 h-3.5" />
-                      </>
-                    )}
-                  </button>
+                  {/* Dual Action Submit Row */}
+                  <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                    {/* Primary Netlify Submission Button */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      onClick={playCyberClick}
+                      className="flex-1 inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 group"
+                    >
+                      {isSubmitting ? (
+                        <span>Dispatching Note...</span>
+                      ) : (
+                        <>
+                          <span>Send Message</span>
+                          <Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </>
+                      )}
+                    </button>
+
+                    {/* Direct Mail Client Fallback */}
+                    <button
+                      type="button"
+                      onClick={openInMailClient}
+                      className="inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-forest/5 dark:bg-white/5 hover:bg-forest/10 dark:hover:bg-white/10 text-charcoal dark:text-stone-200 border border-forest/15 dark:border-white/15 font-semibold text-xs tracking-wider transition-all"
+                      title="Open in your default email client (Gmail/Outlook)"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-forest dark:text-sun" />
+                      <span>Open in Gmail / App</span>
+                    </button>
+                  </div>
+
+                  <p className="text-[11px] font-mono text-center text-charcoal-muted dark:text-stone-400 pt-1">
+                    Your details are never shared. Direct reply guaranteed.
+                  </p>
+
                 </form>
               )}
 
