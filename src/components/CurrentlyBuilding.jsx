@@ -17,7 +17,7 @@ export default function CurrentlyBuilding() {
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest/5 dark:bg-sun/10 border border-forest/10 dark:border-sun/20 text-xs font-mono text-forest dark:text-sun">
               <span className="w-2 h-2 rounded-full bg-leaf dark:bg-sun animate-pulse" />
-              <span>ACTIVE SPRINTS &bull; AUTUMN 2024–2026</span>
+              <span>ACTIVE EXPLORATION &bull; WORKBENCH</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold text-charcoal dark:text-warm-white tracking-tight">
               Now Building &amp; Exploring

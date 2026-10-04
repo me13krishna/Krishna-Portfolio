@@ -24,8 +24,8 @@ export default function ProofStrip() {
       num: "03",
       tag: "COMPETE",
       title: "High-Stakes Sprints",
-      desc: "Rapid prototyping and resilient engineering under intense pressure: Smart India Hackathon (SIH 2024 Netra X) and Prakrushti.",
-      metric: "National Hackathons",
+      desc: "Rapid prototyping and resilient engineering under intense pressure: Hackathons, Prakrushti, and design sprints.",
+      metric: "Hackathon Sprints",
       link: "#projects"
     },
     {

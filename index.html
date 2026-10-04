@@ -72,15 +72,22 @@
     }
     </script>
 
-    <!-- Theme Initialization Script -->
+    <!-- Natural Sun Time Theme Initialization Script -->
     <script>
       (function() {
         try {
           const stored = localStorage.getItem('km_portfolio_theme');
-          if (stored === 'dark' || (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
+          if (stored) {
+            if (stored === 'dark') document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
           } else {
-            document.documentElement.classList.remove('dark');
+            // Natural Sun Cycle: night (6 PM to 6 AM) defaults to deep dark forest, day (6 AM to 6 PM) defaults to light sunlit mist
+            const hour = new Date().getHours();
+            if (hour >= 18 || hour < 6) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
           }
         } catch (e) {}
       })();

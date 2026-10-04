@@ -6,7 +6,8 @@ export const personalInfo = {
   headlineRole: "Software Engineer & AI Builder",
   college: "MIT Academy of Engineering",
   degree: "B.Tech, Computer Software Engineering",
-  batch: "Sep 2025 – 2029",
+  batch: "2025 – 2029",
+  cgpa: "8.40 (First Year)",
   location: "Pune Division, Maharashtra, India",
   email: "krishna1307mishra@gmail.com",
   status: "Open to Internships & High-Impact Roles",
@@ -49,20 +50,13 @@ export const heroHeadlineOptions = [
 
 export const quickFacts = [
   { label: "Location", value: "Pune Division, Maharashtra, India" },
-  { label: "Institution", value: "MIT Academy of Engineering (Sep 2025 – 2029)" },
+  { label: "Institution", value: "MIT Academy of Engineering (2025 – 2029)" },
+  { label: "First Year CGPA", value: "8.40 / 10.0" },
   { label: "Academic Foundation", value: "HSC: 86.00% | SSC: 94.40%" },
   { label: "Focus Areas", value: "Artificial Intelligence, Generative AI & Web Engineering" }
 ];
 
 export const currentlyBuilding = [
-  {
-    id: "netra-x-sih",
-    title: "Netra X — Edge AI Computer Vision (SIH 2024)",
-    context: "Smart India Hackathon (SIH 2024)",
-    desc: "Developing two active edge computer vision and AI surveillance projects for transit security and anomaly monitoring.",
-    status: "Active Working Phase",
-    tech: ["Computer Vision", "Edge AI", "Python", "SIH 2024"]
-  },
   {
     id: "agentic-orchestrator",
     title: "Autonomous Agentic AI Workflows",
@@ -70,6 +64,14 @@ export const currentlyBuilding = [
     desc: "Building multi-step reasoning chains and prompt orchestration with IBM watsonx and Gemini API.",
     status: "Benchmarking",
     tech: ["IBM watsonx", "Gemini API", "Python", "Node.js"]
+  },
+  {
+    id: "indian-pixel-framework",
+    title: "Indian Pixel — Next-Gen Client Architecture",
+    context: "Venture Platform",
+    desc: "Engineering high-performance responsive web platforms and client solutions with automated build pipelines.",
+    status: "Active Deployment",
+    tech: ["React", "Vite", "Node.js", "Tailwind CSS"]
   }
 ];
 
@@ -141,8 +143,8 @@ export const educationList = [
   {
     degree: "B.Tech, Computer Software Engineering",
     institution: "MIT Academy of Engineering",
-    period: "Sep 2025 – 2029",
-    score: "Undergraduate",
+    period: "2025 – 2029",
+    score: "8.40 CGPA (First Year)",
     badge: "Current Degree",
     description: "Focused on Artificial Intelligence, Generative AI, algorithms, and software development."
   },
@@ -357,20 +359,6 @@ export const projects = [
     status: "Experimental Archive"
   },
   {
-    id: "netra-x",
-    title: "Netra X — Edge Vision Intelligence (SIH 2024)",
-    category: "Computer Vision & Edge AI",
-    flagship: false,
-    outcome: "Edge AI surveillance pipeline developed for Smart India Hackathon.",
-    role: "AI & Vision Developer",
-    tagline: "Two working computer vision prototypes built for transit hub security and crowd anomaly detection.",
-    description: "Currently in development for Smart India Hackathon (SIH 2024). Employs low-latency video inference pipelines for automated anomaly recognition.",
-    tags: ["Computer Vision", "Edge AI", "OpenCV", "Python", "SIH 2024"],
-    liveUrl: "https://github.com/me13krishna",
-    githubUrl: "https://github.com/me13krishna",
-    status: "Active Working Phase (SIH)"
-  },
-  {
     id: "smart-campus",
     title: "Smart Campus Platform (MITAOE)",
     category: "Campus & Web",
@@ -437,7 +425,7 @@ export const skillsWithContext = [
     items: [
       { name: "Generative AI & Agentic AI", context: "Used in autonomous blueprint generation" },
       { name: "Prompt Engineering", context: "Used in structured multi-step watsonx schemas" },
-      { name: "Computer Vision", context: "Used in Netra X (SIH) and CodeAlpha Object Detection" },
+      { name: "Computer Vision", context: "Used in CodeAlpha AI & Object Detection pipelines" },
       { name: "Machine Learning", context: "Used in predictive modeling & Jupyter notebooks" }
     ]
   },
@@ -572,10 +560,10 @@ export const codingProfiles = [
 ];
 
 export const stats = [
-  { value: "12+", label: "Projects Shipped", sub: "AI platforms, Web & Systems" },
-  { value: "4", label: "Internships & Ventures", sub: "Indian Pixel, Drishyam, CodeAlpha, IBM" },
-  { value: "94.4%", label: "SSC Honors", sub: "De Paul English Medium School" },
-  { value: "86.0%", label: "HSC Science", sub: "Bankar Patil Educational Campus" }
+  { value: "8.40", label: "First Year CGPA", sub: "MIT Academy of Engineering" },
+  { value: "11+", label: "Projects Shipped", sub: "AI platforms, Web & Systems" },
+  { value: "4", label: "Ventures & Internships", sub: "Indian Pixel, Drishyam, CodeAlpha, IBM" },
+  { value: "94.4%", label: "SSC Board Honors", sub: "De Paul English Medium School" }
 ];
 
 export const accounts = [

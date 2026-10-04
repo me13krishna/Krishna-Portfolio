@@ -19,11 +19,10 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
 
   const categories = [
-    { id: 'All', label: 'All Works (12)' },
-    { id: 'AI & ML', label: 'AI & Machine Learning' },
+    { id: 'All', label: `All Works (${projects.length})` },
+    { id: 'AI & ML', label: 'AI & Generative Systems' },
     { id: 'Full-Stack', label: 'Full-Stack & Web' },
-    { id: 'Data & Systems', label: 'Data & Systems' },
-    { id: 'Hackathons', label: 'Hackathons & SIH' },
+    { id: 'Data & Systems', label: 'Data & Security' },
   ];
 
   const filteredProjects = projects.filter((p) => {
@@ -39,7 +38,7 @@ export default function Projects() {
       return (
         p.category.includes('Web') ||
         p.category.includes('Full-Stack') ||
-        p.category.includes('Blockchain')
+        p.category.includes('Campus')
       );
     }
     if (activeCategory === 'Data & Systems') {
@@ -47,13 +46,9 @@ export default function Projects() {
         p.category.includes('Data') ||
         p.category.includes('Analytics') ||
         p.category.includes('Linux') ||
-        p.category.includes('Systems')
-      );
-    }
-    if (activeCategory === 'Hackathons') {
-      return (
-        p.category.includes('Hackathon') ||
-        p.category.includes('SIH')
+        p.category.includes('Systems') ||
+        p.category.includes('Blockchain') ||
+        p.category.includes('Security')
       );
     }
     return true;

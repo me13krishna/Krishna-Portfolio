@@ -80,6 +80,10 @@ export default function Hero({ onOpenResume }) {
                 <span>&bull; MITAOE</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white font-mono text-[11px]">
+                <span className="text-forest dark:text-sun font-bold">8.40 CGPA</span>
+                <span>&bull; First Year</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-card dark:bg-dark-card border border-forest/10 dark:border-white/10 text-charcoal dark:text-warm-white font-mono text-[11px]">
                 <Sparkles className="w-3 h-3 text-sun" />
                 <span>Python &bull; React &bull; watsonx</span>
               </div>

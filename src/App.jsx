@@ -13,7 +13,7 @@ import TerminalModal from './components/TerminalModal';
 import CommandPalette from './components/CommandPalette';
 import ResumeModal from './components/ResumeModal';
 import CustomCursor from './components/CustomCursor';
-import { Search, Sparkles } from 'lucide-react';
+import { getNaturalAtmosphere } from './utils/natureTime';
 import { playCyberClick } from './utils/audio';
 
 export default function App() {
@@ -21,11 +21,9 @@ export default function App() {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('km_portfolio_theme');
       if (stored === 'dark' || stored === 'light') return stored;
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
     }
-    return 'light'; // Light mode is primary
+    // Auto sync with sun / time of day: night (6pm-6am) = dark, day (6am-6pm) = light
+    return getNaturalAtmosphere().defaultTheme;
   });
 
   const [terminalOpen, setTerminalOpen] = useState(false);
@@ -161,34 +159,6 @@ export default function App() {
 
       {/* i) Footer: Minimal, back-to-top, copyright, designed & built by Krishna */}
       <Footer />
-
-      {/* Floating Quick Navigation Pill (Bottom-Left) */}
-      <div className="fixed bottom-6 left-6 z-40 hidden md:flex items-center gap-2 bg-cream-card/90 dark:bg-dark-card/90 p-1.5 rounded-full border border-forest/10 dark:border-white/10 shadow-soft-card backdrop-blur-xl transition-all duration-300 hover:border-leaf/40 dark:hover:border-sun/40">
-        <button
-          onClick={() => {
-            playCyberClick();
-            setPaletteOpen(true);
-          }}
-          className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream dark:bg-dark-cardElevated hover:bg-cream-subtle dark:hover:bg-dark-card text-charcoal-muted dark:text-dark-textMuted hover:text-charcoal dark:hover:text-warm-white text-xs font-mono transition-all"
-          title="Quick Navigation (⌘K)"
-        >
-          <Search className="w-3.5 h-3.5 text-forest dark:text-sun" />
-          <span>Quick Find</span>
-          <kbd className="text-[10px] bg-forest/5 dark:bg-white/10 border border-forest/10 dark:border-white/10 px-1.5 py-0.5 rounded text-charcoal dark:text-warm-white">⌘K</kbd>
-        </button>
-
-        <button
-          onClick={() => {
-            playCyberClick();
-            setResumeOpen(true);
-          }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-forest/5 dark:hover:bg-white/5 text-charcoal-muted dark:text-dark-textMuted hover:text-charcoal dark:hover:text-warm-white text-xs font-sans transition-all"
-          title="Review Curriculum Vitae"
-        >
-          <Sparkles className="w-3 h-3 text-leaf dark:text-sun" />
-          <span>Resume</span>
-        </button>
-      </div>
 
       {/* Interactive Modals */}
       <TerminalModal 

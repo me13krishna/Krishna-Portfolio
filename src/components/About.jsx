@@ -18,9 +18,9 @@ import krishnaImg from '../assets/krishna.jpg';
 export default function About({ onOpenResume }) {
   const facts = [
     { label: "Location", value: "Pune Division, Maharashtra, India", icon: <MapPin className="w-4 h-4 text-olive dark:text-leaf" /> },
-    { label: "Institution", value: "MIT Academy of Engineering (Sep 2025 – 2029)", icon: <GraduationCap className="w-4 h-4 text-gold dark:text-sun" /> },
-    { label: "Focus Areas", value: "Artificial Intelligence, Generative AI & Software Development", icon: <Cpu className="w-4 h-4 text-forest dark:text-leaf" /> },
-    { label: "Academic Foundation", value: "HSC: 86.00% | SSC: 94.40%", icon: <Sparkles className="w-4 h-4 text-sun" /> }
+    { label: "Institution", value: "MIT Academy of Engineering (2025 – 2029)", icon: <GraduationCap className="w-4 h-4 text-gold dark:text-sun" /> },
+    { label: "First Year CGPA", value: "8.40 / 10.0 (First Year)", icon: <Sparkles className="w-4 h-4 text-sun" /> },
+    { label: "Academic Foundation", value: "HSC: 86.00% | SSC: 94.40%", icon: <Cpu className="w-4 h-4 text-forest dark:text-leaf" /> }
   ];
 
   const tenets = [
@@ -79,7 +79,7 @@ export default function About({ onOpenResume }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="text-sm font-bold text-charcoal dark:text-warm-white">Krishna Mishra</h4>
-                      <p className="text-[11px] font-mono text-forest dark:text-sun">MITAOE &bull; Sep 2025 – 2029</p>
+                      <p className="text-[11px] font-mono text-forest dark:text-sun">MITAOE &bull; 2025 – 2029</p>
                     </div>
                     <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-forest/5 dark:bg-sun/10 text-forest dark:text-sun font-bold">
                       B.Tech
