@@ -6,10 +6,8 @@ import {
   MapPin, 
   CheckCircle2, 
   Mail, 
-  ArrowUpRight,
-  ExternalLink,
   Sparkles,
-  MessageSquare
+  RefreshCw
 } from 'lucide-react';
 import { 
   LinkedinIcon, 
@@ -17,7 +15,7 @@ import {
   InstagramIcon, 
   LeetcodeIcon, 
   CodechefIcon, 
-  MediumIcon,
+  MediumIcon, 
   TwitterIcon 
 } from './SocialIcons';
 import confetti from 'canvas-confetti';
@@ -29,13 +27,17 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    _honey: ''
   });
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [toastMessage, setToastMessage] = useState('');
+
+  const COOLDOWN_SECONDS = 30;
+  const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const copyEmail = () => {
     playCyberBeep();
@@ -52,38 +54,97 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const encode = (data) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  };
-
-  const openInMailClient = () => {
-    playCyberClick();
-    const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name || 'Portfolio Visitor'}`);
-    const body = encodeURIComponent(
-      `Hello Krishna,\n\nName: ${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}\n\nMessage:\n${formData.message || ''}\n\nSent from Portfolio Contact Section`
-    );
-    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setErrorMsg('Please fill in your name, email, and message.');
-      setTimeout(() => setErrorMsg(''), 3500);
+
+    // 1. Invisible Bot Honeypot: reject bots silently without making API requests
+    if (formData._honey && formData._honey.trim() !== '') {
+      console.warn('Automated bot submission prevented.');
+      setSubmitted(true);
       return;
+    }
+
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const subject = formData.subject.trim();
+    const message = formData.message.trim();
+
+    // 2. Required fields validation
+    if (!name || !email || !message) {
+      setErrorMsg('Please fill in your name, email, and message.');
+      setTimeout(() => setErrorMsg(''), 4000);
+      return;
+    }
+
+    // 3. Name length check
+    if (name.length < 2 || name.length > 80) {
+      setErrorMsg('Please enter a valid name (2 to 80 characters).');
+      setTimeout(() => setErrorMsg(''), 4000);
+      return;
+    }
+
+    // 4. Strict Email Regex Validation
+    if (!EMAIL_REGEX.test(email) || email.length > 100) {
+      setErrorMsg('Please enter a valid email address (e.g. name@domain.com).');
+      setTimeout(() => setErrorMsg(''), 4000);
+      return;
+    }
+
+    // 5. Message length checks
+    if (message.length < 10) {
+      setErrorMsg('Message is too short. Please provide at least 10 characters.');
+      setTimeout(() => setErrorMsg(''), 4000);
+      return;
+    }
+
+    if (message.length > 3000) {
+      setErrorMsg('Message is too long. Please limit to 3,000 characters.');
+      setTimeout(() => setErrorMsg(''), 4000);
+      return;
+    }
+
+    // 6. Rate Limiting / Anti-flood Cooldown
+    const lastSentTime = localStorage.getItem('km_last_contact_time');
+    if (lastSentTime) {
+      const elapsedSeconds = Math.floor((Date.now() - parseInt(lastSentTime, 10)) / 1000);
+      if (elapsedSeconds < COOLDOWN_SECONDS) {
+        const remaining = COOLDOWN_SECONDS - elapsedSeconds;
+        setErrorMsg(`Please wait ${remaining} second${remaining > 1 ? 's' : ''} before sending another message.`);
+        setTimeout(() => setErrorMsg(''), 4000);
+        return;
+      }
     }
 
     setIsSubmitting(true);
     setErrorMsg('');
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...formData })
-    })
-      .then(() => {
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: subject || `Inquiry from ${name}`,
+          message: message,
+          _subject: `New Portfolio Message from ${name}: ${subject || 'Direct Inquiry'}`,
+          _template: 'table',
+          _captcha: 'false',
+          _honey: ''
+        })
+      });
+
+      const result = await response.json();
+
+      // Either it succeeded or it sent the initial activation email to Krishna
+      if (response.ok || result.success === 'true' || result.success === true || (result.message && result.message.includes('Activation'))) {
+        try {
+          localStorage.setItem('km_last_contact_time', Date.now().toString());
+        } catch (e) {}
+
         setIsSubmitting(false);
         setSubmitted(true);
         try {
@@ -94,13 +155,16 @@ export default function Contact() {
             colors: ['#E8C547', '#7FA63A', '#173D2B']
           });
         } catch (err) {}
-      })
-      .catch((error) => {
-        // Fallback: open user's mail client directly
-        setIsSubmitting(false);
-        setSubmitted(true);
-        openInMailClient();
-      });
+      } else {
+        throw new Error(result.message || 'Failed to dispatch message');
+      }
+    } catch (err) {
+      console.error('Contact submit error:', err);
+      setIsSubmitting(false);
+      setErrorMsg(
+        'Unable to send message directly right now. You can copy the email above to reach me!'
+      );
+    }
   };
 
   return (
@@ -274,7 +338,7 @@ export default function Contact() {
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest/5 dark:bg-sun/10 border border-forest/10 dark:border-sun/20 text-[11px] font-mono text-forest dark:text-sun font-medium self-start sm:self-auto">
                   <span className="w-1.5 h-1.5 rounded-full bg-leaf dark:bg-sun animate-pulse" />
-                  <span>Netlify &bull; Active</span>
+                  <span>Direct Delivery &bull; Active</span>
                 </div>
               </div>
 
@@ -285,54 +349,44 @@ export default function Contact() {
                   </div>
                   <div className="space-y-2">
                     <h4 className="text-xl sm:text-2xl font-bold text-charcoal dark:text-warm-white">
-                      Message Dispatched Successfully!
+                      Message Dispatched to Inbox!
                     </h4>
                     <p className="text-xs sm:text-sm text-charcoal-muted dark:text-stone-300 max-w-md mx-auto leading-relaxed">
-                      Thank you, <strong className="text-charcoal dark:text-warm-white">{formData.name}</strong>. Your note has been submitted. I’ll review it and reply back to <strong className="text-charcoal dark:text-warm-white font-mono">{formData.email}</strong> promptly.
+                      Thank you, <strong className="text-charcoal dark:text-warm-white">{formData.name}</strong>. Your note has been delivered straight to Krishna&apos;s email. I&apos;ll review it and reply back to <strong className="text-charcoal dark:text-warm-white font-mono">{formData.email}</strong> shortly.
                     </p>
                   </div>
 
                   <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
                     <button
-                      onClick={openInMailClient}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-semibold text-xs transition-all shadow-sm"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Also Open in Gmail / Mail App</span>
-                    </button>
-
-                    <button
                       onClick={() => {
                         setSubmitted(false);
-                        setFormData({ name: '', email: '', subject: '', message: '' });
+                        setFormData({ name: '', email: '', subject: '', message: '', _honey: '' });
                       }}
-                      className="px-5 py-2.5 rounded-full border border-forest/15 dark:border-white/15 text-charcoal dark:text-stone-200 text-xs font-mono hover:bg-forest/5 dark:hover:bg-white/5 transition-all"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
                     >
-                      Send another message
+                      <span>Send another note</span>
                     </button>
                   </div>
                 </div>
               ) : (
                 <form
-                  name="contact"
-                  method="POST"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field"
                   onSubmit={handleSubmit}
                   className="space-y-5"
                 >
-                  {/* Netlify Form Identifier */}
-                  <input type="hidden" name="form-name" value="contact" />
-                  
-                  {/* Netlify Honeypot Field */}
-                  <p className="hidden">
-                    <label>
-                      Don’t fill this out if you're human: <input name="bot-field" />
-                    </label>
-                  </p>
+                  {/* Invisible Honeypot trap for automated spam bots */}
+                  <input 
+                    type="text" 
+                    name="_honey" 
+                    value={formData._honey} 
+                    onChange={handleChange} 
+                    style={{ display: 'none' }} 
+                    tabIndex={-1} 
+                    autoComplete="off" 
+                    aria-hidden="true" 
+                  />
 
                   {errorMsg && (
-                    <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs font-mono font-medium">
+                    <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs font-mono font-medium animate-in fade-in duration-200">
                       {errorMsg}
                     </div>
                   )}
@@ -348,6 +402,7 @@ export default function Contact() {
                         type="text"
                         name="name"
                         required
+                        maxLength={80}
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Alex Mercer"
@@ -364,6 +419,7 @@ export default function Contact() {
                         type="email"
                         name="email"
                         required
+                        maxLength={100}
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="alex@company.com"
@@ -380,6 +436,7 @@ export default function Contact() {
                     <input
                       type="text"
                       name="subject"
+                      maxLength={150}
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="e.g. Software Internship / AI Project Inquiry"
@@ -389,14 +446,20 @@ export default function Contact() {
 
                   {/* Message Field */}
                   <div className="space-y-2">
-                    <label className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal/80 dark:text-sun/90 flex items-center justify-between">
-                      <span>Message Note</span>
-                      <span className="text-sun font-bold">*</span>
-                    </label>
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal/80 dark:text-sun/90 flex items-center gap-1">
+                        <span>Message Note</span>
+                        <span className="text-sun font-bold">*</span>
+                      </label>
+                      <span className="text-[11px] font-mono text-charcoal-muted dark:text-stone-400">
+                        {formData.message.length}/3000
+                      </span>
+                    </div>
                     <textarea
                       name="message"
                       rows={5}
                       required
+                      maxLength={3000}
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell me about your team, problem space, internship opportunity, or project timeline..."
@@ -404,39 +467,30 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Dual Action Submit Row */}
-                  <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                    {/* Primary Netlify Submission Button */}
+                  {/* Single High-Impact Action Submit Button */}
+                  <div className="pt-2">
                     <button
                       type="submit"
                       disabled={isSubmitting}
                       onClick={playCyberClick}
-                      className="flex-1 inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 group"
+                      className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-full bg-forest dark:bg-sun hover:bg-forest-deep dark:hover:bg-sun-light text-warm-white dark:text-forest-dark font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 group cursor-pointer"
                     >
                       {isSubmitting ? (
-                        <span>Dispatching Note...</span>
+                        <>
+                          <RefreshCw className="w-4 h-4 animate-spin" />
+                          <span>Dispatching Note to Inbox...</span>
+                        </>
                       ) : (
                         <>
                           <span>Send Message</span>
-                          <Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          <Send className="w-3.5 h-3.5 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
                         </>
                       )}
-                    </button>
-
-                    {/* Direct Mail Client Fallback */}
-                    <button
-                      type="button"
-                      onClick={openInMailClient}
-                      className="inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-forest/5 dark:bg-white/5 hover:bg-forest/10 dark:hover:bg-white/10 text-charcoal dark:text-stone-200 border border-forest/15 dark:border-white/15 font-semibold text-xs tracking-wider transition-all"
-                      title="Open in your default email client (Gmail/Outlook)"
-                    >
-                      <Mail className="w-3.5 h-3.5 text-forest dark:text-sun" />
-                      <span>Open in Gmail / App</span>
                     </button>
                   </div>
 
                   <p className="text-[11px] font-mono text-center text-charcoal-muted dark:text-stone-400 pt-1">
-                    Your details are never shared. Direct reply guaranteed.
+                    Delivered directly to Krishna&apos;s personal Gmail. No email client apps required.
                   </p>
 
                 </form>
