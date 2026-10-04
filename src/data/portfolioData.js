@@ -95,7 +95,7 @@ export const experiences = [
     id: "drishyam",
     role: "Frontend & UI/UX Design Intern",
     company: "Drishyam",
-    period: "Aug 2026 | Remote",
+    period: "Aug 2026 – Sept 2026 | Remote",
     type: "Internship",
     badge: "Frontend & Edge AI",
     description: "Contributed to frontend development and UI/UX design for responsive digital experiences, working with Computer Vision and Edge AI concepts for security applications.",
